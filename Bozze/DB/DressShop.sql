@@ -157,4 +157,6 @@ prodotto		int,
 
 	foreign key (prodotto)
 	references prodotti_in_ordine(id_prodotto)
+		on delete no action
+		on update no action
 );
