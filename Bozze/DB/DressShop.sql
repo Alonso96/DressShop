@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS DressShop;
 CREATE DATABASE DressShop;
 USE DressShop;
 
-CREATE TABLE utenti(
+CREATE TABLE UTENTI(
 id_utente		int		primary key auto_increment,
 nome			varchar(30),
 cognome			varchar(30),
@@ -16,18 +16,18 @@ tipo			varchar(3)
 */
 );
 
-CREATE TABLE clienti(
+CREATE TABLE CLIENTI(
 id_cliente		int		primary key,
 data_nascita		date,
 cellulare		varchar(13),
 
 	foreign key (id_cliente)
-	references utenti(id_utente)
+	references UTENTI(id_utente)
 		on delete cascade
 		on update cascade
 );
 
-CREATE TABLE carte_credito(
+CREATE TABLE CARTE_CREDITO(
 numero_carta		varchar(16)	primary key,
 data_scadenza		date		not null,
 cvv			char(3)		not null,
@@ -36,12 +36,12 @@ cognome_proprietario	varchar(30)	not null,
 cliente			int,
 
 	foreign key (cliente)
-	references clienti(id_cliente)
+	references CLIENTI(id_cliente)
 		on delete no action	
 		on update cascade
 );
 
-CREATE TABLE indirizzi(
+CREATE TABLE INDIRIZZI(
 id_indirizzo		int		primary key auto_increment,
 cap			char(5),
 provincia		char(2),
@@ -50,12 +50,12 @@ via			varchar(50),
 cliente			int,
 
 	foreign key (cliente)
-	references clienti(id_cliente)
+	references CLIENTI(id_cliente)
 		on delete no action
 		on update cascade
 );
 
-CREATE TABLE ordini(
+CREATE TABLE ORDINI(
 id_ordine		int		primary key auto_increment,
 data			date,
 pagato			boolean,
@@ -66,35 +66,35 @@ tipo_spedizione		varchar(10),
 costo_spedizione	float,
 
 	foreign key (carta_credito)
-	references carte_credito(numero_carta)
+	references CARTE_CREDITO(numero_carta)
 		on delete no action
 		on update cascade,
         
 	foreign key (indirizzo)
-	references indirizzi(id_indirizzo)
+	references INDIRIZZI(id_indirizzo)
 		on delete no action
 		on update cascade,
         
 	foreign key (cliente)
-	references clienti(id_cliente)
+	references CLIENTI(id_cliente)
 		on delete no action
 		on update cascade
 );
 
-CREATE TABLE promozioni(
+CREATE TABLE PROMOZIONI(
 id_promozione		int		primary key auto_increment,
 data_inizio		date,
 data_fine		date,
 sconto			int
 );
 
-CREATE TABLE categorie(
+CREATE TABLE CATEGORIE(
 id_categoria		int		primary key auto_increment,
 nome			varchar(20),
 descrizione		varchar(50)
 );
 
-CREATE TABLE prodotti(
+CREATE TABLE PRODOTTI(
 id_prodotto		int		primary key auto_increment,
 codice_prodotto		varchar(20),
 descrizione		varchar(50),
@@ -110,53 +110,53 @@ categoria		int,
 promozione		int,
 
 	foreign key (categoria)
-	references categorie(id_categoria)
+	references CATEGORIE(id_categoria)
 		on delete no action
 		on update cascade,
         
 	foreign key (promozione)
-	references promozioni(id_promozione)
+	references PROMOZIONI(id_promozione)
 		on delete set null
 		on update cascade
 );
 
-CREATE TABLE prodotti_in_catalogo(
+CREATE TABLE PRODOTTI_IN_CATALOGO(
 id_prodotto		int			primary key,
 prezzo			float,
 iva			int,
 quantità		int,
 
 	foreign key (id_prodotto)
-	references prodotti(id_prodotto)
+	references PRODOTTI(id_prodotto)
 		on delete no action
 		on update cascade
 );
 
-CREATE TABLE prodotti_in_ordine(
+CREATE TABLE PRODOTTI_IN_ORDINE(
 id_prodotto		int			primary key,
 prezzo			float,
 iva			int,
 quantità		int,
 
 	foreign key (id_prodotto)
-	references prodotti(id_prodotto)
+	references PRODOTTI(id_prodotto)
 		on delete no action
 		on update cascade
 );
 
-CREATE TABLE ordinazione(
+CREATE TABLE ORDINAZIONE(
 ordine			int,
 prodotto		int,
 
 	primary key(ordine, prodotto),
 
 	foreign key (ordine)
-	references ordini(id_ordine)
+	references ORDINI(id_ordine)
 		on delete no action
 		on update no action,
 
 	foreign key (prodotto)
-	references prodotti_in_ordine(id_prodotto)
+	references PRODOTTI_IN_ORDINE(id_prodotto)
 		on delete no action
 		on update no action
 );
