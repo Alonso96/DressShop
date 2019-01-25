@@ -6,13 +6,13 @@ public class UserBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private String nome;
-	private String cognome;
+	protected String nome;
+	protected String cognome;
 	
-	private String password;
-	private String eMail;
-	private String idUtente;
-	private String tipo ;
+	protected String password;
+	protected String eMail;
+	protected String idUtente;
+	protected String tipo ;
 	public String getNome() {
 		return nome;
 	}
