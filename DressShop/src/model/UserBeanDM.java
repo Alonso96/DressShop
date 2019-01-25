@@ -1,5 +1,5 @@
-package model;
-
+/*package model;
+j
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -306,4 +306,5 @@ public class UserBeanDM implements UserModel<UserBean> {
 		return flag;
 	}
 	}
+	*/
 
