@@ -44,7 +44,8 @@ public class UserBean implements Serializable {
 		cognome = "";
 		password = "";
 		eMail = "";	
-	;
+		tipo="";
+	
 	}
 	@Override
 	public String toString() {
