@@ -1,5 +1,5 @@
 <%
-
+//prova
 ProductBean product = (ProductBean) request.getAttribute("product");
 
 Carrello cart = (Carrello) session.getAttribute("cart"); %>
