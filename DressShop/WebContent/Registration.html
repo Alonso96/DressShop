@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+
+	body{
+		background-color: white;
+		background-image: radial-gradient(white, white, #f7af62);
+	}
+	label{
+		font-family: Verdana,sans-serif;
+		font-weight: bold;
+		float: left;
+	}
+	input{
+		margin-top: 8px;
+		margin-left: 50px;
+	}
+	#menu{
+	margin-left: 15%;
+		border: 1px solid black;
+		margin-right: none;
+		text-align: center;
+		margin-top:0px;
+		padding: 3px;
+		display: inline;
+	}
+	h2{
+		
+		font-family: cursive;
+		font-style: italic;
+		color: red;
+		
+		margin-left: 0px
+	}
+	div{
+		margin-left: 500px;
+		border: 1px solid black;
+		margin-right: 500px;
+		text-align: center;
+		padding: 10px;
+	}
+	.button{
+		margin : 15px 0px 0px 0px;
+	}
+	@media screen and (max-width: 970px) {
+    body {
+       width: 100%;
+    }
+    div{
+    clear:both;
+    margin-left:0px;
+    border:5px;
+    border-color:black;
+    border-style:solid;
+  width:50%;
+  margin-right: none;
+  text-align: center;
+    }
+    h2{
+    clear:both;
+    margin-left: 0px;
+    padding: 0px;
+    padding-left: 0px;
+    }
+       #divLogo{
+	margin-left: 0px;
+	 width:100%;
+    
+}
+hr{
+margin: 0px;}
+ #menu{
+   
+  width: 100%;
+  margin-left:0px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+  
+	<div id="divLogo" style="border:none">
+		<img src="immagini/dressLogo.png" width="700" height="200"
+			style="margin-left: 90px" class="immage">
+	</div>
+
+	<hr style="margin-top: 20px">
+	<div id="menu" style="border: 0px">
+		<ul>
+			<li><a href="home.jsp" style="color: red">HOME</a></li>
+			<li><a href="woman.jsp">WOMAN</a></li>
+			<li><a href="">MAN</a></li>
+			<li><a href="">BLOG</a></li>
+			<li><a href="" >CONTACTS</a></li>
+		</ul>
+	</div>
+	<hr style="margin-top: -20px">
+	<h2 style="border:1px solid grey; ">Registrati Ora</h2><br>
+	
+	<p style="margin-top: -25px">Per effettuare gli acquisti sul nostro e-shop, accedi all'area riservata utenti.<br>
+	Se non ti sei mai registrato all'area riservata, clicca sul tasto "Registrati" per effettuare la registrazione.<br> 
+	Se ti sei registrato in passato, ma non ricordi più le credenziali di accesso, clicca sul link "Dimenticato la password?", mediante la quale potrai effettuare il recupero password.<br>
+	Sei un amministratore ? <a href=#>Clicca qui </a>
+	
+	<div>
+	<form action="RegistrationControl" method="post" name ="registration">
+		<input type="hidden" name="action" value="registration">
+		
+		<label for="firstName">Nome</label><br>
+		<input name="firstName" type="text" maxlength="20" required placeholder="enter first name"><br>
+		
+		<label for="lastName">Cognome</label><br>
+		<input name="lastName" type="text" maxlength="20" required placeholder="enter last name"><br>
+		
+		<label for="userName">Nickname</label><br>
+		<input name="userName" type="text" maxlength="20" required placeholder="select a Nick"><br>
+		
+		<label for="password">Password</label><br>
+		<input name="password" type="password" required pattern=".{6,}" title="Minimo 6 caratteri" maxlength="20" required placeholder="enter password"><br>
+	
+		<label for="email">Email</label><br>
+		<input name="email" type="text" maxlength="20" required placeholder="enter e-mail"><br>
+		
+		<label for="city">Città</label><br>
+		<input name="city" type="text" maxlength="20" required placeholder="enter city"><br>
+		
+		<label for="address">Indirizzo</label><br>
+		<input name="address" type="text" maxlength="20" required placeholder="enter address"><br>
+		
+		
+
+		<input class="button" type="submit" value="Submit">
+		<input class="button" type="reset" value="Reset"><br>
+	</form>
+	</div>
+	<br><br><br><br><br><br>
+	<hr>
+	
+	<p style="margin-left: 620px; margin-top: 10px">&copy; AlexBacco.com<p>
+	
+	<script>
+		// aggiungere la validazione del form
+	</script>
+
+</body>
+
+
+</html>
