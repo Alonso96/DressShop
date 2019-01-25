@@ -272,7 +272,7 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean> {
 		
 	}
 	*/
-	public void doUpdateQuantità(ProdottoInCatalogo product) throws SQLException { //prodotto in catalogo
+	public void doUpdateQuantita(ProdottoInCatalogo product) throws SQLException { //prodotto in catalogo
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
