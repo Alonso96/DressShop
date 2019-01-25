@@ -1,5 +1,5 @@
-/*package model;
-j
+package model;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,15 +30,12 @@ public class UserBeanDM implements UserModel<UserBean> {
 
 			while(rs.next()) {
 				UserBean bean = new UserBean(); // salvo gli attributi letti dal result set , farlo per ogni tupla
-				bean.setFirstName("Nome");
-				bean.setLastName("Cognome");
-				bean.setAddress("indirizzo");
-				
-				bean.setCity("Città");
-				bean.seteMail("Email");
-				bean.setPassword("Password");
-				bean.setUserName("Nickname");
-				
+				bean.setNome("nome");
+				bean.setCognome("cognome");
+				bean.seteMail("eMail");
+				bean.setPassword("password");
+				bean.setTipo("tipo");
+				bean.setIdUtente("idUtente");
 
 				list.add(bean); // salvo nella collezione
 			}
@@ -63,9 +60,9 @@ public class UserBeanDM implements UserModel<UserBean> {
 	public void saveUsers(UserBean user) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		String uname ;
-		uname= user.getUserName(); // procedura per vedere se esiste utente
-		String checkSQL="Select Nickname from "+UserBeanDM.TABLE_NAME+" where Nickname=" + uname+ ";";
+		String eMail ;
+		eMail= user.geteMail(); // procedura per vedere se esiste un e-mail
+		String checkSQL="Select where E-Mail="+UserBeanDM.TABLE_NAME + eMail+ ";";
 	
 		System.out.println("Inserisco utente");
 		String insertSQL = "INSERT INTO " + UserBeanDM.TABLE_NAME +
@@ -73,16 +70,15 @@ public class UserBeanDM implements UserModel<UserBean> {
 				"VALUES (?,?,?,?,?,?,?,?,? );";
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
+			
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, user.getFirstName());
-			preparedStatement.setString(2, user.getLastName());
-			preparedStatement.setString(3, user.getUserName());
-			preparedStatement.setString(4,  user.getAddress());
-			preparedStatement.setInt(5,0);
-			preparedStatement.setString(7, user.getPassword());
-			preparedStatement.setString(6, user.geteMail());
-			preparedStatement.setString(8,user.getCap());
-			preparedStatement.setString(9, user.getCity());
+			preparedStatement.setString(1, user.getIdUtente());
+			preparedStatement.setString(2, user.getNome());
+			preparedStatement.setString(3, user.getCognome());
+			preparedStatement.setString(4, user.geteMail());
+			preparedStatement.setString(5, user.getPassword());
+			preparedStatement.setString(6, user.getTipo());
+			
 			// seguire la tabella nel db e fare il settaggio
 			
 			
@@ -102,12 +98,12 @@ public class UserBeanDM implements UserModel<UserBean> {
 
 		}
 	}
-	public static boolean checkUser(String uname ) throws SQLException {
-		boolean flag =false;
+	public static String checkUser(String eMail ) throws SQLException {
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		String checkSQL="Select Nickname from "+UserBeanDM.TABLE_NAME+" where Nickname= ?;" ;
-		
+		String checkSQL="Select E-Mail from "+UserBeanDM.TABLE_NAME+";" ;
+		 String tipo="null";
 		try {
 			try {
 				connection = DriverManagerConnectionPool.getConnection();
@@ -117,14 +113,13 @@ public class UserBeanDM implements UserModel<UserBean> {
 			} // crea la connessione se non esiste
 			preparedStatement = connection.prepareStatement(checkSQL);
 
-			preparedStatement.setString(1,uname);
+			preparedStatement.setString(1,eMail);
 		
 
 			System.out.println("validate..." + preparedStatement.toString());
-
+          
 			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
-			
-			flag=rs.next();
+			tipo=rs.getString("tipo");
 			
 		} finally {
 
@@ -139,23 +134,23 @@ public class UserBeanDM implements UserModel<UserBean> {
 			}
 		}
 
-		return flag;
+		return tipo;
 		
 		
 	}
 	@Override
-	public boolean deleteUsers(String userName) throws SQLException {
+	public boolean deleteUsers(String eMail) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + UserBeanDM.TABLE_NAME + " WHERE Nickname = "+userName;
+		String deleteSQL = "DELETE FROM " + UserBeanDM.TABLE_NAME + " WHERE E-Mail = "+eMail;
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, userName);
+			preparedStatement.setString(1, eMail);
 
 			System.out.println("doDelete: "+ preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
@@ -174,11 +169,11 @@ public class UserBeanDM implements UserModel<UserBean> {
 	
 
 	@Override
-	public UserBean retrieveByKey(String userName) throws SQLException {
+	public UserBean retrieveByKey(String eMail) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		UserBean bean = new UserBean();
-		String selectSQL = "SELECT * FROM " + UserBeanDM.TABLE_NAME + " WHERE Nickname = " + userName +";";
+		String selectSQL = "SELECT * FROM " + UserBeanDM.TABLE_NAME + " WHERE E-Mail = " + eMail +";";
 				
 		try {
 			try {
@@ -189,22 +184,20 @@ public class UserBeanDM implements UserModel<UserBean> {
 			} // crea la connessione se non esiste
 			preparedStatement = connection.prepareStatement(selectSQL);
 
-			preparedStatement.setString(0, userName);
+			preparedStatement.setString(0, eMail);
 
 			System.out.println("doRetrieveByKey" + preparedStatement.toString());
 
 			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
 
 			while(rs.next()) {
-				bean.setFirstName("Nome");
-				bean.setLastName("Cognome");
-				bean.setAddress("indirizzo");
-				
-				bean.setCity("Città");
-				bean.seteMail("Email");
-				bean.setPassword("Password");
-				bean.setUserName("Nickname");	
-			}
+				bean.setNome("nome");
+				bean.setCognome("cognome");
+				bean.seteMail("eMail");
+				bean.setPassword("password");
+				bean.setTipo("tipo");
+				bean.setIdUtente("idUtente");
+}
 		} finally {
 
 			try {
@@ -224,12 +217,12 @@ public class UserBeanDM implements UserModel<UserBean> {
 	
 	// VERIFICA SE utente e password coincidono
 	
-	public static boolean  validate(String userName, String password) throws SQLException {
+	public static boolean  validate(String eMail, String password) throws SQLException {
 			boolean status = false;
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			UserBean bean = new UserBean();
-			String selectSQL = "SELECT * FROM " + UserBeanDM.TABLE_NAME + " WHERE Nickname = ? and Password =? ;";
+			String selectSQL = "SELECT * FROM " + UserBeanDM.TABLE_NAME + " WHERE E-Mail = ? and Password =? ;";
 					
 			try {
 				try {
@@ -240,7 +233,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 				} // crea la connessione se non esiste
 				preparedStatement = connection.prepareStatement(selectSQL);
 
-				preparedStatement.setString(1, userName);
+				preparedStatement.setString(1, eMail);
 				preparedStatement.setString(2, password) ;
 
 				System.out.println("validate..." + preparedStatement.toString());
@@ -265,12 +258,12 @@ public class UserBeanDM implements UserModel<UserBean> {
 			return status;
 		}
 	
-	public static int getFlag(String userName, String password) throws SQLException{
-		int flag =-1;
+	public static String getTipo(String eMail, String password) throws SQLException{
+		String tipo ="null";
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		UserBean bean = new UserBean();
-		String selectSQL = "SELECT Admin FROM " + UserBeanDM.TABLE_NAME + " WHERE Nickname = ? and Password =? ;";
+		String selectSQL = "SELECT Tipo FROM " + UserBeanDM.TABLE_NAME + " WHERE E-Mail = ? and Password =? ;";
 				
 		try {
 			try {
@@ -281,14 +274,14 @@ public class UserBeanDM implements UserModel<UserBean> {
 			} // crea la connessione se non esiste
 			preparedStatement = connection.prepareStatement(selectSQL);
 
-			preparedStatement.setString(1, userName);
+			preparedStatement.setString(1, eMail);
 			preparedStatement.setString(2, password) ;
 
 			System.out.println("validate..." + preparedStatement.toString());
 
 			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
 			if(rs.next())
-			flag=rs.getInt("Admin");
+			tipo=rs.getString("tipo");
 			
 		} finally {
 
@@ -303,8 +296,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 			}
 		}
 
-		return flag;
+		return tipo;
 	}
 	}
-	*/
 
