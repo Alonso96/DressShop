@@ -1,21 +1,24 @@
 package model;
 
+import java.util.Date;
+
+@SuppressWarnings("serial")
 public class ClienteBean extends UserBean {
 
-	String data_nascita;
+	Date data_nascita;
 	String cellulare;
 	
 	public ClienteBean() {
-		super(nome,cognome,password,email);
-		data_nascita="";
+		super();
+		data_nascita=null;
 		cellulare="";
 	}
 
-	public String getData_nascita() {
+	public Date getData_nascita() {
 		return data_nascita;
 	}
 
-	public void setData_nascita(String data_nascita) {
+	public void setData_nascita(Date data_nascita) {
 		this.data_nascita = data_nascita;
 	}
 

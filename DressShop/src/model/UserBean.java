@@ -13,6 +13,16 @@ public class UserBean implements Serializable {
 	protected String eMail;
 	protected String idUtente;
 	protected String tipo ;
+	
+	
+	public UserBean() {
+		nome = "";
+		cognome = "";
+		password = "";
+		eMail = "";	
+		tipo="";
+	
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -39,14 +49,7 @@ public class UserBean implements Serializable {
 	}
 
 	
-	public UserBean() {
-		nome = "";
-		cognome = "";
-		password = "";
-		eMail = "";	
-		tipo="";
 	
-	}
 	@Override
 	public String toString() {
 		return "UserBean [nome=" + nome + ", cognome=" + cognome +  ", password="
