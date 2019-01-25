@@ -34,7 +34,7 @@ public class ProdottoInOrdine extends ProdottoBean{
 		return quantita;
 	}
 
-	public void setQuantita(float quantità) {
-		this.quantita = quantità;
+	public void setQuantita(float quantita) {
+		this.quantita = quantita;
 	}
 }
