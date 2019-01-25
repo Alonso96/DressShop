@@ -2,7 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ClienteBean;
 import model.UserBean;
 import model.UserBeanDM;
 import model.UserModel;
@@ -41,32 +44,29 @@ public class RegistrationControl extends HttpServlet {
 				try {
 				if(action != null) {
 					if(action.equalsIgnoreCase("registration")) { 
-					String firstName = request.getParameter("firstName");
-					String lastName = request.getParameter("lastName");
-					String userName = request.getParameter("userName");
-								
+					String nome = request.getParameter("nome");
+					String cognome = request.getParameter("cognome");
+					String sDate= request.getParameter("data_nascita");
+					Date data_nascita=(Date) new SimpleDateFormat("dd/MM/yy").parse(sDate);		
 					String password = request.getParameter("password");
-					String eMail = request.getParameter("email");	
-					String cap = request.getParameter("cap");
-					String city = request.getParameter("city");
-					String address = request.getParameter("address");
+					String eMail = request.getParameter("eMail");	
+					String cellulare=request.getParameter("cellulare");
 				
 					
 				
 
 						//response.setContentType("text/html");
 				
-						UserBean newUser = new UserBean();
-						newUser.setFirstName(firstName);
-						newUser.setLastName(lastName);
-						newUser.setUserName(userName);
+						ClienteBean newUser = new ClienteBean();
+						newUser.setNome(nome);
+						newUser.setCognome(cognome);
 						newUser.seteMail(eMail);
-						newUser.setCap(cap);
+						newUser.setCellulare(cellulare);
 						newUser.setPassword(password);
-						newUser.setCity(city);
-						newUser.setAddress(address);
+						newUser.setData_nascita(data_nascita);
+						newUser.setTipo("cli");
 						
-						if(UserBeanDM.checkUser(userName)) {
+						if(UserBeanDM.checkUser(eMail) == null) {
 							RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationFailed.jsp");
 							dispatcher.forward(request, response);
 						}
