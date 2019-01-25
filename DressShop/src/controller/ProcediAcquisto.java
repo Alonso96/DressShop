@@ -78,7 +78,7 @@ public class ProcediAcquisto extends HttpServlet {
 				 					
 				 				}
 				 				try {
-				 					model.doUpdateQuantità(bean);
+				 					model.doUpdateQuantita(bean);
 				 				} catch(SQLException e) {
 				 					e.printStackTrace();
 				 				}

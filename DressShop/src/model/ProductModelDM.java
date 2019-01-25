@@ -258,7 +258,7 @@ public class ProductModelDM implements ProductModel<ProductBean> {
 		}
 		
 	}
-	public void doUpdateQuantità(ProductBean product) throws SQLException {
+	public void doUpdateQuantita(ProductBean product) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 

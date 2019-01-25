@@ -117,7 +117,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 					
 		float prezzo = Float.parseFloat(request.getParameter("prezzoV"));
 		int codCat = Integer.parseInt(request.getParameter("codC"));	
-	    int quantità = Integer.parseInt(request.getParameter("quantity"));
+	    int quantita = Integer.parseInt(request.getParameter("quantity"));
 
 	
 		
@@ -131,7 +131,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			bean.setMarca(marca);
 			bean.setPrezzoV(prezzo);
 			bean.setCodC(codCat);
-			bean.setQuantity(quantità);
+			bean.setQuantity(quantita);
 			
 		
 			model.doSave(bean);

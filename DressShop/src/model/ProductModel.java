@@ -15,7 +15,7 @@ public interface ProductModel<T> {
 	
 	public boolean doDelete(int code) throws SQLException;
 
-	public void doUpdateQuantità(ProductBean bean) throws SQLException;
+	public void doUpdateQuantita(ProductBean bean) throws SQLException;
 
 	public void doShop(ProductBean bean, String attribute) throws SQLException;
 	
