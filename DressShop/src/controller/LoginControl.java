@@ -41,8 +41,8 @@ public class LoginControl extends HttpServlet {
 		
 		 response.setContentType("text/html");  
 	        PrintWriter out = response.getWriter();  
-	        int flag;
-	        String n=request.getParameter("userName");  
+	        String tipo;
+	        String n=request.getParameter("eMail");  
 	        String p=request.getParameter("password"); 
 	        
 	        
@@ -52,20 +52,33 @@ public class LoginControl extends HttpServlet {
 
 	        try {
 				if(UserBeanDM.validate(n, p)){  
-					flag=UserBeanDM.getFlag(n,p );
-					session.setAttribute("flag", String.valueOf(flag));
-					if(flag==1) { // se utente è admin, cioe flag =1 vado su amministrazione
-					System.out.println(flag);	
-					RequestDispatcher rd=request.getRequestDispatcher("/amministrazione.jsp");  
-					rd.forward(request,response);  
+					tipo=UserBeanDM.getTipo(n,p );
+					session.setAttribute("tipo", tipo);
+					switch(tipo) {
+					case("mag") : // se utente magazziniere
+					System.out.println(tipo);	
+					/*RequestDispatcher rd=request.getRequestDispatcher("/amministrazione.jsp");  
+					rd.forward(request,response); */ 
+					break;
+					case("cli"): // se utente e' cliente
+				    /*RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
+				    rd.forward(request,response);*/  
+					break;
+					case("pro")://se utente e' proprietario
+						/*RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
+					    rd.forward(request,response);*/  
+							break;
+					case ("mkt"):// se utente e' gestore marketing
+						/*RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
+					    rd.forward(request,response);*/  
+						
+						
 					}
-					else { // altrimenti utente normale
-				    RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
-				    rd.forward(request,response);  
 					}
-				}  
+					
+				 
 				else{  
-				    out.print("<p style=\"color:red\">Spiacente username o password invalidi, riprova</p><br>");  
+				    out.print("<p style=\"color:red\">Spiacente E-Mail o password invalidi, riprova</p><br>");  
 				    out.print("<p style=\"color:blue\">Nuovo utente? <a href=\"Registration.html\">Registrati subito!</a> </br></p>");
 				    session.invalidate();
 				    RequestDispatcher rd=request.getRequestDispatcher("home.jsp");  
