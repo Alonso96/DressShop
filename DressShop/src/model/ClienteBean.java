@@ -1,12 +1,13 @@
 package model;
 
+@SuppressWarnings("serial")
 public class ClienteBean extends UserBean {
 
 	String data_nascita;
 	String cellulare;
 	
 	public ClienteBean() {
-		super(nome,cognome,password,email);
+		super();
 		data_nascita="";
 		cellulare="";
 	}
