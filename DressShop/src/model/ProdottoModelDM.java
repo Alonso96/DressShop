@@ -284,7 +284,7 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean> {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setFloat(1, product.getQuantità());
+			preparedStatement.setFloat(1, product.getQuantita());
 			preparedStatement.setInt(2, product.getId_prodotto());
 			
 			System.out.println("doUpdate: "+ preparedStatement.toString());

@@ -4,12 +4,12 @@ public class ProdottoInCatalogo extends ProdottoBean{
 
 	protected float prezzo;
 	protected float iva;
-	protected float quantità;
+	protected float quantita;
 	public ProdottoInCatalogo() {
 		super();
 		prezzo=0;
 		iva=0;
-		quantità=0;
+		quantita=0;
 		
 	}
 	public float getPrezzo() {
@@ -24,10 +24,10 @@ public class ProdottoInCatalogo extends ProdottoBean{
 	public void setIva(float iva) {
 		this.iva = iva;
 	}
-	public float getQuantità() {
-		return quantità;
+	public float getQuantita() {
+		return quantita;
 	}
-	public void setQuantità(float quantità) {
-		this.quantità = quantità;
+	public void setQuantita(float quantità) {
+		this.quantita = quantita;
 	}
 }
