@@ -24,9 +24,9 @@ public class DriverManagerConnectionPool {
 		Connection newConnection = null;
 		String ip = "localhost";
 		String port = "3306";
-		String db = "prog";
-		String username = "alfonso";
-		String password = "alf";
+		String db = "DressShop";
+		String username = "root";
+		String password = "root";
 
 		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ 
 					port+"/"+db, username, password);
