@@ -103,7 +103,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String checkSQL="Select E-Mail from "+UserBeanDM.TABLE_NAME+";" ;
-		 String tipo="null";
+		 String tipo=null;
 		try {
 			try {
 				connection = DriverManagerConnectionPool.getConnection();
