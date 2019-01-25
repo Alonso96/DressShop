@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class UserBeanDM implements UserModel<UserBean> {
-	
+	//OK
 	private static final String  TABLE_NAME ="utenti";
 
 	@Override 
