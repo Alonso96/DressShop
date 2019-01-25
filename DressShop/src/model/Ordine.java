@@ -27,10 +27,10 @@ public class Ordine {
 	public void setCarta_credito(String carta_credito) {
 		this.carta_credito = carta_credito;
 	}
-	public int getIndirizzo() {
+	public String getIndirizzo() {
 		return indirizzo;
 	}
-	public void setIndirizzo(int indirizzo) {
+	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
 	public int getCliente() {
@@ -69,7 +69,7 @@ public class Ordine {
 	private Date data;
 	private boolean pagato;
 	private String carta_credito;
-	private int indirizzo;
+	private String indirizzo;
 	private int cliente;
 	private String tipo_spedizione;
 	private float costo_spedizione;
