@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class UserBeanDM implements UserModel<UserBean> {
 	//OK
-	private static final String  TABLE_NAME ="utenti";
+	private static final String  TABLE_NAME ="UTENTE";
 
 	@Override 
 	public Collection<UserBean> retrieveAllUsers() throws SQLException {
@@ -69,6 +69,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 		String insertSQL = "INSERT INTO " + UserBeanDM.TABLE_NAME +
 				"( Nome, Cognome, Nickname,Indirizzo,Admin, Email, Password, Cap,Città)" +
 				"VALUES (?,?,?,?,?,?,?,?,? );";
+	//	String insertSQL2 = "INSERT INTO INDIRIZZO (cellulare) VALUES (?); "; inserire cellulare
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			
@@ -87,8 +88,10 @@ public class UserBeanDM implements UserModel<UserBean> {
 			
 			System.out.println("doSave: "+ preparedStatement.toString());
 			preparedStatement.executeUpdate();
-
-			connection.commit();
+		/*	preparedStatement=connection.prepareStatement(insertSQL2);
+			preparedStatement.setString(1,)
+         
+		*/	connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -174,7 +177,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		UserBean bean = new UserBean();
-		String selectSQL = "SELECT * FROM " + UserBeanDM.TABLE_NAME + " WHERE E-Mail = " + eMail +";";
+		String selectSQL = "SELECT * FROM " + UserBeanDM.TABLE_NAME + " WHERE email = " + eMail +";";
 				
 		try {
 			try {
