@@ -1,5 +1,5 @@
 package model;
-
+//ok
 import java.io.Serializable;
 
 public class UserBean implements Serializable {
