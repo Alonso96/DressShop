@@ -27,7 +27,7 @@ public class ProdottoInCatalogo extends ProdottoBean{
 	public float getQuantita() {
 		return quantita;
 	}
-	public void setQuantita(float quantità) {
+	public void setQuantita(float quantita) {
 		this.quantita = quantita;
 	}
 }
