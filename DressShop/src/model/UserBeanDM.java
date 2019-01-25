@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
-
+//ok
 public class UserBeanDM implements UserModel<UserBean> {
 	
 	private static final String  TABLE_NAME ="utenti";
