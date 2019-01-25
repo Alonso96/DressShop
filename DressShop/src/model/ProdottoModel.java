@@ -17,8 +17,6 @@ public interface ProdottoModel<ProdottoBean> {
 
 	public void doUpdateQuantita(ProdottoBean bean) throws SQLException;
 
-	public void doShop(ProdottoBean bean, String attribute) throws SQLException;
-	
 	public ProdottoBean doRetrieveForCategory(int codCategory) throws SQLException;
 
 	public Object getStorico(String attribute) throws SQLException;

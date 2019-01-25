@@ -14,8 +14,8 @@ import javax.websocket.Session;
 
 public class ProdottoModelDM implements ProdottoModel<ProdottoBean> {
 
-	private static final String TABLE_NAME = "prodotti";
-	private static final String TABLE_NAME2 = "carrello";
+	private static final String TABLE_NAME = "PRODOTTO";
+	//private static final String TABLE_NAME2 = "carrello";
 	
 	@Override
 	public Collection<ProdottoBean> doRetrieveAll(String order) throws SQLException {
@@ -238,13 +238,13 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean> {
 		
 	}
 
-	public void doShop(ProdottoBean bean, String string) throws SQLException {
+	/*public void doShop(ProdottoBean bean, String string) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "Insert into " + ProdottoModelDM.TABLE_NAME2
-				+ " (Nickname,IdProdotto) VALUES (?,?);";
+				+ " (email,IdProdotto) VALUES (?,?);";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -271,7 +271,8 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean> {
 		}
 		
 	}
-	public void doUpdateQuantità(ProdottoBean product) throws SQLException { //prodotto in catalogo
+	*/
+	public void doUpdateQuantità(ProdottoInCatalogo product) throws SQLException { //prodotto in catalogo
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -283,8 +284,8 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean> {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, product.get-1);
-			preparedStatement.setInt(2, product.getId());
+			preparedStatement.setFloat(1, product.getQuantità());
+			preparedStatement.setInt(2, product.getId_prodotto());
 			
 			System.out.println("doUpdate: "+ preparedStatement.toString());
 			preparedStatement.executeUpdate();
@@ -434,4 +435,6 @@ public Collection<String> getStoricoData(String user) throws SQLException{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }

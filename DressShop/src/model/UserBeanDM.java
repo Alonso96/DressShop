@@ -17,7 +17,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 		PreparedStatement preparedStatement = null;
 
 		Collection<UserBean> list = new LinkedList<UserBean>();
-
+		
 		String selectSQL = "SELECT * FROM " + TABLE_NAME ;
 
 		try {
@@ -61,6 +61,7 @@ public class UserBeanDM implements UserModel<UserBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String eMail ;
+		
 		eMail= user.geteMail(); // procedura per vedere se esiste un e-mail
 		String checkSQL="Select where E-Mail="+UserBeanDM.TABLE_NAME + eMail+ ";";
 	
