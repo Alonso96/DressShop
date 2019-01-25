@@ -64,6 +64,13 @@ public class CartaDiCredito {
 		this.cognome_proprietario=cognome_proprietario;
 	}
 	
+	public int getCliente() {
+		return cliente;
+	}
+	public void setCliente(int cliente) {
+		this.cliente = cliente;
+	}
+	
 	public boolean equals(Object otherObject)
 	{
 		if(otherObject==null)
@@ -80,6 +87,9 @@ public class CartaDiCredito {
 	private int numero_carta;
 	private Date data_scadenza;
 	private int cvv;
+	
+
 	private String nome_proprietario;
 	private String cognome_proprietario;
+	private int cliente;
 }
