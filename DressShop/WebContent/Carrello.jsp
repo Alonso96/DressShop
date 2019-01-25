@@ -1,8 +1,6 @@
-<%
-//prova
-ProductBean product = (ProductBean) request.getAttribute("product");
+<%ProdottoBean product = (ProdottoBean) request.getAttribute("product");
 
-Carrello cart = (Carrello) session.getAttribute("cart"); %>
+Carrello cart = (Carrello) session.getAttribute("cart");%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, model.ProductBean, model.Carrello"%>
@@ -28,14 +26,12 @@ background-image: white;
 		<th>Azione</th>
 	</tr>
 	<%
-		
-		List<ProductBean> prodcart = cart.ottieniElem();
-		if(prodcart.size()==0){
-			response.sendRedirect("VisualizzaProdotti.jsp");
-		}else{
-		for(ProductBean beancart: prodcart) {
-			System.out.println(prodcart);
-		
+		List<ProdottoBean> prodcart = cart.ottieniElem();
+			if(prodcart.size()==0){
+		response.sendRedirect("VisualizzaProdotti.jsp");
+			}else{
+			for(ProdottoBean beancart: prodcart) {
+		System.out.println(prodcart);
 	%>
 		<tr>
 			<td><%=beancart.getCodice() %></td>

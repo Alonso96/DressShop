@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Carrello;
 import model.ProductBean;
 import model.ProductModel;
-import model.ProductModelDM;
+import model.ProdottoModelDM;
 
 /**
  * Servlet implementation class CartControl
@@ -21,7 +21,7 @@ import model.ProductModelDM;
 @WebServlet("/CartControl")
 public class CartControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ProductModel<ProductBean> model = new ProductModelDM();
+	static ProductModel<ProductBean> model = new ProdottoModelDM();
     /**
      * @see HttpServlet#HttpServlet()
      */

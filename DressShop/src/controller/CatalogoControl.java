@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ProductBean;
-import model.ProductModelDM;
+import model.ProdottoModelDM;
 
 
 @WebServlet("/CatalogoControl")
@@ -31,7 +31,7 @@ public class CatalogoControl extends HttpServlet {
 		try {
 			if(action != null) {
 				if(action.equalsIgnoreCase("catalogo")) {
-					ProductModelDM model = new ProductModelDM();
+					ProdottoModelDM model = new ProdottoModelDM();
 					int categoria =Integer.parseInt( request.getParameter("categoria"));
 					ProductBean listaProdotti = model.doRetrieveForCategory(categoria);
 					

@@ -2,16 +2,14 @@
     pageEncoding="UTF-8" import="java.util.*, model.ProductBean, model.Carrello"%>
     
 <%
-	Collection<?> products = (Collection<?>) request.getAttribute("products");
-	if(products == null) {
-		response.sendRedirect("./ProductControl");
-		return;
-	}
-	
-	ProductBean product = (ProductBean) request.getAttribute("product");
-	
-	
-%>    
+    	Collection<?> products = (Collection<?>) request.getAttribute("products");
+    	if(products == null) {
+    		response.sendRedirect("./ProductControl");
+    		return;
+    	}
+    	
+    	ProdottoBean product = (ProdottoBean) request.getAttribute("product");
+    %>    
     
 <!DOCTYPE html>
 <html>
@@ -28,29 +26,28 @@ body {
 </head>
 <body>
 	<div id="header">
-	<%	
+	<%
+		String name = (String)session.getAttribute("name");
+		System.out.println(name);
+		String flag= (String)session.getAttribute("flag");
+		System.out.println(flag);
 		
-	String name = (String)session.getAttribute("name");
-	System.out.println(name);
-	String flag= (String)session.getAttribute("flag");
-	System.out.println(flag);
-	
-if(name !=null)
-{
-	
-	if(flag.equals("1"))
-		 out.print("<a href=\"amministrazione.jsp\" </a>Ciao" + name + "!");
-	else
+	if(name !=null)
+	{
 		
-    out.print("<a href=\" userLogged.jsp\" </a>Ciao" + name + "! </a>");
-}
+		if(flag.equals("1"))
+			 out.print("<a href=\"amministrazione.jsp\" </a>Ciao" + name + "!");
+		else
+			
+	    out.print("<a href=\" userLogged.jsp\" </a>Ciao" + name + "! </a>");
+	}
 
-else {
-	
-	out.println("<a class =" +"\"tagHeader\"" + "href= \"" +" login.jsp \"" +"style="+"\"font-family: cursive ; font-weight: bold; color black; text-decoration:none\""+"> Login </a>"
-	+ " <p class= \" tagHeader\"> or <a class = \"tagHeader\" href=\"Registration.html \" style = \" font-family: cursive \"> Register  </a>");
-}
-%>
+	else {
+		
+		out.println("<a class =" +"\"tagHeader\"" + "href= \"" +" login.jsp \"" +"style="+"\"font-family: cursive ; font-weight: bold; color black; text-decoration:none\""+"> Login </a>"
+		+ " <p class= \" tagHeader\"> or <a class = \"tagHeader\" href=\"Registration.html \" style = \" font-family: cursive \"> Register  </a>");
+	}
+	%>
 		
 		<p class="tagHeader" style="margin-left: 150px">
 			lingua corrente : IT
@@ -96,11 +93,11 @@ else {
 	</tr>
 	<%
 		if(products.size() > 0) {
-			
-			Iterator<?> it = products.iterator();
-			
-			while(it.hasNext()) {
-				ProductBean bean = (ProductBean) it.next();
+		
+		Iterator<?> it = products.iterator();
+		
+		while(it.hasNext()) {
+			ProdottoBean bean = (ProdottoBean) it.next();
 	%>
 		<tr>
 			<td> <img src="<%=bean.getUrlPercorso() %>" alt="Smiley face" height="60" width="50" onmouseover="this.width=596;this.height=435;" onmouseout="this.width=50;this.height=60;" ></td>

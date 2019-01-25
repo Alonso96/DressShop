@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import model.Carrello;
 import model.ProductBean;
 import model.ProductModel;
-import model.ProductModelDM;
+import model.ProdottoModelDM;
 
 /**
  * Servlet implementation class StoricoControl
@@ -37,7 +37,7 @@ public class StoricoControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductModel<ProductBean> model = new ProductModelDM();
+		ProductModel<ProductBean> model = new ProdottoModelDM();
 		System.out.println("ciao1");
 		 HttpSession session = request.getSession();
 		 //String id = request.getSession().getId();

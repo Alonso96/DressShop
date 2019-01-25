@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.ProductBean;
 import model.ProductModel;
-import model.ProductModelDM;
+import model.ProdottoModelDM;
 
 /**
  * Servlet implementation class AdminControl1
@@ -21,7 +21,7 @@ import model.ProductModelDM;
 public class AdminControl1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	static ProductModel<ProductBean> model = new ProductModelDM();
+	static ProductModel<ProductBean> model = new ProdottoModelDM();
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -117,7 +117,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 					
 		float prezzo = Float.parseFloat(request.getParameter("prezzoV"));
 		int codCat = Integer.parseInt(request.getParameter("codC"));	
-	    int quantita = Integer.parseInt(request.getParameter("quantity"));
+	    int quantità = Integer.parseInt(request.getParameter("quantity"));
 
 	
 		
@@ -131,7 +131,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			bean.setMarca(marca);
 			bean.setPrezzoV(prezzo);
 			bean.setCodC(codCat);
-			bean.setQuantity(quantita);
+			bean.setQuantity(quantità);
 			
 		
 			model.doSave(bean);

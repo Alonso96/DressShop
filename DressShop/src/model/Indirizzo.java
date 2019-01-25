@@ -63,4 +63,9 @@ public class Indirizzo {
 	private String citta;
 	private String via;
 	private int cliente;
+	public static void main(String[] args) {
+		prezzo=0;
+			iva=0;
+			quantità=0;
+	}
 }

@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ProductBean;
-import model.ProductModel;
-import model.ProductModelDM;
+import model.ProdottoBean;
+import model.ProdottoModel;
+import model.ProdottoModelDM;
 import model.UserBean;
 import model.UserBeanDM;
 
@@ -22,7 +22,7 @@ import model.UserBeanDM;
 @WebServlet("/AdminControl")
 public class AdminControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ProductModel<ProductBean> model = new ProductModelDM();
+	static ProdottoModel<ProdottoBean> model = new ProdottoModelDM();
 	
     /**
      * @see HttpServlet#HttpServlet()

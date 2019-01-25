@@ -68,15 +68,16 @@ if(products == null) {
 	    <th>Data Acquisto</th>
 		
 	</tr>
-	<%	System.out.println(products.size());
-		if(products.size() > 0) {
-			
-			Iterator<?> it = products.iterator();
-			Iterator<?> it2 = date.iterator();
-			
-			while(it.hasNext()) {
-				ProductBean bean = (ProductBean) it.next();
-				String data =(String) it2.next();
+	<%
+		System.out.println(products.size());
+			if(products.size() > 0) {
+		
+		Iterator<?> it = products.iterator();
+		Iterator<?> it2 = date.iterator();
+		
+		while(it.hasNext()) {
+			ProdottoBean bean = (ProdottoBean) it.next();
+			String data =(String) it2.next();
 	%>
 		<tr>
 			<td><img src="<%=bean.getUrlPercorso() %>" alt="Smiley face" height="60" width="50"> </td>

@@ -34,7 +34,7 @@ public class ProcediAcquisto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Carrello<ProductBean> cart = (Carrello<ProductBean>)request.getSession().getAttribute("cart");
-		ProductModel<ProductBean> model = new ProductModelDM();
+		ProductModel<ProductBean> model = new ProdottoModelDM();
 		
 		System.out.println("ciao1");
 		 HttpSession session = request.getSession();
@@ -78,7 +78,7 @@ public class ProcediAcquisto extends HttpServlet {
 				 					
 				 				}
 				 				try {
-				 					model.doUpdateQuantita(bean);
+				 					model.doUpdateQuantità(bean);
 				 				} catch(SQLException e) {
 				 					e.printStackTrace();
 				 				}
