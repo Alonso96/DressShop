@@ -130,6 +130,7 @@ id_prodotto		int			primary key,
 prezzo			float,
 iva			int,
 quantita 		int,
+reso			boolean,
 
 	foreign key (id_prodotto)
 	references PRODOTTO(id_prodotto)
