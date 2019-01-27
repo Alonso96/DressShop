@@ -16,15 +16,7 @@ public class ProdottoBean implements Serializable {
 	int promozione;
 	
 	public ProdottoBean() {
-	
-		codice_prodotto = "";
-		descrizione = "";
-		marca = "";
-		modello = "";
-		taglia = "";
-		colore = "";
-		tipo = "";
-		foto = ""; //url
+		
 	}
 
 	public int getId_prodotto() {

@@ -8,8 +8,7 @@ public class CategoriaBean implements Serializable{
 	String descrizione;
 	
 	public CategoriaBean(){
-		nome = "";
-		descrizione = "";
+		
 	}
 
 	public int getId_categoria() {
