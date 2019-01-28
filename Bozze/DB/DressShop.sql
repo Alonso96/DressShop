@@ -89,9 +89,9 @@ marca			varchar(20),
 modello			varchar(20),
 taglia			varchar(5),
 colore			varchar(20),
-categoria		varchar(20),	--maxicategoria.categoria	es:uomo.camicie
-					--maxicategorie tra:	uomo, donna, accessori
-					--categorie tra:	giacche, jeans, camicie, intimo, maglie e felpe, cappotti, pantaloni
+categoria		varchar(20),	/*maxicategoria.categoria	es:uomo.camicie
+					maxicategorie tra:	uomo, donna, accessori
+					categorie tra:	giacche, jeans, camicie, intimo, maglie e felpe, cappotti, pantaloni*/
 foto			varchar(30),
 promozione		int,
         
