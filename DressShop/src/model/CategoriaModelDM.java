@@ -145,6 +145,7 @@ public class CategoriaModelDM implements CategoriaModel<CategoriaBean>{
 	private static CategoriaBean getBean(ResultSet rs) throws SQLException{
 		CategoriaBean bean = new CategoriaBean();
 		
+		bean.setId_categoria(rs.getInt("id_categoria"));
 		bean.setNome(rs.getString("nome"));
 		bean.setDescrizione(rs.getString("descrizione"));
 		
