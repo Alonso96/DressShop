@@ -81,12 +81,6 @@ data_fine		date,
 sconto			int
 );
 
-CREATE TABLE CATEGORIA(
-id_categoria		int		primary key auto_increment,
-nome			varchar(20),
-descrizione		varchar(50)
-);
-
 CREATE TABLE PRODOTTO(
 id_prodotto		int		primary key auto_increment,
 codice_prodotto		varchar(20),
@@ -95,17 +89,11 @@ marca			varchar(20),
 modello			varchar(20),
 taglia			varchar(5),
 colore			varchar(20),
-tipo			varchar(15),	/*tra:	giacche, jeans, camicie,
-						intimo, maglie e felpe,
-						cappotti, pantaloni*/
+categoria		varchar(20),	--maxicategoria.categoria	es:uomo.camicie
+					--maxicategorie tra:	uomo, donna, accessori
+					--categorie tra:	giacche, jeans, camicie, intimo, maglie e felpe, cappotti, pantaloni
 foto			varchar(30),
-categoria		int,
 promozione		int,
-
-	foreign key (categoria)
-	references CATEGORIA(id_categoria)
-		on delete no action
-		on update cascade,
         
 	foreign key (promozione)
 	references PROMOZIONE(id_promozione)
