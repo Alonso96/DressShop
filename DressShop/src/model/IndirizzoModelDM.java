@@ -62,7 +62,7 @@ public class IndirizzoModelDM implements IndirizzoModel{
 		PreparedStatement statement=null;
 
 		String insertString=" INSERT INTO " + TABLE + " (nome, cognome, cap, "
-				+ "provincia, citta, via, cellulare) VALUES(?, ?, ?, ?, ?, ?, ?)";
+				+ "provincia, citta, via, cellulare, utente) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -75,6 +75,7 @@ public class IndirizzoModelDM implements IndirizzoModel{
 			statement.setString(5, indirizzo.getCitta());
 			statement.setString(6, indirizzo.getVia());
 			statement.setString(7, indirizzo.getCellulare());
+			statement.setInt(8, indirizzo.getUtente());
 			statement.executeUpdate();
 			
 			connection.commit();
@@ -90,7 +91,7 @@ public class IndirizzoModelDM implements IndirizzoModel{
 		PreparedStatement statement = null;
 
 		String insertSQL = "UPDATE " + TABLE + " SET nome = ?, cognome = ?, cap = ?,"
-				+ " provincia = ?, citta = ?, via = ?, cellulare = ? WHERE id_indirizzo = ?;";
+				+ " provincia = ?, citta = ?, via = ?, cellulare = ?, utente = ? WHERE id_indirizzo = ?;";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -103,6 +104,7 @@ public class IndirizzoModelDM implements IndirizzoModel{
 			statement.setString(5, indirizzo.getCitta());
 			statement.setString(6, indirizzo.getVia());
 			statement.setString(7, indirizzo.getCellulare());
+			statement.setInt(8, indirizzo.getUtente());
 			statement.executeUpdate();
 
 			connection.commit();

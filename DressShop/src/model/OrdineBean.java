@@ -1,10 +1,23 @@
 package model;
 import java.sql.Date;
-public class Ordine {
-	public Ordine(){
-		;
+public class OrdineBean {
 	
-
+	private int id_ordine;
+	private Date data;
+	private boolean pagato;
+	private String carta_credito;	//riferimento
+	private int indirizzo;			//riferimento
+	private int utente;			//riferimento
+	private String tipo_spedizione;
+	private float costo_spedizione;
+	
+	
+	public OrdineBean(){
+	
+	}
+	
+	public int getId_ordine() {
+		return id_ordine;
 	}
 	public void setId_ordine(int id_ordine) {
 		this.id_ordine = id_ordine;
@@ -27,17 +40,17 @@ public class Ordine {
 	public void setCarta_credito(String carta_credito) {
 		this.carta_credito = carta_credito;
 	}
-	public String getIndirizzo() {
+	public int getIndirizzo() {
 		return indirizzo;
 	}
-	public void setIndirizzo(String indirizzo) {
+	public void setIndirizzo(int indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-	public int getCliente() {
-		return cliente;
+	public int getUtente() {
+		return utente;
 	}
-	public void setCliente(int cliente) {
-		this.cliente = cliente;
+	public void setUtente(int utente) {
+		this.utente = utente;
 	}
 	public String getTipo_spedizione() {
 		return tipo_spedizione;
@@ -58,23 +71,12 @@ public class Ordine {
 			return false;
 		if(this.getClass()!=otherObject.getClass())
 			return false;
-		Ordine a=(Ordine) otherObject;
+		OrdineBean a=(OrdineBean) otherObject;
 		if(this.id_ordine==a.id_ordine)
 			return true;
 		else
 			return false;
 	}
 	
-	private int id_ordine;
-	private Date data;
-	private boolean pagato;
-	private String carta_credito;
-	private String indirizzo;
-	private int cliente;
-	private String tipo_spedizione;
-	private float costo_spedizione;
-	public int getId_ordine() {
-		return id_ordine;
-	}
 }
 

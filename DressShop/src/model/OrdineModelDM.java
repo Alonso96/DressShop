@@ -5,78 +5,172 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 
-public class OrdineModelDM {
+public class OrdineModelDM implements OrdineModel{
 
+	private static final String TABLE ="ORDINE";
 
-	@SuppressWarnings({ "unchecked", "rawtypes"})
-public synchronized static ArrayList<Ordine> doRetrieveByKey(int id_ordine) throws SQLException 
-{
-	ArrayList<Ordine> ordini=new ArrayList();
-	Connection connection = null;
-	PreparedStatement preparedStatement = null;
-	String SQL = "select id_ordine, data, pagato, carta_credito, indirizzo, cliente, tipo_spedizione, costo_spedizione from ORDINE where id_ordine ='" + id_ordine + "';";
-	try {
-		connection = DriverManagerConnectionPool.getConnection();
-		preparedStatement = connection.prepareStatement(SQL);
-		ResultSet rs=preparedStatement.executeQuery(SQL);
-		while(rs.next())
-		{
-			Ordine ordine=new Ordine();
-			ordine.setData(rs.getDate(1));
-			ordine.setPagato(rs.getBoolean(2));
-			ordine.setCarta_credito(rs.getString(3));
-			ordine.setIndirizzo(rs.getString(4));
-			ordine.setCliente(rs.getInt(5));
-			ordine.setTipo_spedizione(rs.getString(6));
-			ordine.setCosto_spedizione(rs.getFloat(7));
-			ordini.addAll(ordini);
+	@Override
+	public OrdineBean doRetrieveByKey(int id_ordine) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		OrdineBean bean = new OrdineBean();
+		
+		String queryString ="Select * FROM " + TABLE + " WHERE id_ordine = ?";
+		
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			statement.setInt(1, id_ordine);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				bean = getBean(result);
+			}
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
 		}
-		connection.commit();
-	} finally {
-		try {
-			if (preparedStatement != null)
-				preparedStatement.close();
-		} finally {
+		return bean;
+	}
+
+	@Override
+	public Collection<OrdineBean> doRetrieveAll() throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		Collection<OrdineBean> listaBean = new ArrayList<OrdineBean>();
+		
+		String queryString ="Select * FROM " + TABLE ;
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				listaBean.add(getBean(result));
+			}
+			
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return listaBean;
+	}
+
+	@Override
+	public void doSave(OrdineBean ordine) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+
+		String insertString=" INSERT INTO " + TABLE + " (data, pagato, carta_credito, "
+				+ "indirizzo, utente, tipo_spedizione, costo_spedizione) VALUES(?, ?, ?, ?, ?, ?, ?)";
+		
+		try{ 
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(insertString);
+
+			statement.setDate(1, ordine.getData());
+			statement.setBoolean(2, ordine.isPagato());
+			statement.setString(3, ordine.getCarta_credito());
+			statement.setInt(4, ordine.getIndirizzo());
+			statement.setInt(5, ordine.getUtente());
+			statement.setString(6, ordine.getTipo_spedizione());
+			statement.setFloat(7, ordine.getCosto_spedizione());
+			statement.executeUpdate();
+			
+			connection.commit();
+		} finally{
+			if(statement!= null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}
-	return ordini;
-}
-	
-	@SuppressWarnings({ "unchecked", "rawtypes"})
-public synchronized static ArrayList<Ordine> doRetrieveByCliente(int cliente) throws SQLException 
-{
-	ArrayList<Ordine> ordini=new ArrayList();
-	Connection connection = null;
-	PreparedStatement preparedStatement = null;
-	String SQL = "select id_ordine, data, pagato, carta_credito, indirizzo, cliente, tipo_spedizione, costo_spedizione from ORDINE where cliente ='" + cliente + "';";
-	try {
-		connection = DriverManagerConnectionPool.getConnection();
-		preparedStatement = connection.prepareStatement(SQL);
-		ResultSet rs=preparedStatement.executeQuery(SQL);
-		while(rs.next())
-		{
-			Ordine ordine=new Ordine();
-			ordine.setData(rs.getDate(1));
-			ordine.setPagato(rs.getBoolean(2));
-			ordine.setCarta_credito(rs.getString(3));
-			ordine.setIndirizzo(rs.getString(4));
-			ordine.setCliente(rs.getInt(5));
-			ordine.setTipo_spedizione(rs.getString(6));
-			ordine.setCosto_spedizione(rs.getFloat(7));
-			ordini.addAll(ordini);
-		}
-		connection.commit();
-	} finally {
-		try {
-			if (preparedStatement != null)
-				preparedStatement.close();
-		} finally {
+
+	@Override
+	public void doUpdate(OrdineBean ordine) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+
+		String insertString="UPDATE" + TABLE + " SET data = ?, pagato = ?, carta_credito = ?, "
+				+ "indirizzo = ?, utente = ?, tipo_spedizione = ?, costo_spedizione = ? WHERE id_ordine = ?;";
+		
+		try{ 
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(insertString);
+
+			statement.setDate(1, ordine.getData());
+			statement.setBoolean(2, ordine.isPagato());
+			statement.setString(3, ordine.getCarta_credito());
+			statement.setInt(4, ordine.getIndirizzo());
+			statement.setInt(5, ordine.getUtente());
+			statement.setString(6, ordine.getTipo_spedizione());
+			statement.setFloat(7, ordine.getCosto_spedizione());
+			statement.executeUpdate();
+			
+			connection.commit();
+		} finally{
+			if(statement!= null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}
-	return ordini;
-}
 
+	@Override
+	public boolean doDelete(int id_ordine) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		int result = 0;
+		
+		String deleteString ="DELETE FROM " + TABLE + " WHERE id_ordine = ?";
+		
+		try {
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(deleteString);
+			statement.setInt(1, id_ordine);
+			
+			result = statement.executeUpdate();
+			
+			connection.commit();
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		
+		return result != 0;
+	}
+
+	@Override
+	public OrdineBean doRetrieveByUtente(int utente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		OrdineBean bean = new OrdineBean();
+		
+		String queryString ="Select * FROM " + TABLE + " WHERE utente = ?";
+		
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			statement.setInt(1, utente);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				bean = getBean(result);
+			}
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return bean;
+	}
+
+	private static OrdineBean getBean(ResultSet rs) throws SQLException{
+		OrdineBean bean = new OrdineBean();
+		
+		bean.setId_ordine(rs.getInt("id_ordine"));
+		bean.setData(rs.getDate("data"));
+		bean.setPagato(rs.getBoolean("pagato"));
+		bean.setCarta_credito(rs.getString("carta_credito"));
+		bean.setIndirizzo(rs.getInt("indirizzo"));
+		bean.setUtente(rs.getInt("utente"));
+		bean.setTipo_spedizione(rs.getString("tipo_spedizione"));
+		bean.setCosto_spedizione(rs.getFloat("costo_spedizione"));
+		
+		return bean;
+	}
 }
