@@ -1,5 +1,5 @@
 package model;
-
+//commit
 import java.sql.Date;
 
 public class PromozioneBean {
