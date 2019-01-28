@@ -10,9 +10,8 @@ public class ProdottoBean implements Serializable {
 	String modello;
 	String taglia;
 	String colore;
-	String tipo;
 	String foto; //url
-	int categoria;
+	String categoria;
 	int promozione;
 	
 	public ProdottoBean() {
@@ -89,16 +88,6 @@ public class ProdottoBean implements Serializable {
 	}
 
 
-	public String getTipo() {
-		return tipo;
-	}
-
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-
 	public String getFoto() {
 		return foto;
 	}
@@ -109,12 +98,12 @@ public class ProdottoBean implements Serializable {
 	}
 
 
-	public int getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
 
-	public void setCategoria(int categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
@@ -132,7 +121,7 @@ public class ProdottoBean implements Serializable {
 	public String toString() {
 		return "ProdottoBean [id_prodotto=" + id_prodotto + ", codice_prodotto=" + codice_prodotto + ", descrizione=" 
 				+ descrizione + ", marca=" + marca + ", modello=" + modello + ", taglia=" + taglia + ", colore="
-				+ colore + ", tipo=" + tipo + ", categoria" + categoria + ", promozione" + promozione + "]";
+				+ colore + ", categoria" + categoria + ", promozione" + promozione + "]";
 	}
 
 	@Override
