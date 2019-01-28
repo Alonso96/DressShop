@@ -3,18 +3,17 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface UserModel<UserBean> {
+public interface UtenteModel<UtenteBean> {
 
-			public Collection<UserBean> retrieveAllUsers()
-			throws SQLException;
-			
-			public void saveUsers(UserBean user)
-			throws SQLException;
-			
-			public boolean deleteUsers(String userName)
-			throws SQLException;
-
-			public UserBean retrieveByKey(String userName) throws SQLException;
-			
-		
+	public UtenteBean doRetrieveByKey(int id_utente) throws SQLException;
+	
+	public Collection<UtenteBean> doRetrieveAll() throws SQLException;
+	
+	public void doSave(UtenteBean utente) throws SQLException;
+	
+	public void doUpdate(UtenteBean utente) throws SQLException;
+	
+	public boolean doDelete(int id_utente) throws SQLException;
+	
+	public UtenteBean doRetrieveByEmail(String email) throws SQLException;
 }
