@@ -1,16 +1,17 @@
 package model;
 
-public class ProdottoInCatalogo extends ProdottoBean{
+public class ProdottoInCatalogoBean extends ProdottoBean{
 
-	protected float prezzo;
-	protected float iva;
-	protected float quantita;
-	public ProdottoInCatalogo() {
+	private float prezzo;
+	private float iva;
+	private float quantita;
+	
+	
+	public ProdottoInCatalogoBean() {
 		super();
 		prezzo=0;
 		iva=0;
 		quantita=0;
-		
 	}
 	public float getPrezzo() {
 		return prezzo;

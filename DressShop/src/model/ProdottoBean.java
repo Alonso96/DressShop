@@ -137,6 +137,10 @@ public class ProdottoBean implements Serializable {
 
 	@Override
 	public boolean equals (Object obj){
+		if(obj == null)
+			return false;
+		if(this.getClass() != obj.getClass())
+			return false;
 		ProdottoBean other = (ProdottoBean) obj;
 		if (id_prodotto != other.id_prodotto)
 			return false;
@@ -144,11 +148,3 @@ public class ProdottoBean implements Serializable {
 	}
 
 }
-
-
-
-
-
-
-
-

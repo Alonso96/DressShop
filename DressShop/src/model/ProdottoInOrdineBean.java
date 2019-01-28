@@ -1,17 +1,17 @@
 package model;
 
-public class ProdottoInOrdine extends ProdottoBean{
+public class ProdottoInOrdineBean extends ProdottoBean{
 
-	protected float prezzo;
-	protected float iva;
-	protected float quantita;
+	private float prezzo;
+	private float iva;
+	private float quantita;
+	private boolean reso;
 	
-	public ProdottoInOrdine() {
+	public ProdottoInOrdineBean() {
 		super();
 		prezzo=0;
 		iva=0;
 		quantita=0;
-		
 	}
 
 	public float getPrezzo() {
