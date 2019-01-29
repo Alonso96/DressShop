@@ -3,6 +3,9 @@ package model;
 import java.io.Serializable;
 
 public class ProdottoBean implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	int id_prodotto;
 	String codice_prodotto;
 	String descrizione;

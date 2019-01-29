@@ -2,9 +2,11 @@ package model;
 
 public class ProdottoInCatalogoBean extends ProdottoBean{
 
+	private static final long serialVersionUID = 1L;
+
 	private float prezzo;
 	private float iva;
-	private float quantita;
+	private int quantita;
 	
 	
 	public ProdottoInCatalogoBean() {
@@ -25,10 +27,10 @@ public class ProdottoInCatalogoBean extends ProdottoBean{
 	public void setIva(float iva) {
 		this.iva = iva;
 	}
-	public float getQuantita() {
+	public int getQuantita() {
 		return quantita;
 	}
-	public void setQuantita(float quantita) {
+	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
 }

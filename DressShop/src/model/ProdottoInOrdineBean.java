@@ -2,9 +2,11 @@ package model;
 
 public class ProdottoInOrdineBean extends ProdottoBean{
 
+	private static final long serialVersionUID = 1L;
+
 	private float prezzo;
 	private float iva;
-	private float quantita;
+	private int quantita;
 	private boolean reso;
 	
 	public ProdottoInOrdineBean() {
@@ -30,11 +32,19 @@ public class ProdottoInOrdineBean extends ProdottoBean{
 		this.iva = iva;
 	}
 
-	public float getQuantita() {
+	public int getQuantita() {
 		return quantita;
 	}
 
-	public void setQuantita(float quantita) {
+	public void setQuantita(int quantita) {
 		this.quantita = quantita;
+	}
+	
+	public boolean isReso() {
+		return reso;
+	}
+
+	public void setReso(boolean reso) {
+		this.reso = reso;
 	}
 }
