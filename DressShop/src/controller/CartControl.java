@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Carrello;
-import model.ProductBean;
-import model.ProductModel;
-import model.ProdottoModelDM;
+import model.ProdottoBean;
+import model.ProdottoInCatalogoBean;
+import model.ProdottoModel;
+import model.ProdottoInCatalogoModelDM;
 
 /**
  * Servlet implementation class CartControl
@@ -21,7 +22,7 @@ import model.ProdottoModelDM;
 @WebServlet("/CartControl")
 public class CartControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ProductModel<ProductBean> model = new ProdottoModelDM();
+	static ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,11 +36,11 @@ public class CartControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Carrello<ProductBean> cart = (Carrello<ProductBean>)request.getSession().getAttribute("cart");
+		Carrello<ProdottoBean> cart = (Carrello<ProdottoBean>)request.getSession().getAttribute("cart");
 		
 		
 		if(cart == null) {
-			cart = new Carrello<ProductBean>();
+			cart = new Carrello<ProdottoBean>();
 			request.getSession().setAttribute("cart", cart);
 		}
 		
@@ -59,22 +60,33 @@ public class CartControl extends HttpServlet {
 					
 					int id = Integer.parseInt(request.getParameter("Id"));
 					String codice= request.getParameter("codice");
-					String description= request.getParameter("description");
+					String descrizione= request.getParameter("description");
 					String marca = request.getParameter("marca");
 					float ivaV = Float.parseFloat(request.getParameter("ivaVendita"));     //iva vendita;
 					float prezzoV =Float.parseFloat(request.getParameter("prezzoVendita")); //prezzovendita
+					String modello = request.getParameter("modello");
 					int codC= Integer.parseInt(request.getParameter("codiceC")); //codice categoria
-					int quantity= Integer.parseInt(request.getParameter("quantity"));
+					int quantita= Integer.parseInt(request.getParameter("quantita"));
+					String taglia = request.getParameter("taglia"); 
+					String colore = request.getParameter("colore");
+					String foto = request.getParameter("foto"); //url
+					int promozione = Integer.parseInt(request.getParameter("promozione")); //id promozione
 					
 					
-					ProductBean bean = new ProductBean();
-					bean.setCodice(codice);
-					bean.setDescription(description);
+					ProdottoBean bean = new ProdottoBean();
+					bean.setId_prodotto(id); 
+					bean.setCodice_prodotto(codice);
+					bean.setDescrizione(descrizione);
 					bean.setMarca(marca);
-					bean.setPrezzoV(ivaV);
-					bean.setIvaV(prezzoV);
-					bean.setCodC(codC);
-					bean.setQuantity(quantity);
+					bean.setModello(modello);
+					bean.setTaglia(taglia);
+					bean.setColore(colore);
+					bean.setFoto(foto);
+				//	bean.setCategoria(categoria); dovrebbe essere un int ma è segnato stringa DA RIVEDERE!!
+					bean.setPromozione(promozione);
+					((ProdottoInCatalogoBean)bean).setPrezzo(prezzoV);
+					((ProdottoInCatalogoBean)bean).setIva(ivaV);
+					((ProdottoInCatalogoBean)bean).setQuantita(quantita);
 					
 					model.doSave(bean);
 				} else if(action.equalsIgnoreCase("addCart")) {
@@ -105,7 +117,7 @@ public class CartControl extends HttpServlet {
 		
 		try {
 			request.removeAttribute("products");
-			request.setAttribute("products", model.doRetrieveAll(sort));
+			request.setAttribute("products", model.doRetrieveAll());  //dentro c'era "sort    
 		} catch(SQLException e) {
 			System.out.println("Error: "+ e.getMessage());
 			request.setAttribute("error", e.getMessage());
