@@ -97,8 +97,8 @@ public class ProdottoInCatalogoModelDM implements ProdottoModel<ProdottoBean>{
 
 			statement_2.setFloat(1, ((ProdottoInCatalogoBean)prodotto).getPrezzo());
 			statement_2.setFloat(2, ((ProdottoInCatalogoBean)prodotto).getIva());
-			statement_1.setInt(3, ((ProdottoInCatalogoBean)prodotto).getQuantita());
-			statement_1.executeUpdate();
+			statement_2.setInt(3, ((ProdottoInCatalogoBean)prodotto).getQuantita());
+			statement_2.executeUpdate();
 			
 			connection.commit();
 			
@@ -161,19 +161,101 @@ public class ProdottoInCatalogoModelDM implements ProdottoModel<ProdottoBean>{
 
 	@Override
 	public boolean doDelete(int id_prodotto) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection connection = null;
+		PreparedStatement statement=null;
+		int result = 0;
+		
+		String deleteString ="DELETE FROM " + TABLE_2 + " WHERE id_prodotto = ?";
+		
+		try {
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(deleteString);
+			statement.setInt(1, id_prodotto);
+			
+			result = statement.executeUpdate();
+			
+			connection.commit();
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		
+		return result != 0;
 	}
 
 	public Collection<ProdottoBean> doRetrieveByCategory(String categoria) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		PreparedStatement statement=null;
+		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
+		
+		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, taglia, colore, categoria"
+				+ "foto, promozione, prezzo, iva, quantita FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE categoria = ?";
+		
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			statement.setString(1, categoria);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				listaBean.add(getBean(result));
+			}
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return listaBean;
+	}
+
+	public Collection<ProdottoBean> doRetrieveByMarca(String marca) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
+		
+		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, taglia, colore, categoria"
+				+ "foto, promozione, prezzo, iva, quantita FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE marca = ?";
+		
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			statement.setString(1, marca);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				listaBean.add(getBean(result));
+			}
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return listaBean;
+	}
+
+	public Collection<ProdottoBean> doRetrieveByModello(String modello) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
+		
+		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, taglia, colore, categoria"
+				+ "foto, promozione, prezzo, iva, quantita FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE modello = ?";
+		
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			statement.setString(1, modello);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				listaBean.add(getBean(result));
+			}
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return listaBean;
 	}
 
 	private static ProdottoBean getBean(ResultSet rs) throws SQLException{
 		ProdottoBean bean = new ProdottoInCatalogoBean();
 		
-		bean.setId_prodotto(rs.getInt("id_prodotto"));
+		bean.setId_prodotto(rs.getInt("PRODOTTO.id_prodotto"));
 		bean.setCodice_prodotto(rs.getString("codice_promozione"));
 		bean.setDescrizione(rs.getString("descrizione"));
 		bean.setMarca(rs.getString("marca"));
