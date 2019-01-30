@@ -21,7 +21,24 @@ ol, ul {
     margin-top: 10;
     margin-bottom: 10px;
 }
-
+ nav ul li a::before, nav ul li a::after{
+        content: "";
+        position: absolute;
+        bottom:0;
+        right: 0;
+        width:0%;
+        height: 2px;
+        background:red;
+        transition: .2s width ease-in-out;
+    }
+    
+   nav ul li a::before{
+        left:0;
+    }
+    
+ nav ul li a:hover::after,nav ul li a:hover::before{
+        width: 50%;
+    } 
 
 .sinistra{
 	font-size: 30px;

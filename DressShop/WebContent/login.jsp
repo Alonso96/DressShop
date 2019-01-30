@@ -9,7 +9,7 @@
 <link href="css/stile.css" rel="stylesheet" >
 </head>
 <body>
-<%@ include file="WEB-INF/header.jsp" %>
+<%@ include file="header.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

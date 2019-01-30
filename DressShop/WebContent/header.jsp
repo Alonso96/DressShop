@@ -39,9 +39,9 @@
 
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Area Utente</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#"><font color= GRAY><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</font></a></li>
+      <li><a href="#"><font color= GRAY><span class="glyphicon glyphicon-user"></span> Area Utente</font></a></li>
+      <li><a href="#"><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> Login</font></a></li>
       
     </ul>
   </div>
