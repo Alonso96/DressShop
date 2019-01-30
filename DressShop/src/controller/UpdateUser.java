@@ -21,7 +21,7 @@ import model.DriverManagerConnectionPool;
 
 
 
-/** abc
+/** 
  * Servlet implementation class UpdateUser
  */
 @WebServlet("/UpdateUser")

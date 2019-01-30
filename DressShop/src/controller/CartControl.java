@@ -16,7 +16,7 @@ import model.ProdottoInCatalogoBean;
 import model.ProdottoModel;
 import model.ProdottoInCatalogoModelDM;
 
-/**abc
+/**a
  * Servlet implementation class CartControl
  */
 @WebServlet("/CartControl")
