@@ -91,7 +91,7 @@ public class CartControl extends HttpServlet {
 					model.doSave(bean);
 				} else if(action.equalsIgnoreCase("addCart")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					cart.aggElemento(model.doRetrieveByKey(id));
+					cart.addProd(model.doRetrieveByKey(id));
 					
 				} else if(action.equalsIgnoreCase("delCart")) {
 					int id = Integer.parseInt(request.getParameter("id"));

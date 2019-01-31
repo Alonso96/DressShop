@@ -32,6 +32,8 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	public void acquista() {
 		list = new ArrayList<ProdottoInCarrello>();
 	}
+
+	
 	
 	
 }
