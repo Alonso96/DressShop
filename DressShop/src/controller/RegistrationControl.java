@@ -13,10 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ClienteBean;
-import model.UserBean;
-import model.UserBeanDM;
-import model.UserModel;
+import model.UtenteBean;
+import model.UtenteModelDM;
+import model.UtenteModel;
 
 /**
  * Servlet implementation class RegistrationControl
@@ -25,7 +24,7 @@ import model.UserModel;
 public class RegistrationControl extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	 UserModel<UserBean> model = new UserBeanDM();
+	 UtenteModel<UtenteBean> model = new UtenteModelDM();
 	
     public RegistrationControl() {
         super();
@@ -57,22 +56,21 @@ public class RegistrationControl extends HttpServlet {
 
 						//response.setContentType("text/html");
 				
-						ClienteBean newUser = new ClienteBean();
+						UtenteBean newUser = new UtenteBean();
 						newUser.setNome(nome);
 						newUser.setCognome(cognome);
-						newUser.seteMail(eMail);
-						newUser.setCellulare(cellulare);
+						newUser.setEmail(eMail);
 						newUser.setPassword(password);
 						newUser.setData_nascita(data_nascita);
 						newUser.setTipo("cli");
 						
-						if(UserBeanDM.checkUser(eMail) == null) {
+						if(UtenteModelDM.checkUser(eMail) == false) {
 							RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationFailed.jsp");
 							dispatcher.forward(request, response);
 						}
 						else {	
 						
-						model.saveUsers(newUser);
+						model.doSave(newUser);
 						System.out.println("Ciao");
 						}
 						}

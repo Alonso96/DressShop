@@ -16,13 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Servlet implementation class DeleteUser
+ * Servlet implementation class DeleteUser questa servlet cancella un utente
  */
 @WebServlet("/DeleteUser")
 public class DeleteUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	static UserModel<UserBean> bean = new UserBeanDM();
+	static UtenteModel<UtenteBean> bean = new UtenteModelDM();
+
 
 	public DeleteUser() {
 		super();
@@ -45,7 +46,7 @@ public class DeleteUser extends HttpServlet {
 		String nickname = request.getParameter("Nickname");
 
 		 try {
-				bean.deleteUsers(nickname);
+				bean.doDelete(nickname);
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

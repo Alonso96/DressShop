@@ -113,17 +113,17 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	}
 
 	@Override
-	public boolean doDelete(int id_utente) throws SQLException {
+	public boolean doDelete(String email) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 		int result = 0;
 		
-		String deleteString ="DELETE FROM " + TABLE + " WHERE id_utente = ?";
+		String deleteString ="DELETE FROM " + TABLE + " WHERE email= ?";
 		
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(deleteString);
-			statement.setInt(1, id_utente);
+			statement.setString(1, email);
 			
 			result = statement.executeUpdate();
 			
@@ -173,5 +173,129 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		
 		return bean;
 	}
+	
+	
+	public static boolean  validate(String email, String password) throws SQLException { //verifica se email e password coincidono per il login
+		boolean status = false;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT * FROM " + TABLE + " WHERE email = ? and password =? ;";
+				
+		try {
+			try {
+				connection = DriverManagerConnectionPool.getConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // crea la connessione se non esiste
+			preparedStatement = connection.prepareStatement(selectSQL);
 
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password) ;
+
+			System.out.println("validate..." + preparedStatement.toString());
+
+			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
+
+			status=rs.next();
+			
+		} finally {
+
+			try {
+				if(preparedStatement != null ) {
+					preparedStatement.close(); // rilascio risorse
+				}
+			}
+			finally {
+				DriverManagerConnectionPool.releaseConnection(connection); // evita di far reinstanziare ogni volta una connection
+				// la connection viene "conservata" nella collection Pool
+			}
+		}
+
+		return status;
+	}
+	
+	public static boolean checkUser(String email ) throws SQLException { // verifica se utente esiste già 
+		boolean flag =false;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String checkSQL="Select email from "+TABLE+" where email= ?;" ;
+		
+		try {
+			try {
+				connection = DriverManagerConnectionPool.getConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // crea la connessione se non esiste
+			preparedStatement = connection.prepareStatement(checkSQL);
+
+			preparedStatement.setString(1,email);
+		
+
+			System.out.println("validate..." + preparedStatement.toString());
+
+			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
+			
+			flag=rs.next();
+			
+		} finally {
+
+			try {
+				if(preparedStatement != null ) {
+					preparedStatement.close(); // rilascio risorse
+				}
+			}
+			finally {
+				DriverManagerConnectionPool.releaseConnection(connection); // evita di far reinstanziare ogni volta una connection
+				// la connection viene "conservata" nella collection Pool
+			}
+		}
+
+		return flag;
+	}
+	
+	
+	public static String getTipo(String email, String password) throws SQLException{
+		String flag =null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		UtenteBean bean = new UtenteBean();
+		String selectSQL = "SELECT tipo FROM " +TABLE + " WHERE email = ? and password =? ;";
+				
+		try {
+			try {
+				connection = DriverManagerConnectionPool.getConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // crea la connessione se non esiste
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password) ;
+
+			System.out.println("validate..." + preparedStatement.toString());
+
+			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
+			if(rs.next())
+			flag=rs.getString("tipo");
+			
+		} finally {
+
+			try {
+				if(preparedStatement != null ) {
+					preparedStatement.close(); // rilascio risorse
+				}
+			}
+			finally {
+				DriverManagerConnectionPool.releaseConnection(connection); // evita di far reinstanziare ogni volta una connection
+				// la connection viene "conservata" nella collection Pool
+			}
+		}
+
+		return flag;
+	}
+	
 }

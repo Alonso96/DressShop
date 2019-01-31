@@ -33,15 +33,15 @@ public class ProcediAcquisto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Carrello<ProductBean> cart = (Carrello<ProductBean>)request.getSession().getAttribute("cart");
-		ProductModel<ProductBean> model = new ProdottoModelDM();
+		Carrello<ProdottoBean> cart = (Carrello<ProdottoBean>)request.getSession().getAttribute("cart");
+		ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
 		
 		System.out.println("ciao1");
 		 HttpSession session = request.getSession();
 		 //String id = request.getSession().getId();
 		 String name3 = (String)session.getAttribute("name");
 		 if(name3==null) {
-			 response.sendRedirect("Registration.html");
+			 response.sendRedirect("registration.jsp");
 		 }
 		 else 
 		 {
@@ -70,7 +70,7 @@ public class ProcediAcquisto extends HttpServlet {
 				 		if((cart.ottieniElem().size())>0) {
 				 			Iterator<?> it = cart.ottieniElem().iterator();
 				 			while(it.hasNext()) {
-				 				ProductBean bean = (ProductBean) it.next();
+				 				ProdottoBean bean = (ProdottoBean) it.next();
 				 				try {
 				 					model.doShop(bean, (String) request.getSession().getAttribute("name"));
 				 				} catch(SQLException e) {

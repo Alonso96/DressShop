@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -14,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.UserBean;
-import model.UserBeanDM;
-import model.UserModel;
+import model.UtenteBean;
+import model.UtenteModel;
+import model.UtenteModelDM;
 
 /**
  * Servlet implementation class LoginControl
@@ -25,7 +23,7 @@ import model.UserModel;
 public class LoginControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	static UserModel<UserBean> model = new UserBeanDM();
+	static UtenteModel<UtenteBean> model = new UtenteModelDM();
 	
     public LoginControl() {
         super();
@@ -51,12 +49,13 @@ public class LoginControl extends HttpServlet {
 	        session.setAttribute("name", n);
 
 	        try {
-				if(UserBeanDM.validate(n, p)){  
-					tipo=UserBeanDM.getTipo(n,p );
+				if(UtenteModelDM.validate(n, p)){  
+					tipo=UtenteModelDM.getTipo(n,p);
 					session.setAttribute("tipo", tipo);
+					System.out.println(tipo);	
 					switch(tipo) {
 					case("mag") : // se utente magazziniere
-					System.out.println(tipo);	
+					
 					/*RequestDispatcher rd=request.getRequestDispatcher("/amministrazione.jsp");  
 					rd.forward(request,response); */ 
 					break;
