@@ -241,3 +241,55 @@ hover .social{opacity:1;bottom:20px}
   background-image: linear-gradient(top, #84b9e9 0%, #9AC5ED 100%);
   padding: 3.4000000000000004px 6px 1.4000000000000004px 6px;
 }
+.carousel-inner > .carousel-item .active, .carousel-item, .carousel.inner{
+	min-height: 600px;
+	width: 90%;
+	height: 66%;
+	padding-left: 25%;
+}
+
+.bordo1
+{
+    text-shadow: 
+        -1px -1px 0px #000,
+         0px -1px 0px #000,
+         1px -1px 0px #000,
+        -1px  0px 0px #000,
+         1px  0px 0px #000,
+        -1px  1px 0px #000,
+         0px  1px 0px #000,
+         1px  1px 0px #000;
+}
+
+.bordo
+{
+    text-shadow: 
+        /* first layer at 1px */
+        -1px -1px 0px #000,
+         0px -1px 0px #000,
+         1px -1px 0px #000,
+        -1px  0px 0px #000,
+         1px  0px 0px #000,
+        -1px  1px 0px #000,
+         0px  1px 0px #000,
+         1px  1px 0px #000,
+        /* second layer at 2px */
+        -2px -2px 0px #000,
+        -1px -2px 0px #000,
+         0px -2px 0px #000,
+         1px -2px 0px #000,
+         2px -2px 0px #000,
+         2px -1px 0px #000,
+         2px  0px 0px #000,
+         2px  1px 0px #000,
+         2px  2px 0px #000,
+         1px  2px 0px #000,
+         0px  2px 0px #000,
+        -1px  2px 0px #000,
+        -2px  2px 0px #000,
+        -2px  1px 0px #000,
+        -2px  0px 0px #000,
+        -2px -1px 0px #000;
+        background-color: transparent,
+}
+
