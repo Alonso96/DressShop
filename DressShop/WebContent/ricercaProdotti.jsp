@@ -34,7 +34,7 @@
             <div class="product-grid6">
             <%--
 		if(products.size() > 0) {
-		
+		//ok
 		Iterator<?> it = products.iterator();
 		
 		while(it.hasNext()) {
