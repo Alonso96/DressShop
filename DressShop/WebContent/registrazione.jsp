@@ -71,7 +71,7 @@
 <!--container end.//-->
 <br><br>
 <br><br>
-</article>
+
  <%@ include file="footer.jsp" %>
 </body>
 </html>
