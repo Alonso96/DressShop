@@ -35,7 +35,9 @@
       
     </ul>
   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    	<img  src="img/logodre.png" alt="Logo" height="80px" width="280px">
+    	<a href= "index.jsp">
+    	<img  src="img/logodre.png" alt="Logo" height="80px" width="280px"> 
+    	</a>
 
     
     <ul class="nav navbar-nav navbar-right">
