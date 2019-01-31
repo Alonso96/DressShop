@@ -63,7 +63,7 @@ public class StoricoControl extends HttpServlet {
 		try {
 			//Inserire storico giusto
 			request.removeAttribute("products");
-		    request.setAttribute("products", model.doRetrieveByUtente(((String) request.getSession().getAttribute("email"))));
+		    request.setAttribute("products", model.doRetrieveByUtente(((int) request.getSession().getAttribute("id_utente"))));
 			//request.setAttribute("date",model.getStoricoData((String) request.getSession().getAttribute("name")));
 			
 		} catch(SQLException e) {
