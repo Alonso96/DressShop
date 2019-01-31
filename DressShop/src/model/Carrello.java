@@ -4,39 +4,33 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carrello<T> implements Serializable{
+public class Carrello<ProdottoInCarrello> implements Serializable{
 	
-	List<T> list;
+	List<ProdottoInCarrello> list;
 	
 	public Carrello() {
-		list = new ArrayList<T>(); //costruttore
+		list = new ArrayList<ProdottoInCarrello>(); //costruttore
 	}
 	
-	public void aggElemento(T element) {
-		list.add(element);
+	public void addProd(ProdottoInCarrello prodotto) {
+		list.add(prodotto);
 	}
 	
-	public void rimElemento(T element) {
-		for(T elem : list) {
-			if(elem.equals(element)) {
-				list.remove(elem);
+	public void rimElemento(ProdottoInCarrello prodotto) {
+		for(ProdottoInCarrello p : list) {
+			if(p.equals(prodotto)) {
+				list.remove(p);
 				break;
 			}	
 		}
 	}
 	
-	public List<T> ottieniElem() {
+	public List<ProdottoInCarrello> ottieniElem() {
 		return list;
 	}
 	
-
 	public void acquista() {
-		for(T elem : list) {
-			 {
-				list.remove(elem);
-			
-			}	
-		}
+		list = new ArrayList<ProdottoInCarrello>();
 	}
 	
 	
