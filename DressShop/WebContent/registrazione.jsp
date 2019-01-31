@@ -44,16 +44,7 @@
         <input name="" class="form-control" placeholder="Email" type="email">
 		 </div>
     </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		
-		<select class="custom-select" style="max-width: 55px; min-height:33px;">
-		    <option selected="" >+39</option>
-		</select>
-    	<input name="" class="form-control" placeholder="Numero di telefono" type="text">
-    </div> <!-- form-group// -->
-    </div>
+    
     
     <div class="form-group input-group">
     	<div class="input-group-prepend">

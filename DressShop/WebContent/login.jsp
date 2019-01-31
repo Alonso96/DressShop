@@ -27,9 +27,6 @@
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />
                         </div>
-                        <div class="form-group">
-                            <a href="#" class="btnForgetPwd">Password dimenticata?</a>
-                        </div>
                     	<div class="form-group">
                        <p class="btnForgetPwd">Non hai un account?     <a href="registrazione.jsp" >registrati</a></p>
                         </div>
