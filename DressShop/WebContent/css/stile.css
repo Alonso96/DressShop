@@ -18,8 +18,8 @@ background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
 }
 
 ol, ul {
-    margin-top: 10;
-    margin-bottom: 10px;
+    margin-top: 10 !important;
+    margin-bottom: 10px !important;
 }
  nav ul li a::before, nav ul li a::after{
         content: "";
@@ -33,7 +33,7 @@ ol, ul {
     }
     
    nav ul li a::before{
-        left:0;
+        left:0 !important;
     }
     
  nav ul li a:hover::after,nav ul li a:hover::before{
@@ -41,11 +41,11 @@ ol, ul {
     } 
 
 .sinistra{
-	font-size: 30px;
-	font-family: "Times New Roman", Times, serif;
+	font-size: 30px !important;
+	font-family: "Times New Roman", Times, serif!important;
 }
 .login-container{
-    margin-top: 5%;
+    margin-top: 5%!;
     margin-bottom: 5%;
 }
 .login-logo{
