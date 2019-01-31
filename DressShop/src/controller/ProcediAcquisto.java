@@ -72,13 +72,18 @@ public class ProcediAcquisto extends HttpServlet {
 				 			while(it.hasNext()) {
 				 				ProdottoBean bean = (ProdottoBean) it.next();
 				 				try {
-				 					model.doShop(bean, (String) request.getSession().getAttribute("name"));
+				 				/*	model.doShop(bean, (String) request.getSession().getAttribute("name"));
+				 				 *
+				 				 * Inserire qui codice per l'acquisto
+				 				 * la riga di sotto Ë da cancellare 
+				 				 * */
+				 				 model.doRetrieveAll();
 				 				} catch(SQLException e) {
 				 					e.printStackTrace();
 				 					
 				 				}
 				 				try {
-				 					model.doUpdateQuantit√†(bean);
+				 					model.doUpdate(bean);
 				 				} catch(SQLException e) {
 				 					e.printStackTrace();
 				 				}
@@ -92,7 +97,7 @@ public class ProcediAcquisto extends HttpServlet {
 		
 		if((request.getSession().getAttribute("name"))!=null) {
 			request.getSession().setAttribute("cart1",cart);
-			Carrello<ProductBean> cart1= (Carrello<ProductBean>) new Carrello();
+			Carrello<ProdottoBean> cart1= (Carrello<ProdottoBean>) new Carrello();
 			request.getSession().setAttribute("cart",cart1);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("AcquistoCompletato.jsp");
 			dispatcher.forward(request, response);

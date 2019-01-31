@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	static ProductModel<ProductBean> model = new ProdottoModelDM();
+	static ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
 	
 	public ProductControl() {
 		super();
@@ -26,11 +26,11 @@ public class ProductControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Carrello<ProductBean> cart = (Carrello<ProductBean>)request.getSession().getAttribute("cart");
+		Carrello<ProdottoBean> cart = (Carrello<ProdottoBean>)request.getSession().getAttribute("cart");
 		
 		
 		if(cart == null) {
-			cart = new Carrello<ProductBean>();
+			cart = new Carrello<ProdottoBean>();
 			request.getSession().setAttribute("cart", cart);
 		}
 		
@@ -50,22 +50,34 @@ public class ProductControl extends HttpServlet {
 					
 					int id = Integer.parseInt(request.getParameter("Id"));
 					String codice= request.getParameter("codice");
-					String description= request.getParameter("description");
+					String descrizione= request.getParameter("description");
 					String marca = request.getParameter("marca");
+					String modello = request.getParameter("modello");
+					String colore = request.getParameter("colore");
+					String foto = request.getParameter("foto");
+					String categoria = request.getParameter("categoria");
+					int promozione = Integer.parseInt(request.getParameter("promozione"));
 					float ivaV = Float.parseFloat(request.getParameter("ivaVendita"));     //iva vendita;
 					float prezzoV =Float.parseFloat(request.getParameter("prezzoVendita")); //prezzovendita
 					int codC= Integer.parseInt(request.getParameter("codiceC")); //codice categoria
-					int quantity= Integer.parseInt(request.getParameter("quantity"));
-					
-					
-					ProductBean bean = new ProductBean();
-					bean.setCodice(codice);
-					bean.setDescription(description);
+					int quantita= Integer.parseInt(request.getParameter("quantity"));
+					boolean reso = Boolean.parseBoolean(request.getParameter("reso"));
+					ProdottoBean bean = new ProdottoBean();
+					bean.setId_prodotto(id);
+					bean.setCodice_prodotto(codice);
+					bean.setDescrizione(descrizione);
 					bean.setMarca(marca);
-					bean.setPrezzoV(ivaV);
-					bean.setIvaV(prezzoV);
-					bean.setCodC(codC);
-					bean.setQuantity(quantity);
+					bean.setModello(modello);
+					bean.setColore(colore);
+					bean.setFoto(foto);
+					bean.setCategoria(categoria);
+					bean.setPromozione(promozione);
+					((ProdottoInCatalogoBean)bean).setPrezzo(prezzoV);
+					((ProdottoInCatalogoBean)bean).setIva(ivaV);
+					((ProdottoInOrdineBean)bean).setQuantita(quantita);
+					((ProdottoInOrdineBean)bean).setReso(reso);
+					
+					
 					
 					model.doSave(bean);
 				} else if(action.equalsIgnoreCase("addCart")) {
@@ -96,7 +108,7 @@ public class ProductControl extends HttpServlet {
 		
 		try {
 			request.removeAttribute("products");
-			request.setAttribute("products", model.doRetrieveAll(sort));
+			request.setAttribute("products", model.doRetrieveAll()); // prima c'era sort DA RIVEDERE
 		} catch(SQLException e) {
 			System.out.println("Error: "+ e.getMessage());
 			request.setAttribute("error", e.getMessage());

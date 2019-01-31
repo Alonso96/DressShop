@@ -14,9 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Carrello;
-import model.ProductBean;
-import model.ProductModel;
-import model.ProdottoModelDM;
+import model.OrdineModel;
+import model.OrdineModelDM;
+import model.OrdineBean;
+import model.ProdottoBean;
+import model.ProdottoInCatalogoModelDM;
+import model.ProdottoModel;
+
 
 /**
  * Servlet implementation class StoricoControl
@@ -37,7 +41,7 @@ public class StoricoControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductModel<ProductBean> model = new ProdottoModelDM();
+		OrdineModel<OrdineBean> model = new OrdineModelDM();
 		System.out.println("ciao1");
 		 HttpSession session = request.getSession();
 		 //String id = request.getSession().getId();
@@ -57,9 +61,11 @@ public class StoricoControl extends HttpServlet {
 		
 		System.out.println("Caricamento dello storico...");
 		try {
+			//Inserire storico giusto
 			request.removeAttribute("products");
-			request.setAttribute("products", model.getStorico((String) request.getSession().getAttribute("name")));
-			request.setAttribute("date",model.getStoricoData((String) request.getSession().getAttribute("name")));
+		    request.setAttribute("products", model.doRetrieveByUtente(((String) request.getSession().getAttribute("email"))));
+			//request.setAttribute("date",model.getStoricoData((String) request.getSession().getAttribute("name")));
+			
 		} catch(SQLException e) {
 			System.out.println("Error: "+ e.getMessage());
 			request.setAttribute("error", e.getMessage());

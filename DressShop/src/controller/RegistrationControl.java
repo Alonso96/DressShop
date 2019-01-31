@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
@@ -83,7 +84,10 @@ public class RegistrationControl extends HttpServlet {
 				}catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationSuccess.jsp");
 					dispatcher.forward(request, response);
