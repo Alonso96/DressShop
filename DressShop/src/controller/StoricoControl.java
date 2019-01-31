@@ -13,13 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Carrello;
-import model.OrdineModel;
-import model.OrdineModelDM;
-import model.OrdineBean;
-import model.ProdottoBean;
-import model.ProdottoInCatalogoModelDM;
-import model.ProdottoModel;
+import model.*;
 
 
 /**
@@ -29,23 +23,16 @@ import model.ProdottoModel;
 public class StoricoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public StoricoControl() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+ 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OrdineModel<OrdineBean> model = new OrdineModelDM();
+		OrdineModel<OrdineBean> oModel = new OrdineModelDM();
 		System.out.println("ciao1");
-		 HttpSession session = request.getSession();
-		 //String id = request.getSession().getId();
-		 if(session!=null) {
+		HttpSession session = request.getSession();
+		//String id = request.getSession().getId();
+		if(session != null) {
 		
 		 
 		 
@@ -54,32 +41,35 @@ public class StoricoControl extends HttpServlet {
 		 
 	
 		 
-		String name = (String)session.getAttribute("name");
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+			String name = (String)session.getAttribute("name");
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
 		
 		
-		System.out.println("Caricamento dello storico...");
-		try {
-			//Inserire storico giusto
-			request.removeAttribute("products");
-		    request.setAttribute("products", model.doRetrieveByUtente(((int) request.getSession().getAttribute("id_utente"))));
-			//request.setAttribute("date",model.getStoricoData((String) request.getSession().getAttribute("name")));
+			System.out.println("Caricamento dello storico...");
+			try {
+				//preleva utente tramite email
+				UtenteModelDM uModel = new UtenteModelDM();
+				UtenteBean uBean = uModel.doRetrieveByEmail((String) session.getAttribute("email"));
+				
+				//Inserire storico giusto
+				request.removeAttribute("products");
+				request.setAttribute("products", oModel.doRetrieveByUtente(uBean.getId_utente()));
+				//request.setAttribute("date",model.getStoricoData((String) request.getSession().getAttribute("name")));
 			
-		} catch(SQLException e) {
-			System.out.println("Error: "+ e.getMessage());
-			request.setAttribute("error", e.getMessage());
+			} catch(SQLException e) {
+				System.out.println("Error: "+ e.getMessage());
+				request.setAttribute("error", e.getMessage());
+			}
+		
+		
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/storico.jsp");
+			dispatcher.forward(request, response); // passo la chiamata alla jsp
+		
+		} else
+			response.sendRedirect("home.jsp");
+		
 		}
-		
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/storico.jsp");
-		dispatcher.forward(request, response); // passo la chiamata alla jsp
-		
-	}
-		 else
-			 response.sendRedirect("home.jsp");
-		
-		 }
 	
 
 	/**
