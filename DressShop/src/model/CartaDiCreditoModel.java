@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface CartaDiCreditoModel {
+public interface CartaDiCreditoModel<CartaDiCreditoBean> {
 	
 	public CartaDiCreditoBean doRetrieveByKey(String numero_carta) throws SQLException;
 	

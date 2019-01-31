@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface PromozioneModel {
+public interface PromozioneModel<PromozioneBean> {
 
 public PromozioneBean doRetrieveByKey(int id_promozione) throws SQLException;
 	

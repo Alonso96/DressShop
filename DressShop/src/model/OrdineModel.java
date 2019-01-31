@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface OrdineModel {
+public interface OrdineModel<OrdineModel> {
 
 	public OrdineBean doRetrieveByKey(int id_ordine) throws SQLException;
 	

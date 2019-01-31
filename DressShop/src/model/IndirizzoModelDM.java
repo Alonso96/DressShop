@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class IndirizzoModelDM implements IndirizzoModel{
+public class IndirizzoModelDM implements IndirizzoModel<IndirizzoBean>{
 
 	private static final String TABLE ="INDIRIZZO";
 

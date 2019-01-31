@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class PromozioneModelDM implements PromozioneModel{
+public class PromozioneModelDM implements PromozioneModel<PromozioneBean>{
 
 	private static final String TABLE = "PROMOZIONE";
 

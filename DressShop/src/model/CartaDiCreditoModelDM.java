@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CartaDiCreditoModelDM implements CartaDiCreditoModel{
+public class CartaDiCreditoModelDM implements CartaDiCreditoModel<CartaDiCreditoBean>{
 
 	private static final String TABLE ="CARTA_CREDITO";
 

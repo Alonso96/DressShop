@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface IndirizzoModel {
+public interface IndirizzoModel<IndirizzoBean> {
 
 	public IndirizzoBean doRetrieveByKey(int id_indirizzo) throws SQLException;
 	
