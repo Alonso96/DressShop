@@ -32,6 +32,8 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
+						<input class="form-control form-control-sm" type="text" placeholder="modifica foto" id="foto">
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaFoto()">invia</button>  
 						<ul class="preview-thumbnail nav nav-tabs">
 						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
 						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
@@ -42,7 +44,11 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">men's shoes fashion<%--prodotto.getMarca(); prodotto.getModello() --%></h3>
+						<h3 class="product-title">Modello Marca<%--prodotto.getMarca(); prodotto.getModello() --%></h3>
+						<input class="form-control form-control-sm" type="text" placeholder="modifica marca" id="marca">  
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaMarca()">invia</button> 
+						<input class="form-control form-control-sm" type="text" placeholder="modifica modello" id="modello">
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaModello()">invia</button>  
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -53,12 +59,9 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							</div>
 							
 						</div>
-						<p class="product-description"><%--prodotto.getDescrizione() --%>Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-						<h4 class="price">Prezzo: &euro; 180<%--prodotto.getPrezzo()>--%></h4>
-						<%--if(podotto.getPromozione!=0){ --%>
-						<p class="vote"><strong>Scontato del 91%<%--prodotto.getPromozione() --%></strong> </strong></p>
-						<%-- --%>
 						<h5 class="sizes">sizes:
+						<input class="form-control form-control-sm" type="text" placeholder="modifica taglia" id="taglia">
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaTaglia()">invia</button> 
 					       <%--switch(prodotto.getTaglia()){ --%>
 							<%--case("S") :--%><button class="size" data-toggle="tooltip" >s</button>
 							<%--case("M") :--%><button class="size" data-toggle="tooltip" >m</button>
@@ -66,20 +69,53 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							<%--case("XL") :--%><button class="size" data-toggle="tooltip" >xl</button><%--break;
 							} --%>
 						</h5>
+						<input class="form-control form-control-sm" type="text" placeholder="modifica colore" id="colore">
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaColore()">invia</button> 
 						<h5 class="colors">colors:
 							<button class="color green" style="background-color: orange<%--prodotto.getColore()--%>;" > </button>
 							<button class="color green"></button>
 							<button class="color blue"></button>
 						</h5>
-						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">Aggiungi al carrello</button>
-							
-						</div>
+						<input class="form-control form-control-sm" type="text" placeholder="modifica quantita'" id="quantita">
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaQuantita()">invia</button> 
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@include file="footer.jsp" %>
+<script>
+	function modificaMarca() {
+  var x = document.getElementById("marca").value;
+ ;
+  //bean.setMarca(x);
+}
+	function modificaQuantita() {
+		  var x = document.getElementById("quantita").value;
+		 ;
+		  //bean.setQuantita(x);
+		}
+	function modificaFoto() {
+		  var x = document.getElementById("foto").value;
+		 ;
+		  //bean.setFoto(x);
+		}
+	function modificaModello() {
+		  var x = document.getElementById("modello").value;
+		 ;
+		  //bean.setModello(x);
+		}
+	function modificaTaglia() {
+		  var x = document.getElementById("Taglia").value;
+		 ;
+		  //bean.setTaglia(x);
+		}
+	function modificaColore() {
+		  var x = document.getElementById("Colore").value;
+		 ;
+		  //bean.setColore(x);
+		}
+	</script>
 </body>
 </html>

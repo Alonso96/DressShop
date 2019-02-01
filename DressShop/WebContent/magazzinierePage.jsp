@@ -43,6 +43,7 @@
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(1)">Inserisci prodotto</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(2)">Comunica esaurimento prodotto</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick=location.href='esaurimentoScorte.jsp'>Scorte in esaurimento</button>
+  <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(3)">Modifica prodotto</button>
 </div>
 
  <form class="container col-sm-6">
@@ -66,13 +67,117 @@
 
 </div>
 </form>
+<div class="container" id="modi">
 
+    <h3 class="h3">Modifica prodotti </h3>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid6">
+            <%--
+		if(products.size() > 0) {
+		//ok
+		Iterator<?> it = products.iterator();
+		
+		while(it.hasNext()) {
+			ProdottoBean bean = (ProdottoBean) it.next();
+*/	--%>
+                <div class="product-image6">
+                    <a href="modificaProdotto.jsp">
+                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" <%--src="<%=bean.getFoto()--%>>
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="modificaProdotto.jsp">Women's Red Top</a></h3>
+                    <div class="price"> &euro; 11.00 <%--= //bean.getPrezzoV()--%>
+                        <span>$14.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%-- 		} 
+		} else {
+	--%>	
+		<%--<tr>
+			<td colspan="4">No product available</td>
+		</tr>--%>
+<%--/*}*/--%> 
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a href="#">
+                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-1.jpg">
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title">Men's Shirt<a href="#"></a></h3>
+                    <div class="price">$8.00
+                        <span>$12.00</span>
+                    </div>
+                </div>
+                <ul class="social">
+                    <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                    <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a href="#">
+                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-3.jpg">
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Men's Shirt</a></h3>
+                    <div class="price">$11.00
+                        <span>$14.00</span>
+                    </div>
+                </div>
+                <ul class="social">
+                    <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                    <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a href="#">
+                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-4.jpg">
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Men's Shirt</a></h3>
+                    <div class="price">$11.00
+                        <span>$14.00</span>
+                    </div>
+                </div>
+                <ul class="social">
+                    <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                    <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="np">
+<div class="col-md-3 col-sm-6">
+</div>
+<div class="col-md-3 col-sm-6">
+</div>
+<div class="col-md-3 col-sm-6">
+</div>
+</div>
+<hr>
  <script > 
 
  document.getElementById("ins").style.display="none";
  document.getElementById("com").style.display="none";
- //document.getElementById("asd").style.display="block";
- //document.getElementById("asd").style.display="block";
+ //document.getElementById("modi").style.display="block";
+ document.getElementById("np").style.display="none";
  function visualizza(flag){
 
 
@@ -80,32 +185,32 @@
 	       case(1):
 		    document.getElementById("ins").style.display="block";
 	       document.getElementById("com").style.display="none";
-	       //document.getElementById("asd").style.display="block";
-	       //document.getElementById("asd").style.display="block";
+	       document.getElementById("modi").style.display="none";
+	       document.getElementById("np").style.display="block";
 		   break; 
 	       case(2):
 		   document.getElementById("com").style.display="block";
 	       document.getElementById("ins").style.display="none";
-	       //document.getElementById("asd").style.display="block";
-	       //document.getElementById("asd").style.display="block";
+	       document.getElementById("modi").style.display="none";
+	       document.getElementById("np").style.display="block";
 	       	break;
 	       case(3):
-			    document.getElementById("asd").style.display="none";
-	       document.getElementById("asd").style.display="block";
-	       //document.getElementById("asd").style.display="block";
-	       //document.getElementById("asd").style.display="block";
+			    document.getElementById("ins").style.display="none";
+	       document.getElementById("modi").style.display="block";
+	       document.getElementById("com").style.display="none";
+	       document.getElementById("np").style.display="none";
 		       	break;
 	       case(4):
-			    document.getElementById("asd").style.display="none";
-	       document.getElementById("asd").style.display="block";
-	       //document.getElementById("asd").style.display="block";
-	       //document.getElementById("asd").style.display="block";
-		       	break;
+			    document.getElementById("modi").style.display="none";
+	       document.getElementById("np").style.display="block";
+	       document.getElementById("ins").style.display="none";
+	       document.getElementById("com").style.display="none";   
+	       break;
 				
 		}
  }</script>
  <br>
- 
+ <hr>
  <%@ include file="footer.jsp" %>
 
 </body>
