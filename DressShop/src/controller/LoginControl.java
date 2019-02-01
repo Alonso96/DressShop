@@ -67,23 +67,23 @@ public class LoginControl extends HttpServlet {
 					case("mag") : // se utente magazziniere
 					
 					session.setAttribute("tipo", "mag");
-					RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
+					RequestDispatcher rd=request.getRequestDispatcher("/magazzinierePage.jsp");  
 				    rd.forward(request,response);
 					break;
 					case("cli"): // se utente e' cliente
 						session.setAttribute("tipo", "cli");
-					RequestDispatcher rd1=request.getRequestDispatcher("/userLogged.jsp");  
+					RequestDispatcher rd1=request.getRequestDispatcher("/index.jsp");  
 				    rd1.forward(request,response);
 					break;
 					case("pro")://se utente e' proprietario
 						session.setAttribute("tipo", "prog");
-						RequestDispatcher rd2=request.getRequestDispatcher("/userLogged.jsp");  
+						RequestDispatcher rd2=request.getRequestDispatcher("/proprietarioPage.jsp");  
 						rd2.forward(request,response);
 						break;
 							
 					case ("mkt"):// se utente e' gestore marketing
 						session.setAttribute("tipo", "mkt");
-						RequestDispatcher rd3=request.getRequestDispatcher("/userLogged.jsp");  
+						RequestDispatcher rd3=request.getRequestDispatcher("/managerPage.jsp");  
 					    rd3.forward(request,response);
 						
 						
