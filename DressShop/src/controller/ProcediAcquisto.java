@@ -39,7 +39,7 @@ public class ProcediAcquisto extends HttpServlet {
 		System.out.println("ciao1");
 		 HttpSession session = request.getSession();
 		 //String id = request.getSession().getId();
-		 String name3 = (String)session.getAttribute("name");
+		 String name3 = (String)session.getAttribute("email");
 		 if(name3==null) {
 			 response.sendRedirect("registration.jsp");
 		 }
