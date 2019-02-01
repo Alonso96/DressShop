@@ -95,7 +95,7 @@ public class LoginControl extends HttpServlet {
 				    out.print("<p style=\"color:red\">Spiacente E-Mail o password invalidi, riprova</p><br>");  
 				    out.print("<p style=\"color:blue\">Nuovo utente? <a href=\"Registration.html\">Registrati subito!</a> </br></p>");
 				    session.invalidate();
-				    RequestDispatcher rd=request.getRequestDispatcher("home.jsp");  
+				    RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
 				    rd.include(request,response);  
 				}
 			} catch (SQLException e) {
