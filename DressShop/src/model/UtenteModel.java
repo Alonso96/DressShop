@@ -13,7 +13,7 @@ public interface UtenteModel<UtenteBean> {
 	
 	public void doUpdate(UtenteBean utente) throws SQLException;
 	
-	public boolean doDelete(String email) throws SQLException;
+	public boolean doDelete(int id) throws SQLException;
 	
 	public UtenteBean doRetrieveByEmail(String email) throws SQLException;
 }

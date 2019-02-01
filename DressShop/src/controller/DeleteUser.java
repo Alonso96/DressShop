@@ -43,10 +43,10 @@ public class DeleteUser extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		String email = request.getParameter("email");
+		int id = Integer.parseInt(request.getParameter("email"));
 
 		 try {
-				bean.doDelete(email);
+				bean.doDelete(id);
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

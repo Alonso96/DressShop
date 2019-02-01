@@ -113,7 +113,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	}
 
 	@Override
-	public boolean doDelete(String email) throws SQLException {
+	public boolean doDelete(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 		int result = 0;
@@ -123,7 +123,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(deleteString);
-			statement.setString(1, email);
+			statement.setInt(1, id);
 			
 			result = statement.executeUpdate();
 			

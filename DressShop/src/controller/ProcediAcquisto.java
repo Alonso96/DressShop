@@ -33,7 +33,7 @@ public class ProcediAcquisto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Carrello<ProdottoBean> cart = (Carrello<ProdottoBean>)request.getSession().getAttribute("cart");
+		Carrello<ProdottoInCarrello> cart = (Carrello<ProdottoInCarrello>)request.getSession().getAttribute("cart");
 		ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
 		
 		System.out.println("ciao1");
@@ -41,7 +41,7 @@ public class ProcediAcquisto extends HttpServlet {
 		 //String id = request.getSession().getId();
 		 String name3 = (String)session.getAttribute("email");
 		 if(name3==null) {
-			 response.sendRedirect("registration.jsp");
+			 response.sendRedirect("login.jsp");
 		 }
 		 else 
 		 {
@@ -54,7 +54,7 @@ public class ProcediAcquisto extends HttpServlet {
 		 
 	
 		 
-		String name = (String)session.getAttribute("name");
+		String name = (String)session.getAttribute("email");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -67,16 +67,16 @@ public class ProcediAcquisto extends HttpServlet {
 		if(action!=null) {
 			 if(action.equalsIgnoreCase("ProcediAcquisto")) {
 				 	if(cart!=null) {
-				 		if((cart.ottieniElem().size())>0) {
-				 			Iterator<?> it = cart.ottieniElem().iterator();
+				 		if(!(cart.isEmpty())) {
+				 		/*	Iterator<?> it = cart.ottieniElem().iterator();
 				 			while(it.hasNext()) {
-				 				ProdottoBean bean = (ProdottoBean) it.next();
+				 				ProdottoInCarrello bean = (ProdottoInCarrello) it.next();
 				 				try {
-				 				/*	model.doShop(bean, (String) request.getSession().getAttribute("name"));
+				 					model.doShop(bean, (String) request.getSession().getAttribute("name"));
 				 				 *
 				 				 * Inserire qui codice per l'acquisto
-				 				 * la riga di sotto è da cancellare 
-				 				 * */
+				 				 la riga di sotto è da cancellare 
+				 				 * 
 				 				 model.doRetrieveAll();
 				 				} catch(SQLException e) {
 				 					e.printStackTrace();
@@ -87,6 +87,8 @@ public class ProcediAcquisto extends HttpServlet {
 				 				} catch(SQLException e) {
 				 					e.printStackTrace();
 				 				}
+				 				*/
+				 			  cart.acquista();
 				 			}
 				 			
 				 		}
@@ -97,7 +99,7 @@ public class ProcediAcquisto extends HttpServlet {
 		
 		if((request.getSession().getAttribute("name"))!=null) {
 			request.getSession().setAttribute("cart1",cart);
-			Carrello<ProdottoBean> cart1= (Carrello<ProdottoBean>) new Carrello();
+			Carrello<ProdottoInCarrello> cart1= (Carrello<ProdottoInCarrello>) new Carrello();
 			request.getSession().setAttribute("cart",cart1);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("AcquistoCompletato.jsp");
 			dispatcher.forward(request, response);
@@ -107,10 +109,9 @@ public class ProcediAcquisto extends HttpServlet {
 			response.sendRedirect("home.jsp");
 		}
 		
-		 }	else
-				response.sendRedirect("home.jsp");
+		 }	
 	}
-	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

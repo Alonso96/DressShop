@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Carrello;
 import model.ProdottoBean;
+import model.ProdottoInCarrello;
 import model.ProdottoInCatalogoBean;
 import model.ProdottoModel;
 import model.ProdottoInCatalogoModelDM;
@@ -36,11 +37,11 @@ public class CartControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Carrello<ProdottoBean> cart = (Carrello<ProdottoBean>)request.getSession().getAttribute("cart");
+		Carrello<ProdottoInCarrello> cart = (Carrello<ProdottoInCarrello>)request.getSession().getAttribute("cart");
 		
 		
 		if(cart == null) {
-			cart = new Carrello<ProdottoBean>();
+			cart = new Carrello<ProdottoInCarrello>();
 			request.getSession().setAttribute("cart", cart);
 		}
 		
@@ -53,9 +54,8 @@ public class CartControl extends HttpServlet {
 					int id = Integer.parseInt(request.getParameter("id"));
 					request.removeAttribute("product");
 					request.setAttribute("product", model.doRetrieveByKey(id));
-				} else if(action.equalsIgnoreCase("delete")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					model.doDelete(id);
+				/*} else if(action.equalsIgnoreCase("delete")) {
+					cart.rimElemento(model.doRetrieveByKey(id));
 				} else if(action.equalsIgnoreCase("insert")) {
 					
 					int id = Integer.parseInt(request.getParameter("Id"));
@@ -89,14 +89,21 @@ public class CartControl extends HttpServlet {
 					((ProdottoInCatalogoBean)bean).setQuantita(quantita);
 					
 					model.doSave(bean);
-				} else if(action.equalsIgnoreCase("addCart")) {
+					*/
+				} else if(action.equalsIgnoreCase("aggiungiP")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					cart.addProd(model.doRetrieveByKey(id));
+					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoInCatalogoBean)model.doRetrieveByKey(id));
+					cart.addProd(prod);
 					
-				} else if(action.equalsIgnoreCase("delCart")) {
+					
+				} else if(action.equalsIgnoreCase("rimuoviP")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					System.out.println("rimuovo elemento con id "+ id);
-					cart.rimElemento(model.doRetrieveByKey(id));
+					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoInCatalogoBean)model.doRetrieveByKey(id));
+					cart.rimElemento(prod);
+				}
+				else if( action.equalsIgnoreCase("acquista")) {
+					cart.acquista();
 				}
 				
 				
