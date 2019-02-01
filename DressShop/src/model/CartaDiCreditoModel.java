@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public interface CartaDiCreditoModel<CartaDiCreditoBean> {
@@ -15,6 +16,6 @@ public interface CartaDiCreditoModel<CartaDiCreditoBean> {
 	
 	public boolean doDelete(String numero_carta) throws SQLException;
 	
-	public CartaDiCreditoBean doRetrieveByUtente(int utente) throws SQLException;
+	public ArrayList<model.CartaDiCreditoBean> doRetrieveByUtente(int utente) throws SQLException;
 
 }

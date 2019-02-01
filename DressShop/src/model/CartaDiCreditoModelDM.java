@@ -133,10 +133,10 @@ public class CartaDiCreditoModelDM implements CartaDiCreditoModel<CartaDiCredito
 	}
 
 	@Override
-	public CartaDiCreditoBean doRetrieveByUtente(int utente) throws SQLException {
+	public ArrayList<CartaDiCreditoBean> doRetrieveByUtente(int utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
-		CartaDiCreditoBean bean = new CartaDiCreditoBean();
+		ArrayList<CartaDiCreditoBean> bean = new ArrayList<CartaDiCreditoBean>();
 		
 		String queryString ="Select * FROM " + TABLE + " WHERE utente = ?";
 		
@@ -146,7 +146,7 @@ public class CartaDiCreditoModelDM implements CartaDiCreditoModel<CartaDiCredito
 			statement.setInt(1, utente);
 			ResultSet result = statement.executeQuery();
 			while(result.next()){
-				bean = getBean(result);
+				bean.add( getBean(result));
 			}
 		} finally{
 			if(statement!=null) statement.close();
