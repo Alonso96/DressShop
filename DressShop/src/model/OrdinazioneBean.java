@@ -6,6 +6,14 @@ public class OrdinazioneBean {
 	private int ordine;
 	private int prodotto;	//ProdottoInOrdine
 	
+	public OrdinazioneBean(){
+		
+	}
+	
+	public OrdinazioneBean(int ordine, int prodotto){
+		this.ordine = ordine;
+		this.prodotto = prodotto;
+	}
 	
 	public int getOrdine() {
 		return ordine;

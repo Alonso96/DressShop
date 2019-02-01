@@ -9,6 +9,8 @@ public class OrdineBean {
 	private int indirizzo;			//riferimento
 	private int utente;			//riferimento
 	private float totale;
+	
+	
 	public float getTotale() {
 		return totale;
 	}

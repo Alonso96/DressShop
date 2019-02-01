@@ -9,7 +9,7 @@ public interface OrdineModel<OrdineModel> {
 	
 	public Collection<OrdineBean> doRetrieveAll() throws SQLException;
 	
-	public void doSave(OrdineBean ordine) throws SQLException;
+	public int doSave(OrdineBean ordine) throws SQLException;
 	
 	public void doUpdate(OrdineBean ordine) throws SQLException;
 	
