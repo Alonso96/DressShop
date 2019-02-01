@@ -15,7 +15,7 @@ import model.IndirizzoModel;
 import model.IndirizzoModelDM;
 
 /**
- * Servlet implementation class AggiungiIndirizzo
+ * Servlet implementation class AggiungiIndirizzo a
  */
 @WebServlet("/AggiungiIndirizzo")
 public class AggiungiIndirizzo extends HttpServlet {
