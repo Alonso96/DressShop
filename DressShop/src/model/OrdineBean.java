@@ -8,6 +8,15 @@ public class OrdineBean {
 	private String carta_credito;	//riferimento
 	private int indirizzo;			//riferimento
 	private int utente;			//riferimento
+	private float totale;
+	public float getTotale() {
+		return totale;
+	}
+
+	public void setTotale(float totale) {
+		this.totale = totale;
+	}
+
 	private String tipo_spedizione;
 	private float costo_spedizione;
 	

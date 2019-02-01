@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("hiding")
 public class Carrello<ProdottoInCarrello> implements Serializable{
 	
 	List<ProdottoInCarrello> list;
@@ -34,9 +35,17 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	}
 	
 	public void acquista() {
-		
-		
-		
+		ProdottoModel<ProdottoBean> model = new ProdottoInOrdineModelDM();
+		model.ProdottoInCarrello prod = new model.ProdottoInCarrello();
+	
+/*		for(ProdottoInCarrello prod : list){
+			
+			ProdottoBean bean = new ProdottoInOrdineBean();
+			bean.setId_prodotto();
+			
+			
+		}
+*/		
 		
 		
 		list = new ArrayList<ProdottoInCarrello>();

@@ -23,7 +23,8 @@ public class ProdottoInCarrello extends ProdottoInCatalogoBean{
 	}
 	
 	public ProdottoInCarrello(){
-		
+		super();
+		quantitaCar = 0;
 	}
 
 	public int getQuantitaCar() {

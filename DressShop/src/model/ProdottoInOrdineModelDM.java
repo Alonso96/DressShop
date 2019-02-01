@@ -62,43 +62,18 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	@Override
 	public void doSave(ProdottoBean prodotto) throws SQLException {
 		Connection connection = null;
-		PreparedStatement statement_1 = null;
 		PreparedStatement statement_2 = null;
-		
-		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, decrizione, marca, modello, "
-				+ "taglia, colore, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
-		try{ 
-			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement_1 = (PreparedStatement) connection.prepareStatement(insertString_1);
 
-			statement_1.setString(1, prodotto.getCodice_prodotto());
-			statement_1.setString(2, prodotto.getDescrizione());
-			statement_1.setString(3, prodotto.getMarca());
-			statement_1.setString(4, prodotto.getModello());
-			statement_1.setString(5, prodotto.getTaglia());
-			statement_1.setString(6, prodotto.getColore());
-			statement_1.setString(7, prodotto.getCategoria());
-			statement_1.setString(8, prodotto.getFoto());
-			statement_1.setInt(9, prodotto.getPromozione());
-			statement_1.executeUpdate();
-			
-			connection.commit();
-			
-		} finally{
-			if(statement_1 != null) statement_1.close();
-			DriverManagerConnectionPool.releaseConnection(connection);
-		}
-
-		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo, iva, quantita, reso) VALUES(last_insert_id(), ?, ?, ?, ?)";
+		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo, iva, quantita, reso) VALUES(?, ?, ?, ?, ?)";
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement_2 = (PreparedStatement) connection.prepareStatement(insertString_2);
 
-			statement_2.setFloat(1, ((ProdottoInOrdineBean)prodotto).getPrezzo());
-			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getIva());
-			statement_2.setInt(3, ((ProdottoInOrdineBean)prodotto).getQuantita());
-			statement_2.setBoolean(4, ((ProdottoInOrdineBean)prodotto).isReso());
+			statement_2.setInt(1, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
+			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getPrezzo());
+			statement_2.setFloat(3, ((ProdottoInOrdineBean)prodotto).getIva());
+			statement_2.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
+			statement_2.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
 			statement_2.executeUpdate();
 			
 			connection.commit();
@@ -108,55 +83,28 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}
-
+//da rivedere
 	@Override
 	public void doUpdate(ProdottoBean prodotto) throws SQLException {
 		Connection connection = null;
-		PreparedStatement statement_1 = null;
-		PreparedStatement statement_2 = null;
-		
-		String insertString_1=" UPDATE " + TABLE_1 + " SET codice_prodotto = ?, decrizione = ?, marca = ?, modello = ?, "
-				+ "taglia = ?, colore = ?, categoria = ?, foto = ?, promozione = ? WHERE id_prodotto = ?;";
-		
-		try{ 
-			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement_1 = (PreparedStatement) connection.prepareStatement(insertString_1);
-
-			statement_1.setString(1, prodotto.getCodice_prodotto());
-			statement_1.setString(2, prodotto.getDescrizione());
-			statement_1.setString(3, prodotto.getMarca());
-			statement_1.setString(4, prodotto.getModello());
-			statement_1.setString(5, prodotto.getTaglia());
-			statement_1.setString(6, prodotto.getColore());
-			statement_1.setString(7, prodotto.getCategoria());
-			statement_1.setString(8, prodotto.getFoto());
-			statement_1.setInt(9, prodotto.getPromozione());
-			statement_1.setInt(10, prodotto.getId_prodotto());
-			statement_1.executeUpdate();
-			
-			connection.commit();
-			
-		} finally{
-			if(statement_1 != null) statement_1.close();
-			DriverManagerConnectionPool.releaseConnection(connection);
-		}
+		PreparedStatement statement = null;
 
 		String insertString_2="UPDATE " + TABLE_2 + " SET prezzo = ?, iva = ?, quantita = ? reso = ? WHERE id_prodotto = ?";
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement_2 = (PreparedStatement) connection.prepareStatement(insertString_2);
+			statement = (PreparedStatement) connection.prepareStatement(insertString_2);
 
-			statement_2.setFloat(1, ((ProdottoInOrdineBean)prodotto).getPrezzo());
-			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getIva());
-			statement_2.setInt(3, ((ProdottoInOrdineBean)prodotto).getQuantita());
-			statement_2.setBoolean(4, ((ProdottoInOrdineBean)prodotto).isReso());
-			statement_2.setInt(5, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
-			statement_2.executeUpdate();
+			statement.setFloat(1, ((ProdottoInOrdineBean)prodotto).getPrezzo());
+			statement.setFloat(2, ((ProdottoInOrdineBean)prodotto).getIva());
+			statement.setInt(3, ((ProdottoInOrdineBean)prodotto).getQuantita());
+			statement.setBoolean(4, ((ProdottoInOrdineBean)prodotto).isReso());
+			statement.setInt(5, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
+			statement.executeUpdate();
 			
 			connection.commit();
 			
 		} finally{
-			if(statement_2 != null) statement_2.close();
+			if(statement != null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}

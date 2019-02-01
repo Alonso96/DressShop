@@ -62,7 +62,7 @@ public class OrdineModelDM implements OrdineModel{
 		PreparedStatement statement=null;
 
 		String insertString=" INSERT INTO " + TABLE + " (data, pagato, carta_credito, "
-				+ "indirizzo, utente, tipo_spedizione, costo_spedizione) VALUES(?, ?, ?, ?, ?, ?, ?)";
+				+ "indirizzo, utente, totale, tipo_spedizione, costo_spedizione) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -73,8 +73,9 @@ public class OrdineModelDM implements OrdineModel{
 			statement.setString(3, ordine.getCarta_credito());
 			statement.setInt(4, ordine.getIndirizzo());
 			statement.setInt(5, ordine.getUtente());
-			statement.setString(6, ordine.getTipo_spedizione());
-			statement.setFloat(7, ordine.getCosto_spedizione());
+			statement.setFloat(6, ordine.getTotale());
+			statement.setString(7, ordine.getTipo_spedizione());
+			statement.setFloat(8, ordine.getCosto_spedizione());
 			statement.executeUpdate();
 			
 			connection.commit();
@@ -90,7 +91,7 @@ public class OrdineModelDM implements OrdineModel{
 		PreparedStatement statement=null;
 
 		String insertString="UPDATE" + TABLE + " SET data = ?, pagato = ?, carta_credito = ?, "
-				+ "indirizzo = ?, utente = ?, tipo_spedizione = ?, costo_spedizione = ? WHERE id_ordine = ?;";
+				+ "indirizzo = ?, utente = ?, totale = ?, tipo_spedizione = ?, costo_spedizione = ? WHERE id_ordine = ?;";
 		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -101,8 +102,9 @@ public class OrdineModelDM implements OrdineModel{
 			statement.setString(3, ordine.getCarta_credito());
 			statement.setInt(4, ordine.getIndirizzo());
 			statement.setInt(5, ordine.getUtente());
-			statement.setString(6, ordine.getTipo_spedizione());
-			statement.setFloat(7, ordine.getCosto_spedizione());
+			statement.setFloat(6, ordine.getTotale());
+			statement.setString(7, ordine.getTipo_spedizione());
+			statement.setFloat(8, ordine.getCosto_spedizione());
 			statement.executeUpdate();
 			
 			connection.commit();
@@ -168,6 +170,7 @@ public class OrdineModelDM implements OrdineModel{
 		bean.setCarta_credito(rs.getString("carta_credito"));
 		bean.setIndirizzo(rs.getInt("indirizzo"));
 		bean.setUtente(rs.getInt("utente"));
+		bean.setTotale(rs.getFloat("totale"));
 		bean.setTipo_spedizione(rs.getString("tipo_spedizione"));
 		bean.setCosto_spedizione(rs.getFloat("costo_spedizione"));
 		
