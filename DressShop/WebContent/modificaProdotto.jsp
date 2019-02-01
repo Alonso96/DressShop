@@ -32,8 +32,10 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
+						<form action="ProductControl" method="post">
 						<input class="form-control form-control-sm" type="text" placeholder="modifica foto" id="foto">
 						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaFoto()" >invia</button>  
+						</form>
 						<ul class="preview-thumbnail nav nav-tabs">
 						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
 						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
@@ -45,10 +47,14 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">Modello Marca<%--prodotto.getMarca(); prodotto.getModello() --%></h3>
+						<form action="ProductControl" method="post">
 						<input class="form-control form-control-sm" type="text" placeholder="modifica marca" id="marca">  
-						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaMarca()">invia</button> 
+						<button type="submit" value="submit" class="btn btn-secondary btn-lg" >invia</button> 
+						</form>
+						<form action="ProductControl" method="post">
 						<input class="form-control form-control-sm" type="text" placeholder="modifica modello" id="modello">
 						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaModello()">invia</button>  
+						</form>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -60,8 +66,10 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							
 						</div>
 						<h5 class="sizes">sizes:
+						<form action="ProductControl" method="post">
 						<input class="form-control form-control-sm" type="text" placeholder="modifica taglia" id="taglia">
 						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaTaglia()">invia</button> 
+					       </form>
 					       <%--switch(prodotto.getTaglia()){ --%>
 							<%--case("S") :--%><button class="size" data-toggle="tooltip" >s</button>
 							<%--case("M") :--%><button class="size" data-toggle="tooltip" >m</button>
@@ -69,16 +77,19 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							<%--case("XL") :--%><button class="size" data-toggle="tooltip" >xl</button><%--break;
 							} --%>
 						</h5>
+						<form action="ProductControl" method="post">
 						<input class="form-control form-control-sm" type="text" placeholder="modifica colore" id="colore">
 						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaColore()">invia</button> 
+						</form>
 						<h5 class="colors">colors:
 							<button class="color green" style="background-color: orange<%--prodotto.getColore()--%>;" > </button>
 							<button class="color green"></button>
 							<button class="color blue"></button>
 						</h5>
+						<form action="ProductControl" method="post">
 						<input class="form-control form-control-sm" type="text" placeholder="modifica quantita'" id="quantita">
 						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaQuantita()">invia</button> 
-						
+						</form>
 					</div>
 				</div>
 			</div>
