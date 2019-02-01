@@ -157,7 +157,8 @@ img {
 
 /*# fine Visualizza Prodotto*/
 body{
-background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); 
+
+background: linear-gradient(-90deg, #a08381, #e0d7d6 );
 }
 	
 .navbar-inverse {
@@ -636,5 +637,18 @@ table{
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
+}
+
+.dropdown-toggle:active{
+	
+	background-color: transparent !important;
+}
+.dropdown:active{
+	
+	background-color: transparent !important;
+}
+.dropdown-menu:active{
+	
+	background-color: transparent !important;
 }
 

@@ -23,9 +23,7 @@
         Progetto a cura di Giovanni Vassalluzzo, Alfonso Luciani, Roberto De Luca, Luca Giaffrdda, <br>
         Ingegneria del Software, Professore Andrea De Lucia.
       </small>
-        <p> <a href="menu_gestore_marketing">Area Gestore Marketing</a> &emsp;
-     		<a href="menu_proprietario">Area Proprietario</a> &emsp;
-     		 <a href="menu_magazziniere">Area Magazziniere</a> </p>&emsp;
+       
      
      
     </div>

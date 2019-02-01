@@ -15,13 +15,11 @@
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UNA CARTA DI CREDITO</h4>
 <hr>
  <div class="bottoni">
-<a href="" class="shiny-button2" id="dx">
+<a href="carrello_indirizzo.jsp" class="shiny-button2" id="dx">
  <strong>INDIETRO</strong>
   </a>
 
-<a href="" class="shiny-button2" id="sx" >
-  <strong >CONFERMA PAGAMENTO</strong>
-  </a>
+
 
 </div>
  <form action="controller/VerificaCarta">
@@ -67,12 +65,12 @@
  </form>
 
 <div class="bottoni">
-<a href="" class="shiny-button2" id="dx">
+<a href="aggiungi_carta.jsp" class="shiny-button2" id="dx">
  <strong>AGGIUNGI UNA CARTA DI CREDITO</strong>
   </a>
 
  
-  <input id="sx" type="submit" value="CONCLUDI ORDINE">
+  <input type="submit" value="CONCLUDI ORDINE">
 </div>
 
 

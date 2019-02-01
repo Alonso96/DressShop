@@ -14,13 +14,11 @@
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SHOPPING BAG</h4>
 <hr>
  <div class="bottoni">
-<a href="" class="shiny-button2" id="dx">
+<a href="index.jsp" class="shiny-button2" id="dx">
  <strong>CONTINUA A COMPRARE</strong>
   </a>
 
-<a href="" class="shiny-button2" id="sx" >
-  <strong >PROCEDI CON L'ORDINE</strong>
-  </a>
+
 
 </div>
 
@@ -74,7 +72,7 @@
     
 </table>
 
-<a href="" class="shiny-button2 , sx2" >
+<a href="aggiungi_indirizzo" class="shiny-button2 , sx2" >
   <strong >PROCEDI CON L'ORDINE</strong>
   </a>
 

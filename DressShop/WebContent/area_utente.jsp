@@ -24,10 +24,10 @@
           <center> <img alt="ordini effettuati" src="img/delivery-cart.png"></center> 
             <hr>
             <ul class="fa-ul">
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Visualizza gli ordini effettuati fin'ora</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Visualizza gli ordini effettuati fin'ora</strong></li>
               
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Storico Acquisti</a>
+            <a href="storico.jsp" class="btn btn-block btn-primary text-uppercase">Storico Acquisti</a>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Visualizza i tuoi dati personali</strong></li>
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Modifica password</strong></li>
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Il Mio profilo</a>
+            <a href="profilo.jsp" class="btn btn-block btn-primary text-uppercase">Il Mio profilo</a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Aggiungi o elimina uno o più indirizzi</strong></li>
               
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">I Miei Indirizzi</a>
+            <a href="mostra_indirizzi.jsp" class="btn btn-block btn-primary text-uppercase">I Miei Indirizzi</a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Visualizza le tue carte di credito</strong></li>
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Aggiungi o elimina una o più carte di credito</strong></li>
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Carte di Credito</a>
+            <a href="mostra_carte.jsp" class="btn btn-block btn-primary text-uppercase">Carte di Credito</a>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Cancella la tua registrazione</strong></li>
               
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Bye Bye</a>
+            <a href="" class="btn btn-block btn-primary text-uppercase">Bye Bye</a>
           </div>
         </div>
       </div>

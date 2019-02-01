@@ -14,13 +14,11 @@
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UN INDIRIZZO</h4>
 <hr>
  <div class="bottoni">
-<a href="" class="shiny-button2" id="dx">
+<a href="carrello.jsp" class="shiny-button2" id="dx">
  <strong>TORNA AL CARRELLO</strong>
   </a>
 
-<a href="" class="shiny-button2" id="sx" >
-  <strong >PROCEDI CON L'ORDINE</strong>
-  </a>
+
 
 </div>
  <form action="VerificaIndirizzo">
@@ -66,7 +64,7 @@
  </form>
 
 <div class="bottoni">
-<a href="" class="shiny-button2" id="dx">
+<a href="aggiungi_indirizzo.jsp" class="shiny-button2" id="dx">
  <strong>AGGIUNGI UN INDIRIZZO</strong>
   </a>
 
