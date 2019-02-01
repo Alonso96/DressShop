@@ -23,7 +23,7 @@
   </a>
 
 </div>
- <form action="controller/VerificaIndirizzo">
+ <form action="VerificaIndirizzo">
  
 	 <table class="table">
 	  <thead class="thead-dark">
