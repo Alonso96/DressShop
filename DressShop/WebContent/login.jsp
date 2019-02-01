@@ -28,7 +28,7 @@
                             <input type="submit" class="btnSubmit" value="Login" />
                         </div>
                     	<div class="form-group">
-                       <p class="btnForgetPwd">Non hai un account?     <a href="registrazione.jsp" >registrati</a></p>
+                       <p class="btnForgetPwd">Non hai un account? <a href="registrazione.jsp" >registrati</a></p>
                         </div>
                 </div>
                 

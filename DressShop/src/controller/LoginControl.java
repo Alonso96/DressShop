@@ -41,7 +41,7 @@ public class LoginControl extends HttpServlet {
 	        PrintWriter out = response.getWriter();  
 	        String tipo;
 	        String n=request.getParameter("eMail");  
-	        String p=request.getParameter("password"); 
+	        String p=request.getParameter("password"); //
 	        UtenteBean utente = new UtenteBean();
 	        try {
 				utente = model.doRetrieveByEmail(n);
