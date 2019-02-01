@@ -12,6 +12,10 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 		list = new ArrayList<ProdottoInCarrello>(); //costruttore
 	}
 	
+	public boolean isEmpty(){
+		return list.isEmpty();
+	}
+	
 	public void addProd(ProdottoInCarrello prodotto) {
 		list.add(prodotto);
 	}
@@ -30,6 +34,11 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	}
 	
 	public void acquista() {
+		
+		
+		
+		
+		
 		list = new ArrayList<ProdottoInCarrello>();
 	}
 
