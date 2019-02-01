@@ -97,7 +97,7 @@ public class ProcediAcquisto extends HttpServlet {
 				}
 		}
 		
-		if((request.getSession().getAttribute("name"))!=null) {
+		if((request.getSession().getAttribute("email"))!=null) {
 			request.getSession().setAttribute("cart1",cart);
 			Carrello<ProdottoInCarrello> cart1= (Carrello<ProdottoInCarrello>) new Carrello();
 			request.getSession().setAttribute("cart",cart1);
