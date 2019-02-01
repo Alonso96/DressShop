@@ -36,16 +36,14 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	
 	public void acquista() {
 		ProdottoModel<ProdottoBean> model = new ProdottoInOrdineModelDM();
-		model.ProdottoInCarrello prod = new model.ProdottoInCarrello();
-	
-/*		for(ProdottoInCarrello prod : list){
-			
+
+		for(ProdottoInCarrello prod : list){
 			ProdottoBean bean = new ProdottoInOrdineBean();
-			bean.setId_prodotto();
+			bean.setId_prodotto(((model.ProdottoInCarrello)prod).getId_prodotto());
 			
 			
 		}
-*/		
+		
 		
 		
 		list = new ArrayList<ProdottoInCarrello>();
