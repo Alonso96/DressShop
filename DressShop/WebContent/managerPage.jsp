@@ -35,7 +35,7 @@
 </div>
 <div class="btn-group-vertical pull-left">
   <button type="button" class="btn btn-secondary btn-lg" onclick=location.href='prodottiSenzaPrezzo.jsp'>Scegli il prezzo dei Prodotti</button>
-  <button type="button" class="btn btn-secondary btn-lg" >Scorte in esaurimento</button>
+  <button type="button" class="btn btn-secondary btn-lg" onclick=location.href='inserisciPromozione.jsp'>Inserisci Promozione</button>
 
 </div>
 <%@ include file="footer.jsp" %>

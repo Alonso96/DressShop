@@ -43,7 +43,6 @@
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(1)">Inserisci prodotto</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(2)">Comunica esaurimento prodotto</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick=location.href='esaurimentoScorte.jsp'>Scorte in esaurimento</button>
-  <button type="button" class="btn btn-secondary btn-lg">Large button</button>
 </div>
 
  <form class="container col-sm-6">
