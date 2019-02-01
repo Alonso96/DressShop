@@ -12,7 +12,7 @@
 <%@ include file="header.jsp" %>
 
 
-<form action="LoginControl">
+<form action="LoginControl" method="post">
 <div class="container login-container">
             <div class="row">
                 <div class="col-md-12 login-form-1">
