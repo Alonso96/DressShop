@@ -9,13 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.Carrello;
-import model.ProdottoBean;
-import model.ProdottoInCarrello;
-import model.ProdottoInCatalogoBean;
-import model.ProdottoModel;
-import model.ProdottoInCatalogoModelDM;
+import model.*;
 
 /**a
  * Servlet implementation class CartControl
@@ -103,7 +99,12 @@ public class CartControl extends HttpServlet {
 					cart.rimElemento(prod);
 				}
 				else if( action.equalsIgnoreCase("acquista")) {
-					cart.acquista();
+					int id_utente = (int) request.getSession().getAttribute("id");
+					IndirizzoBean indirizzo = (IndirizzoBean) request.getSession().getAttribute("indirizzo");
+					int id_indirizzo = indirizzo.getId_indirizzo();
+					CartaDiCreditoBean carta = (CartaDiCreditoBean) request.getSession().getAttribute("carta");
+					String numero_carta = carta.getNumero_carta();
+					cart.acquista(numero_carta, id_utente, id_indirizzo);
 				}
 				
 				
