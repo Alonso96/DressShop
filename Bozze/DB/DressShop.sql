@@ -55,6 +55,7 @@ pagato			boolean,
 carta_credito		varchar(16),
 indirizzo		int,
 utente			int,
+totale			float,
 tipo_spedizione		varchar(10),
 costo_spedizione	float,
 
