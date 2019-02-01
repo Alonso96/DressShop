@@ -11,37 +11,37 @@
 <body>
 
 <%@ include file="header.jsp" %>
-
+<form action="RegistrationControl" method="post">
 <div class="container">
 <hr>
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">Crea un Account</h4>
-	<form>
+	
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-        <input name="" class="form-control" placeholder="Nome" type="text">
+        <input name="" class="form-control" placeholder="Nome" name="nome" type="text">
    		 </div>
    
     </div> <!-- form-group// -->
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-        <input name="" class="form-control" placeholder="Cognome" type="text">
+        <input name="" class="form-control" placeholder="Cognome" name="cognome" type="text">
     </div> <!-- form-group// -->
     	</div>
     
      <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-        <input name="" class="form-control" placeholder="Data di nascita dd/mm/yy" type="text">
+        <input name="" class="form-control" placeholder="Data di nascita dd/mm/yy" name="data" type="text">
    		 </div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-        <input name="" class="form-control" placeholder="Email" type="email">
+        <input name="" class="form-control" placeholder="Email" name="email" type="email">
 		 </div>
     </div> <!-- form-group// -->
     
@@ -50,7 +50,7 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		
-        <input class="form-control" placeholder="Inserisci password" type="password">
+        <input class="form-control" placeholder="Inserisci password" name="password" type="password">
     		 </div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
@@ -62,9 +62,10 @@
     </div> <!-- form-group// -->                                      
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Crea Account  </button>
-    </div> <!-- form-group// -->      
+    </div> <!-- form-group// -->    
+    </form>
     <p class="text-center">Hai già un account? <a href="login.jsp">Log In</a> </p>                                                                 
-</form>
+
 </article>
 </div> <!-- card.// -->
 </div> 

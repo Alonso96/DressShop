@@ -43,13 +43,13 @@ public class RegistrationControl extends HttpServlet {
 				String action = request.getParameter("action");
 				try {
 				if(action != null) {
-					if(action.equalsIgnoreCase("registration")) { 
+				 
 					String nome = request.getParameter("nome");
 					String cognome = request.getParameter("cognome");
 					String sDate= request.getParameter("data_nascita");
 					Date data_nascita=(Date) new SimpleDateFormat("dd/MM/yy").parse(sDate);		
 					String password = request.getParameter("password");
-					String eMail = request.getParameter("eMail");	
+					String eMail = request.getParameter("email");	
 					String cellulare=request.getParameter("cellulare");
 				
 					
@@ -76,7 +76,7 @@ public class RegistrationControl extends HttpServlet {
 						}
 						}
 				
-				}
+				
 				else {
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationFailed.jsp");
 					dispatcher.forward(request, response);
@@ -89,7 +89,7 @@ public class RegistrationControl extends HttpServlet {
 					e.printStackTrace();
 				}
 					
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationSuccess.jsp");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
 					dispatcher.forward(request, response);
 				
 				

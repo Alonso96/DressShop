@@ -64,7 +64,7 @@ public class LoginControl extends HttpServlet {
 					session.setAttribute("tipo", tipo);
 					System.out.println(tipo);	
 					switch(tipo) {
-					case("mag") : // se utente magazziniere
+					case("mag") : // se utente magazziniere dcd
 					
 					session.setAttribute("tipo", "mag");
 					RequestDispatcher rd=request.getRequestDispatcher("/magazzinierePage.jsp");  
