@@ -45,7 +45,7 @@ public class VerificaCarta extends HttpServlet {
 	
 			if(action != null) {
 			
-				 flag = request.getParameter("indirizzo");
+				 flag = request.getParameter("carta");
 			}
 			if (flag!=null) 
 			{
@@ -54,8 +54,8 @@ public class VerificaCarta extends HttpServlet {
 			}
 			else {
 				   out.println("<script type=\"text/javascript\">");
-				   out.println("alert('Seleziona un indirizzo');");
-				   out.println("location='carrello_indirizzo.jsp';");
+				   out.println("alert('Seleziona una carta');");
+				   out.println("location='carrello_carta.jsp';");
 				   out.println("</script>");
 			}   
 		

@@ -49,11 +49,10 @@ public class UpdateUser extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String firstName = request.getParameter("First_Name");
-		String lastName = request.getParameter("Last_Name");
-		String username = request.getParameter("User_Name");
-		String email = request.getParameter("Email_Address");
-		String password =request.getParameter("Password");
+		String nome = request.getParameter("nome");
+		String cognome = request.getParameter("cognome");
+		String email = request.getParameter("email");
+		String password =request.getParameter("password");
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -73,11 +72,11 @@ public class UpdateUser extends HttpServlet {
 		   
 			
 			System.out.println(preparedStatement);
-			preparedStatement.setString(1, firstName);
-			preparedStatement.setString(2, lastName);
+			preparedStatement.setString(1, nome);
+			preparedStatement.setString(2, cognome);
 			preparedStatement.setString(3, email);
 			preparedStatement.setString(4, password);
-			preparedStatement.setString(5, username);
+		//	preparedStatement.setString(5, username);
 
 			//Execute the insert
 			preparedStatement.executeUpdate();

@@ -45,6 +45,7 @@ public class AggiungiCarta extends HttpServlet {
 	    		carta.setNome_proprietario((request.getParameter("intestatario")));
 	    		try {
 					model.doSave(carta);
+					request.setAttribute("carta", carta);
 					request.getRequestDispatcher("MostraCarte").forward(request, response);
 				} catch (SQLException e) {
 					request.getRequestDispatcher("MostraCarte.jsp").forward(request, response);

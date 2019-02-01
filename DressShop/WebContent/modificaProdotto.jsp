@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.*, model.*, controller.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,10 +15,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<%@ include file="header.jsp" %>
-	<%--
+	<%
 ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 
---%>
+%>
 	<div class="container">
 		<div class="card">
 			<div class="container-fliud">
@@ -33,7 +33,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
 						<input class="form-control form-control-sm" type="text" placeholder="modifica foto" id="foto">
-						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaFoto()">invia</button>  
+						<button type="button" class="btn btn-secondary btn-lg" onclick="modificaFoto()" >invia</button>  
 						<ul class="preview-thumbnail nav nav-tabs">
 						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
 						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
@@ -89,7 +89,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 	function modificaMarca() {
   var x = document.getElementById("marca").value;
  ;
-  //bean.setMarca(x);
+  
 }
 	function modificaQuantita() {
 		  var x = document.getElementById("quantita").value;

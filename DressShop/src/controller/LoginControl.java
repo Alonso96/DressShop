@@ -42,11 +42,21 @@ public class LoginControl extends HttpServlet {
 	        String tipo;
 	        String n=request.getParameter("eMail");  
 	        String p=request.getParameter("password"); 
-	        
+	        UtenteBean utente = new UtenteBean();
+	        try {
+				utente = model.doRetrieveByEmail(n);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 	        
 	        HttpSession session = request.getSession(false);
 	        if(session!=null)
-	        session.setAttribute("name", n);
+	        session.setAttribute("email", n);
+	        
+				session.setAttribute("id", utente.getId_utente()); //assegno l'id
+			
+	        
 
 	        try {
 				if(UtenteModelDM.validate(n, p)){  
@@ -56,20 +66,25 @@ public class LoginControl extends HttpServlet {
 					switch(tipo) {
 					case("mag") : // se utente magazziniere
 					
-					/*RequestDispatcher rd=request.getRequestDispatcher("/amministrazione.jsp");  
-					rd.forward(request,response); */ 
+					session.setAttribute("tipo", "mag");
+					RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
+				    rd.forward(request,response);
 					break;
 					case("cli"): // se utente e' cliente
-				    /*RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
-				    rd.forward(request,response);*/  
+						session.setAttribute("tipo", "cli");
+					RequestDispatcher rd1=request.getRequestDispatcher("/userLogged.jsp");  
+				    rd1.forward(request,response);
 					break;
 					case("pro")://se utente e' proprietario
-						/*RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
-					    rd.forward(request,response);*/  
-							break;
+						session.setAttribute("tipo", "prog");
+						RequestDispatcher rd2=request.getRequestDispatcher("/userLogged.jsp");  
+						rd2.forward(request,response);
+						break;
+							
 					case ("mkt"):// se utente e' gestore marketing
-						/*RequestDispatcher rd=request.getRequestDispatcher("/userLogged.jsp");  
-					    rd.forward(request,response);*/  
+						session.setAttribute("tipo", "mkt");
+						RequestDispatcher rd3=request.getRequestDispatcher("/userLogged.jsp");  
+					    rd3.forward(request,response);
 						
 						
 					}

@@ -43,7 +43,7 @@ public class DeleteUser extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		int id = Integer.parseInt(request.getParameter("email"));
+		int id = Integer.parseInt(request.getParameter("id"));
 
 		 try {
 				bean.doDelete(id);
