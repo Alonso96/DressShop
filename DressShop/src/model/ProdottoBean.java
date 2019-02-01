@@ -6,16 +6,16 @@ public class ProdottoBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	int id_prodotto;
-	String codice_prodotto;
-	String descrizione;
-	String marca;
-	String modello;
-	String taglia;
-	String colore;
-	String foto; //url
-	String categoria;
-	int promozione;
+	private int id_prodotto;
+	private String codice_prodotto;
+	private String descrizione;
+	private String marca;
+	private String modello;
+	private String taglia;
+	private String colore;
+	private String foto; //url
+	private String categoria;
+	private int promozione;
 	
 	public ProdottoBean() {
 		
