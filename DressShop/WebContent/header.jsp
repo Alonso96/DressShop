@@ -8,17 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
    <link rel="stylesheet" href="css/stile.css">
+   
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
 
   <div class="container-fluid">
-    
+  
     <ul class="nav navbar-nav sinistra">
      
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><font color= midnightblue>UOMO</font> <span class="caret"></span></a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu"> 
           <li><a href="#">Page 1-1</a></li>
           <li><a href="#">Page 1-2</a></li>
           <li><a href="#">Page 1-3</a></li>
