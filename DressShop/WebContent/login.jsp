@@ -12,7 +12,7 @@
 <%@ include file="header.jsp" %>
 
 
-
+<form action="LoginControl">
 <div class="container login-container">
             <div class="row">
                 <div class="col-md-12 login-form-1">
@@ -32,10 +32,11 @@
                         </div>
                 </div>
                 
-                    </form>
+                    
                 </div>
             </div>
-        </div>
+       
+</form>        
         <%@ include file="footer.jsp" %>
 </body>
 </html>
