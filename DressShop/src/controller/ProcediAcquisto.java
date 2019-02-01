@@ -88,8 +88,18 @@ public class ProcediAcquisto extends HttpServlet {
 				 					e.printStackTrace();
 				 				}
 				 				*/
-				 			  cart.acquista();
-				 			}
+				 			int id_utente = (int) request.getSession().getAttribute("id");
+							IndirizzoBean indirizzo = (IndirizzoBean) request.getSession().getAttribute("indirizzo");
+							int id_indirizzo = indirizzo.getId_indirizzo();
+							CartaDiCreditoBean carta = (CartaDiCreditoBean) request.getSession().getAttribute("carta");
+							String numero_carta = carta.getNumero_carta();
+							try {
+								cart.acquista(numero_carta, id_utente, id_indirizzo);
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}				 			
+							}
 				 			
 				 		}
 				 		//query aggiornamento prodotti
