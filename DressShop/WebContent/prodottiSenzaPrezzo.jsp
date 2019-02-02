@@ -51,9 +51,10 @@
                        
                     </div>
                 </div>
-               <input class="form-control form-control-sm" id="myText" type="number" placeholder="Inserisci prezzo">
+                <form action="ProductControl" method="post">
+               <input class="form-control form-control-sm" id="myText" type="number" placeholder="Inserisci prezzo" name="prezzo">
                <button class="btn btn-primary" type="submit" onclick="aggiungiPrezzo()">Aggiungi prezzo</button>
-                
+                </form>
             </div>
         </div>
         <%-- 	}

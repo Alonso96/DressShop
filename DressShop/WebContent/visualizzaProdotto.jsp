@@ -15,6 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<%@ include file="header.jsp" %>
+	<form action="CartControl" method="post">
 	<%--
 ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 
@@ -58,7 +59,8 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						<%--if(podotto.getPromozione!=0){ --%>
 						<p class="vote"><strong>Scontato del 91%<%--prodotto.getPromozione() --%></strong> </strong></p>
 						<%-- --%>
-						<h5 class="sizes">sizes:
+						<form>
+						<h5 class="sizes" name="colore">sizes:
 					       <%--switch(prodotto.getTaglia()){ --%>
 							<%--case("S") :--%><button class="size" data-toggle="tooltip" >s</button>
 							<%--case("M") :--%><button class="size" data-toggle="tooltip" >m</button>
@@ -66,13 +68,16 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							<%--case("XL") :--%><button class="size" data-toggle="tooltip" >xl</button><%--break;
 							} --%>
 						</h5>
+						</form>
+						<form name="colore">
 						<h5 class="colors">colors:
 							<button class="color green" style="background-color: orange<%--prodotto.getColore()--%>;" > </button>
 							<button class="color green"></button>
 							<button class="color blue"></button>
 						</h5>
+						</form>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">Aggiungi al carrello</button>
+							<button class="add-to-cart btn btn-default" type="button" name="prodotto">Aggiungi al carrello</button>
 							
 						</div>
 					</div>
@@ -80,6 +85,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 			</div>
 		</div>
 	</div>
+	</form>
 	<%@include file="footer.jsp" %>
 </body>
 </html>

@@ -136,7 +136,7 @@
         </button>
       </div>
       <div class="modal-body">
-                <input class="form-control form-control-lg" type="text" placeholder="Inserisci percentuale"> 
+                <input class="form-control form-control-lg" type="text" placeholder="Inserisci percentuale" name="promozione"> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>

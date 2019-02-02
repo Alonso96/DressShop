@@ -33,7 +33,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
 						<form action="ProductControl" method="post">
-						<input class="form-control form-control-sm" type="text" placeholder="modifica foto" id="foto">
+						<input class="form-control form-control-sm" type="text" placeholder="modifica foto" id="foto" name="foto">
 						<button type="submit" value="submit" class="btn btn-secondary btn-lg"  >invia</button>  
 						</form>
 						<ul class="preview-thumbnail nav nav-tabs">
@@ -48,11 +48,11 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 					<div class="details col-md-6">
 						<h3 class="product-title">Modello Marca<%--prodotto.getMarca(); prodotto.getModello() --%></h3>
 						<form action="ProductControl" method="post">
-						<input class="form-control form-control-sm" type="text" placeholder="modifica marca" id="marca">  
+						<input class="form-control form-control-sm" type="text" placeholder="modifica marca" id="marca" name="marca">  
 						<button type="submit" value="submit" class="btn btn-secondary btn-lg" >invia</button> 
 						</form>
 						<form action="ProductControl" method="post">
-						<input class="form-control form-control-sm" type="text" placeholder="modifica modello" id="modello">
+						<input class="form-control form-control-sm" type="text" placeholder="modifica modello" id="modello" name="modello">
 						<button type="submit" value="submit" class="btn btn-secondary btn-lg" onclick="modificaModello()">invia</button>  
 						</form>
 						<div class="rating">
@@ -67,7 +67,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 						</div>
 						<h5 class="sizes">sizes:
 						<form action="ProductControl" method="post">
-						<input class="form-control form-control-sm" type="text" placeholder="modifica taglia" id="taglia">
+						<input class="form-control form-control-sm" type="text" placeholder="modifica taglia" id="taglia" name="taglia">
 						<button type="submit" value="submit" class="btn btn-secondary btn-lg" onclick="modificaTaglia()">invia</button> 
 					       </form>
 					       <%--switch(prodotto.getTaglia()){ --%>
@@ -78,7 +78,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							} --%>
 						</h5>
 						<form action="ProductControl" method="post">
-						<input class="form-control form-control-sm" type="text" placeholder="modifica colore" id="colore">
+						<input class="form-control form-control-sm" type="text" placeholder="modifica colore" id="colore" name="colore">
 						<button type="submit" value="submit" class="btn btn-secondary btn-lg" onclick="modificaColore()">invia</button> 
 						</form>
 						<h5 class="colors">colors:
@@ -87,7 +87,7 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							<button class="color blue"></button>
 						</h5>
 						<form action="ProductControl" method="post">
-						<input class="form-control form-control-sm" type="text" placeholder="modifica quantita'" id="quantita">
+						<input class="form-control form-control-sm" type="text" placeholder="modifica quantita'" id="quantita" name="quantita">
 						<button type="submit" value="submit" class="btn btn-secondary btn-lg" onclick="modificaQuantita()">invia</button> 
 						</form>
 					</div>

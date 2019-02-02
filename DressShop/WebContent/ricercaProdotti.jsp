@@ -51,8 +51,9 @@
                         <span>$14.00</span>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit">Aggiungi al carrello</button>
-                
+                <form action="CartControl" method="post">
+                <button class="btn btn-primary" type="submit" name="aggiungi_carrello">Aggiungi al carrello</button>
+                </form>
             </div>
         </div>
         <%-- 		} 

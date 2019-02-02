@@ -31,6 +31,7 @@
              
 
   <div class="col-sm-6">
+  <form action="ProductControl" method="post">
     <div class="card">
       <h4 class="card-header bg-dark text-white">Nome  <%--=session.getAttribute("nome")--%>
       </h4>
@@ -39,11 +40,11 @@
             <img src="http://31.media.tumblr.com/tumblr_lw2lhqjrel1qfmi03o9_r1_500.gif" class="img-thumbnail" alt="avatar"/>
           </div>
         <h4 class="card-title">Magazziniere</h4>
-          <p class="card-text"><br>Cognome<br> E-Mail<br> Data di nascita.</p>
+          <p class="card-text"><br>Cognome <%--=session.getAttribute("cognome")--%><br> E-Mail<%--=session.getAttribute("eMail")--%><br> Data di nascita.<%--=session.getAttribute("dataDiNascita")--%></p>
       </div>
     </div>
-      	<button type="button" class="btn btn-secondary btn-lg" onclick="">Elimina</button> 
-    
+      	<button type="submit" class="btn btn-secondary btn-lg" onclick="" name="elimina">Elimina</button> 
+    <form action="ProductControl" method="post">
   </div>
         <%-- 		} 
 		} else {

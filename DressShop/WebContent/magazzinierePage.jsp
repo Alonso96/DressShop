@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Magazziniere</title>
 <link rel="stylesheet" href="css/css/bootstrap.min.css">
 <link href="css/stile.css" rel="stylesheet" >
 </head>
@@ -31,7 +31,7 @@
             <img src="http://31.media.tumblr.com/tumblr_lw2lhqjrel1qfmi03o9_r1_500.gif" class="img-thumbnail" alt="avatar"/>
           </div>
         <h4 class="card-title">Magazziniere</h4>
-          <p class="card-text"><br>Cognome<br> E-Mail<br> Data di nascita.</p>
+          <p class="card-text"><br>Cognome <%--=session.getAttribute("cognome")--%><br> E-Mail<%--=session.getAttribute("eMail")--%><br> Data di nascita.<%--=session.getAttribute("dataDiNascita")--%></p>
       </div>
     </div>
   </div>
@@ -46,25 +46,26 @@
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(3)">Modifica prodotto</button>
 </div>
 
- <form class="container col-sm-6">
+ <form class="container col-sm-6"  action="ProductControl" method="post">>
  
   <div class="form-group" id='ins'>
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci categoria">   
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci tipo">
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci marca"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci modello"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci foto"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci taglia"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci quantità"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci colore"> 
-  	<button type="button" class="btn btn-secondary btn-lg" onclick="">Inserisci</button> 
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci categoria" name="categoria">   
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci tipo" name="tipo">
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci marca" name="marca"> 
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci modello" name="modello"> 
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci foto" name="foto"> 
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci taglia" name="taglia"> 
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci quantità" name="quantita"> 
+<input class="form-control form-control-lg" type="text" placeholder="Inserisci colore" name="colore"> 
+  	<button type="submit" class="btn btn-secondary btn-lg" onclick="">Inserisci</button> 
   </div>
   <div class="form-group" id='com'>
 
   <p>Invia a</p>   
-    <input type="email" class="form-control"  placeholder="name@example.com">
-<input class="form-control form-control-lg" type="text" placeholder="Id Prodotto">
-
+  <form action="" method="post">
+    <input type="email" class="form-control"  placeholder="name@example.com" name="eMail">
+<input class="form-control form-control-lg" type="text" placeholder="Id Prodotto" name="idProdotto">
+</form>
 </div>
 </form>
 <div class="container" id="modi">
@@ -80,7 +81,7 @@
 		
 		while(it.hasNext()) {
 			ProdottoBean bean = (ProdottoBean) it.next();
-*/	--%>
+*/	--%><form action="ProductControl" method="post">
                 <div class="product-image6">
                     <a href="modificaProdotto.jsp">
                         <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" <%--src="<%=bean.getFoto()--%>>
@@ -92,6 +93,7 @@
                         <span>$14.00</span>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
         <%-- 		} 

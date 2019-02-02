@@ -26,7 +26,7 @@
             <img src="http://31.media.tumblr.com/tumblr_lw2lhqjrel1qfmi03o9_r1_500.gif" class="img-thumbnail" alt="avatar"/>
           </div>
         <h4 class="card-title">Gestore Marketing</h4>
-          <p class="card-text"><br>Cognome<br> E-Mail<br> Data di nascita.</p>
+          <p class="card-text"><br>Cognome <%--=session.getAttribute("cognome")--%><br> E-Mail<%--=session.getAttribute("eMail")--%><br> Data di nascita.<%--=session.getAttribute("dataDiNascita")--%></p>
       </div>
     </div>
   </div>
@@ -37,6 +37,46 @@
   <button type="button" class="btn btn-secondary btn-lg" onclick=location.href='prodottiSenzaPrezzo.jsp'>Scegli il prezzo dei Prodotti</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick=location.href='inserisciPromozione.jsp'>Inserisci Promozione</button>
 
+</div>
+<div class="container" id="modi">
+
+    <h3 class="h3">Resi da Effettuare </h3>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid6">
+            <%--
+		if(products.size() > 0) {
+		//ok
+		Iterator<?> it = products.iterator();
+		
+		while(it.hasNext()) {
+			ProdottoBean bean = (ProdottoBean) it.next();
+*/	--%>
+                <div class="product-image6">
+                    <a href="#">
+                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" <%--src="<%=bean.getFoto()--%>>
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Women's Red Top</a></h3>
+                    <div class="price"> &euro; 11.00 <%--= //bean.getPrezzoV()--%>
+                        <span>$14.00</span>
+                    </div>
+                </div>
+            <form action="ProductControl" method="post">
+                  <button type="button" class="btn btn-secondary btn-lg" onclick="" name="reso">Effettua reso</button>
+               </form>
+            </div>
+        </div>
+        <%-- 		} 
+		} else {
+	--%>	
+		<%--<tr>
+			<td colspan="4">No product available</td>
+		</tr>--%>
+<%--/*}*/--%> 
+
+</div>
 </div>
 <%@ include file="footer.jsp" %>
 </body>
