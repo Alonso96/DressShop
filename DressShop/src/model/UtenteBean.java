@@ -11,7 +11,7 @@ public class UtenteBean implements Serializable {
 	private String cognome;
 	private String email;
 	private String password;
-	private String tipo ;
+	private int tipo ;	//1=cliente, 2=magazziniere, 3=gestore marketing, 4=proprietario
 	private Date data_nascita;
 	
 	public UtenteBean() {
@@ -79,13 +79,13 @@ public class UtenteBean implements Serializable {
 
 
 
-	public String getTipo() {
+	public int getTipo() {
 		return tipo;
 	}
 
 
 
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
 

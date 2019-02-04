@@ -73,7 +73,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			statement.setString(2, utente.getCognome());
 			statement.setString(3, utente.getEmail());
 			statement.setString(4, utente.getPassword());
-			statement.setString(5, utente.getTipo());
+			statement.setInt(5, utente.getTipo());
 			statement.setDate(6, utente.getData_nascita());
 			statement.executeUpdate();
 			
@@ -100,7 +100,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			statement.setString(2, utente.getCognome());
 			statement.setString(3, utente.getEmail());
 			statement.setString(4, utente.getPassword());
-			statement.setString(5, utente.getTipo());
+			statement.setInt(5, utente.getTipo());
 			statement.setDate(6, utente.getData_nascita());
 			statement.setInt(7, utente.getId_utente());
 			statement.executeUpdate();
@@ -168,7 +168,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		bean.setCognome(rs.getString("cognome"));
 		bean.setEmail(rs.getString("email"));
 		bean.setPassword(rs.getString("password"));
-		bean.setTipo(rs.getString("tipo"));
+		bean.setTipo(rs.getInt("tipo"));
 		bean.setData_nascita(rs.getDate("data_nascita"));
 		
 		return bean;
@@ -257,8 +257,8 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	}
 	
 	
-	public static String getTipo(String email, String password) throws SQLException{
-		String flag =null;
+	public static int getTipo(String email, String password) throws SQLException{
+		int flag = 0;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		UtenteBean bean = new UtenteBean();
@@ -280,7 +280,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 
 			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
 			if(rs.next())
-			flag=rs.getString("tipo");
+			flag = rs.getInt("tipo");
 			
 		} finally {
 

@@ -57,22 +57,35 @@
     	<img  src="img/logodre.png" alt="Logo" height="80px" width="280px"> 
     	</a>
 
-    <%! String s = new String();
-    	String r = new String();%>
-    <%s = (String) request.getSession().getAttribute("tipo");
-    	System.out.println(s);
-    	if(s == null){
-    		s = "Login";
-    		r = "login.jsp";
-    	} else {
-    		s = "Logout";
-    		r = "LogoutControl";
-    	}
+    <%! String aut = new String();
+    	String autCtrl = new String();
+    	String areaUt = new String();
+    	int tipo;
+    %>
+    <%	if(request.getSession().getAttribute("tipo") != null){
+    		tipo = (int) request.getSession().getAttribute("tipo");
+    		System.out.println(tipo);
+    		if(tipo == 0){
+    			aut = "Login";
+    			autCtrl = "login.jsp";
+	    	} else {
+    			aut = "Logout";
+    			autCtrl = "LogoutControl";
+    		}
+	    	if(tipo == 1)
+    			areaUt = "area_utente.jsp";
+    		else
+		   		areaUt = "login.jsp";
+		} else{
+		    aut = "Login";
+			autCtrl = "login.jsp";
+			areaUt = "login.jsp";
+		}
     %>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="carrello.jsp"><font color= GRAY><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</font></a></li>
-      <li><a href="area_utente.jsp"><font color= GRAY><span class="glyphicon glyphicon-user"></span> Area Utente</font></a></li>
-      <li><a href= <%= r %> ><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> <%= s %></font></a></li>
+      <li><a href=carrello.jsp><font color= GRAY><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</font></a></li>
+      <li><a href=<%= areaUt %>><font color= GRAY><span class="glyphicon glyphicon-user"></span> Area Utente</font></a></li>
+      <li><a href= <%= autCtrl %> ><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> <%= aut %></font></a></li>
       
     </ul>
   </div>

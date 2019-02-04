@@ -49,9 +49,7 @@ public class RegistrationControl extends HttpServlet {
 					String sDate= request.getParameter("data_nascita");
 					Date data_nascita=(Date) new SimpleDateFormat("dd/MM/yy").parse(sDate);		
 					String password = request.getParameter("password");
-					String eMail = request.getParameter("email");	
-					String cellulare=request.getParameter("cellulare");
-				
+					String eMail = request.getParameter("email");					
 					
 				
 
@@ -63,7 +61,7 @@ public class RegistrationControl extends HttpServlet {
 						newUser.setEmail(eMail);
 						newUser.setPassword(password);
 						newUser.setData_nascita(data_nascita);
-						newUser.setTipo("cli");
+						newUser.setTipo(1);
 						
 						if(UtenteModelDM.checkUser(eMail) == false) {
 							RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationFailed.jsp");

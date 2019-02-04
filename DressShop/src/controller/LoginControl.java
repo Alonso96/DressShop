@@ -39,7 +39,7 @@ public class LoginControl extends HttpServlet {
 
 		response.setContentType("text/html");  
 	        PrintWriter out = response.getWriter();  
-	        String tipo;
+	        int tipo;
 	        String n=request.getParameter("eMail");  
 	        String p=request.getParameter("password"); //
 	        UtenteBean utente = new UtenteBean();
@@ -64,25 +64,25 @@ public class LoginControl extends HttpServlet {
 					session.setAttribute("tipo", tipo);
 					System.out.println(tipo);	
 					switch(tipo) {
-					case("mag") : // se utente magazziniere dcd
+					case(2) : // se utente magazziniere dcd
 					
-					session.setAttribute("tipo", "mag");
+					session.setAttribute("tipo", 2);
 					RequestDispatcher rd=request.getRequestDispatcher("/magazzinierePage.jsp");  
 				    rd.forward(request,response);
 					break;
-					case("cli"): // se utente e' cliente
-						session.setAttribute("tipo", "cli");
+					case(1): // se utente e' cliente
+						session.setAttribute("tipo", 1);
 					RequestDispatcher rd1=request.getRequestDispatcher("/index.jsp");  
 				    rd1.forward(request,response);
 					break;
-					case("pro")://se utente e' proprietario
-						session.setAttribute("tipo", "prog");
+					case(4)://se utente e' proprietario
+						session.setAttribute("tipo", 4);
 						RequestDispatcher rd2=request.getRequestDispatcher("/proprietarioPage.jsp");  
 						rd2.forward(request,response);
 						break;
 							
-					case ("mkt"):// se utente e' gestore marketing
-						session.setAttribute("tipo", "mkt");
+					case (3):// se utente e' gestore marketing
+						session.setAttribute("tipo", 3);
 						RequestDispatcher rd3=request.getRequestDispatcher("/managerPage.jsp");  
 					    rd3.forward(request,response);
 						
