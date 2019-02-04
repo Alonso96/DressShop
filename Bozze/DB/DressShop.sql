@@ -82,6 +82,11 @@ data_fine		date,
 sconto			int
 );
 
+/*
+Prodotto ha prezzo e iva;
+Prodotto_in_catalogo aggiunge taglie e quantità per ogni taglia;
+Prodotto_in_ordine ha prezzo, iva, quantità e taglia riferite al prodotto acquistato al momento dell'acquisto.
+*/
 CREATE TABLE PRODOTTO(
 id_prodotto		int		primary key auto_increment,
 codice_prodotto		varchar(20),
@@ -89,6 +94,8 @@ descrizione		varchar(50),
 marca			varchar(20),
 modello			varchar(20),
 colore			varchar(20),
+prezzo			float,
+iva			int,	
 categoria		varchar(20),	/*maxicategoria.categoria	es:uomo.camicie
 					maxicategorie tra:	uomo, donna, accessori
 					categorie tra:	giacche, jeans, camicie, intimo, maglie e felpe, cappotti, pantaloni*/
@@ -103,8 +110,6 @@ promozione		int,
 
 CREATE TABLE PRODOTTO_IN_CATALOGO(
 id_prodotto		int,
-prezzo			float,
-iva			int,
 taglia			varchar(5),
 quantita 		int,
 
@@ -115,7 +120,7 @@ quantita 		int,
 );
 
 CREATE TABLE PRODOTTO_IN_ORDINE(
-id_prodotto		int,
+id_prodotto		int		primary key,
 prezzo			float,
 iva			int,
 taglia			varchar(5),
