@@ -14,6 +14,7 @@
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;INDIRIZZI</h4>
 <hr>
+<a href="area_utente.jsp"><img src="img/left.png"></a>
 
 <table class="table">
 	  <thead class="thead-dark">
@@ -50,7 +51,7 @@
 	      	
 	</table>
 
-<a href="" class="shiny-button2">
+<a href="aggiungi_indirizzo" class="shiny-button2">
  <strong>AGGIUNGI UN INDIRIZZO</strong>
   </a>
 

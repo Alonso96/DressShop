@@ -5,7 +5,8 @@ public class ProdottoInOrdineBean extends ProdottoBean{
 	private static final long serialVersionUID = 1L;
 
 	private float prezzo;
-	private float iva;
+	private int iva;
+	private String taglia;
 	private int quantita;
 	private boolean reso;
 	
@@ -24,12 +25,20 @@ public class ProdottoInOrdineBean extends ProdottoBean{
 		this.prezzo = prezzo;
 	}
 
-	public float getIva() {
+	public int getIva() {
 		return iva;
 	}
 
-	public void setIva(float iva) {
+	public void setIva(int iva) {
 		this.iva = iva;
+	}
+
+	public String getTaglia() {
+		return taglia;
+	}
+
+	public void setTaglia(String taglia) {
+		this.taglia = taglia;
 	}
 
 	public int getQuantita() {

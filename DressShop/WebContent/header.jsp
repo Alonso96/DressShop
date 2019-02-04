@@ -12,42 +12,42 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse">
-
+//prova
   <div class="container-fluid">
   
     <ul class="nav navbar-nav sinistra">
      
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><font color= midnightblue>UOMO</font> <span class="caret"></span></a>
         <ul class="dropdown-menu"> 
-          <li><a href="visualizzaProdotto.jsp">Giacche</a></li>
-          <li><a href="visualizzaProdotto.jsp">Jeans</a></li>
-          <li><a href="visualizzaProdotto.jsp">Camicie</a></li>
-          <li><a href="visualizzaProdotto.jsp">Intimo</a></li>
-          <li><a href="visualizzaProdotto.jsp">Shirt e felpe</a></li>
-          <li><a href="visualizzaProdotto.jsp">Cappotti</a></li>
-          <li><a href="visualizzaProdotto.jsp">Pantaloni</a></li>
+          <li><a href="CategoriaControl?categoria=giacca.uomo">Giacche</a></li>
+          <li><a href="CategoriaControl?categoria=jeans.uomo">Jeans</a></li>
+          <li><a href="CategoriaControl?categoria=camicie.uomo">Camicie</a></li>
+          <li><a href="CategoriaControl?categoria=intimo.uomo">Intimo</a></li>
+          <li><a href="CategoriaControl?categoria=shirt.uomo">Shirt e felpe</a></li>
+          <li><a href="CategoriaControl?categoria=cappotti.uomo">Cappotti</a></li>
+          <li><a href="CategoriaControl?categoria=pantaloni.uomo">Pantaloni</a></li>
         </ul>
       </li>
       
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><font color= #FF0000>DONNA</font><span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="visualizzaProdotto.jsp">Giacche</a></li>
-          <li><a href="visualizzaProdotto.jsp">Jeans</a></li>
-          <li><a href="visualizzaProdotto.jsp">Camicie</a></li>
-          <li><a href="visualizzaProdotto.jsp">Intimo</a></li>
-          <li><a href="visualizzaProdotto.jsp">Shirt e felpe</a></li>
-          <li><a href="visualizzaProdotto.jsp">Cappotti</a></li>
-          <li><a href="visualizzaProdotto.jsp">Pantaloni</a></li>
+          <li><a href="CategoriaControl?categoria=giacca.donna">Giacche</a></li>
+          <li><a href="CategoriaControl?categoria=jeans.donna">Jeans</a></li>
+          <li><a href="CategoriaControl?categoria=camicie.donna">Camicie</a></li>
+          <li><a href="CategoriaControl?categoria=intimo.donna">Intimo</a></li>
+          <li><a href="CategoriaControl?categoria=shirt.donna">Shirt e felpe</a></li>
+          <li><a href="CategoriaControl?categoria=cappotti.donna">Cappotti</a></li>
+          <li><a href="CategoriaControl?categoria=pantaloni.donna">Pantaloni</a></li>
         </ul>
       </li>
       
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><font color= "brown">ACCESSORI</font><span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="visualizzaProdotto.jsp">Borse</a></li>
-          <li><a href="visualizzaProdotto.jsp">Occhiali</a></li>
-          <li><a href="visualizzaProdotto.jsp">Cappelli</a></li>
-          <li><a href="visualizzaProdotto.jsp">Cinture</a></li>
-          <li><a href="visualizzaProdotto.jsp">Sciarpe</a></li>
+          <li><a href="CategoriaControl?categoria=borse.accessori">Borse</a></li>
+          <li><a href="CategoriaControl?categoria=occhiali.accessori">Occhiali</a></li>
+          <li><a href="CategoriaControl?categoria=cappelli.accessori">Cappelli</a></li>
+          <li><a href="CategoriaControl?categoria=cinture.accessori">Cinture</a></li>
+          <li><a href="CategoriaControl?categoria=sciarpe.accessori">Sciarpe</a></li>
         </ul>
       </li>
       

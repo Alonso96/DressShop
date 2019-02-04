@@ -7,19 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
+public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 
 	private static final String TABLE_1 ="PRODOTTO";
-	private static final String TABLE_2 ="PRODOTTO_IN_ORDINE";
 
 	@Override
 	public ProdottoBean doRetrieveByKey(int id_prodotto) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
-		ProdottoBean bean = new ProdottoInOrdineBean();
+		ProdottoBean bean = new ProdottoBean();
 		
-		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, " 
-		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE " + TABLE_1 + ".id_prodotto = ?";
+		String queryString ="Select * FROM " + TABLE_1 + " WHERE id_prodotto = ?";
 		
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -42,9 +40,28 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		PreparedStatement statement=null;
 		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
 		
-		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, " 
-		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE " + TABLE_1 + ".id_prodotto = ?";
+		String queryString ="Select * FROM " + TABLE_1;
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				listaBean.add(getBean(result));
+			}
+			
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return listaBean;
+	}
 
+	public Collection<ProdottoBean> doRetrieveAllIn_vendita() throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
+		
+		String queryString ="Select * FROM " + TABLE_1 + "WHERE in_vendita = true";
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(queryString);
@@ -61,46 +78,60 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	}
 
 	@Override
-	public void doSave(ProdottoBean prodotto) throws SQLException {
+	public void doSave(ProdottoBean prodotto) throws SQLException {	//fare inserimento per ogni taglia
 		Connection connection = null;
-		PreparedStatement statement_2 = null;
-
-		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo, iva, quantita, reso) VALUES(?, ?, ?, ?, ?)";
+		PreparedStatement statement = null;
+		
+		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, decrizione, marca, modello, "
+				+ "prezzo, iva, in_vendita, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement_2 = (PreparedStatement) connection.prepareStatement(insertString_2);
+			statement = (PreparedStatement) connection.prepareStatement(insertString_1);
 
-			statement_2.setInt(1, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
-			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getPrezzo());
-			statement_2.setFloat(3, ((ProdottoInOrdineBean)prodotto).getIva());
-			statement_2.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
-			statement_2.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
-			statement_2.executeUpdate();
+			statement.setString(1, prodotto.getCodice_prodotto());
+			statement.setString(2, prodotto.getDescrizione());
+			statement.setString(3, prodotto.getMarca());
+			statement.setString(4, prodotto.getModello());
+			statement.setFloat(5, prodotto.getPrezzo());
+			statement.setInt(6, prodotto.getIva());
+			statement.setBoolean(7, prodotto.isIn_vendita());
+			statement.setString(8, prodotto.getCategoria());
+			statement.setString(9, prodotto.getFoto());
+			statement.setInt(10, prodotto.getPromozione());
+			statement.executeUpdate();
 			
 			connection.commit();
 			
 		} finally{
-			if(statement_2 != null) statement_2.close();
+			if(statement != null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}
-//da rivedere
+
 	@Override
 	public void doUpdate(ProdottoBean prodotto) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement = null;
-
-		String insertString_2="UPDATE " + TABLE_2 + " SET prezzo = ?, iva = ?, taglia = ?, quantita = ? reso = ? WHERE id_prodotto = ?";
+		
+		String insertString_1=" UPDATE " + TABLE_1 + " SET codice_prodotto = ?, decrizione = ?, marca = ?, modello = ?, "
+				+ "prezzo = ?, iva = ?, in_vendita = ?, categoria = ?, foto = ?, promozione = ? WHERE id_prodotto = ?;";
+		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement = (PreparedStatement) connection.prepareStatement(insertString_2);
+			statement = (PreparedStatement) connection.prepareStatement(insertString_1);
 
-			statement.setFloat(1, ((ProdottoInOrdineBean)prodotto).getPrezzo());
-			statement.setInt(2, ((ProdottoInOrdineBean)prodotto).getIva());
-			statement.setString(3, ((ProdottoInOrdineBean)prodotto).getTaglia());
-			statement.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
-			statement.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
-			statement.setInt(6, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
+			statement.setString(1, prodotto.getCodice_prodotto());
+			statement.setString(2, prodotto.getDescrizione());
+			statement.setString(3, prodotto.getMarca());
+			statement.setString(4, prodotto.getModello());
+			statement.setFloat(5, prodotto.getPrezzo());
+			statement.setInt(6, prodotto.getIva());
+			statement.setBoolean(7, prodotto.isIn_vendita());
+			statement.setString(8, prodotto.getCategoria());
+			statement.setString(9, prodotto.getFoto());
+			statement.setInt(10, prodotto.getPromozione());
+			statement.setInt(11, prodotto.getId_prodotto());
 			statement.executeUpdate();
 			
 			connection.commit();
@@ -117,7 +148,7 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		PreparedStatement statement=null;
 		int result = 0;
 		
-		String deleteString ="DELETE FROM " + TABLE_2 + " WHERE id_prodotto = ?";
+		String deleteString ="UPDATE " + TABLE_1 + " SET prezzo = 0, iva = 0, in_vendita = false WHERE id_prodotto = ?";
 		
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -134,19 +165,18 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		
 		return result != 0;
 	}
-	
-	public Collection<ProdottoBean> doRetrieveByOrder(int id_ordine) throws SQLException {
+
+	public Collection<ProdottoBean> doRetrieveByCategory(String categoria) throws SQLException {	//restituisce i prodotti in vendita
 		Connection connection = null;
 		PreparedStatement statement=null;
 		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
-
-		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, " 
-		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " join ORDINE WHERE ordine = ?";
+		
+		String queryString ="Select * FROM " + TABLE_1 + " WHERE categoria = ? and in_vendita = true";
 		
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(queryString);
-			statement.setInt(1, id_ordine);
+			statement.setString(1, categoria);
 			ResultSet result = statement.executeQuery();
 			while(result.next()){
 				listaBean.add(getBean(result));
@@ -159,21 +189,19 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	}
 
 	private static ProdottoBean getBean(ResultSet rs) throws SQLException{
-		ProdottoBean bean = new ProdottoInOrdineBean();
+		ProdottoBean bean = new ProdottoBean();
 		
-		bean.setId_prodotto(rs.getInt("PRODOTTO.id_prodotto"));
+		bean.setId_prodotto(rs.getInt("id_prodotto"));
 		bean.setCodice_prodotto(rs.getString("codice_promozione"));
 		bean.setDescrizione(rs.getString("descrizione"));
 		bean.setMarca(rs.getString("marca"));
 		bean.setModello(rs.getString("modello"));
+		bean.setPrezzo(rs.getFloat("prezzo"));
+		bean.setIva(rs.getInt("iva"));
+		bean.setIn_vendita(rs.getBoolean("in_vendita"));
 		bean.setFoto(rs.getString("foto"));
 		bean.setCategoria(rs.getString("categoria"));
 		bean.setPromozione(rs.getInt("promozione"));
-		((ProdottoInOrdineBean)bean).setPrezzo(rs.getFloat("PRODOTTO_IN_ORDINE.prezzo"));
-		((ProdottoInOrdineBean)bean).setIva(rs.getInt("PRODOTTO_IN_ORDINE.iva"));
-		((ProdottoInOrdineBean)bean).setQuantita(rs.getInt("quantita"));
-		((ProdottoInOrdineBean)bean).setTaglia(rs.getString("taglia"));
-		((ProdottoInOrdineBean)bean).setReso(rs.getBoolean("reso"));
 		
 		return bean;
 	}

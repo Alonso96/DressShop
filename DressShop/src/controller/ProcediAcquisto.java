@@ -34,7 +34,7 @@ public class ProcediAcquisto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Carrello<ProdottoInCarrello> cart = (Carrello<ProdottoInCarrello>)request.getSession().getAttribute("cart");
-		ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
+		ProdottoModel<ProdottoBean> model = new ProdottoModelDM();
 		
 		System.out.println("ciao1");
 		 HttpSession session = request.getSession();

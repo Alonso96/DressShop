@@ -13,11 +13,11 @@
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;RIEPILOGO ORDINE</h4>
 <hr>
  <div class="bottoni">
-<a href="" class="shiny-button2" id="dx">
+<a href="carrello_carta.jsp" class="shiny-button2" id="dx">
  <strong>TORNA INDIETRO</strong>
   </a>
 
-<a href="" class="shiny-button2" id="sx" >
+<a href="acquisto_completato.jsp" class="shiny-button2" id="sx" >
   <strong >CONCLUDI L'ORDINE</strong>
   </a>
 

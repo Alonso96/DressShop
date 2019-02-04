@@ -71,7 +71,7 @@ else {
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(3)">Modifica prodotto</button>
 </div>
 
- <form class="container col-sm-6"  action="ProductControl" method="post">>
+ <form class="container col-sm-6"  action="ProductControl" method="post">
  
   <div class="form-group" id='ins'>
 <input class="form-control form-control-lg" type="text" placeholder="Inserisci categoria" name="categoria">   
@@ -82,6 +82,48 @@ else {
 <input class="form-control form-control-lg" type="text" placeholder="Inserisci taglia" name="taglia"> 
 <input class="form-control form-control-lg" type="text" placeholder="Inserisci quantità" name="quantita"> 
 <input class="form-control form-control-lg" type="text" placeholder="Inserisci colore" name="colore"> 
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" name="categoria">Categoria
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-submenu">
+            <a class="test" href="#">Uomo<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a value="giacca.uomo">Giacche</a></li>
+          <li><a value="jeans.uomo">Jeans</a></li>
+          <li><a value="camicia.uomo">Camicie</a></li>
+          <li><a value="intimo.uomo">Intimo</a></li>
+          <li><a value="shirt.uomo">Shirt e felpe</a></li>
+          <li><a value="cappotti.uomo">Cappotti</a></li>
+          <li><a value="pantaloni.uomo">Pantaloni</a></li>
+            </ul>
+          </li>
+      <li class="dropdown-submenu">
+            <a class="test" href="#">Donna <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+           <li><a value="giacca.donna">Giacche</a></li>
+          <li><a value="jeans.donna">Jeans</a></li>
+          <li><a value="camicia.donna">Camicie</a></li>
+          <li><a value="intimo.donna">Intimo</a></li>
+          <li><a value="shirt.donna">Shirt e felpe</a></li>
+          <li><a value="cappotti.donna">Cappotti</a></li>
+          <li><a value="pantaloni.donna">Pantaloni</a></li>
+            </ul>
+          </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Accessori <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a value="borse.accessori">Borse</a></li>
+          <li><a value="occhiali.accessori">Occhiali</a></li>
+          <li><a value="cappelli.accessori">Cappelli</a></li>
+          <li><a value="cinture.accessori">Cinture</a></li>
+          <li><a value="borse.accessori">Sciarpe</a></li>
+         
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
   	<button type="submit" class="btn btn-secondary btn-lg" onclick="">Inserisci</button> 
   </div>
   <div class="form-group" id='com'>
@@ -199,6 +241,17 @@ else {
 </div>
 </div>
 <hr>
+
+  
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
  <script > 
 
  document.getElementById("ins").style.display="none";

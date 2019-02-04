@@ -14,7 +14,7 @@
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;LE TUE CARTE</h4>
 <hr>
-
+<a href="area_utente.jsp"><img src="img/left.png"></a>
 <table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -49,7 +49,7 @@
 	      	
 	</table>
 
-<a href="" class="shiny-button2">
+<a href="aggiungi_carta.jsp" class="shiny-button2">
  <strong>AGGIUNGI UNA CARTA</strong>
   </a>
 

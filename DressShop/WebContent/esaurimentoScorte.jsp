@@ -25,7 +25,7 @@
     	ProdottoBean product = (ProdottoBean) request.getAttribute("product");
     --%>    
    
-	
+	<a href="magazzinierePage.jsp"><img src="img/left.png"></a>
 	
 <div class="container">
 

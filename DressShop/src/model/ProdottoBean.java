@@ -11,8 +11,9 @@ public class ProdottoBean implements Serializable {
 	private String descrizione;
 	private String marca;
 	private String modello;
-	private String taglia;
-	private String colore;
+	private float prezzo;
+	private int iva;
+	private boolean in_vendita;
 	private String foto; //url
 	private String categoria;
 	private int promozione;
@@ -71,25 +72,29 @@ public class ProdottoBean implements Serializable {
 	}
 
 
-	public String getTaglia() {
-		return taglia;
+	public float getPrezzo() {
+		return prezzo;
 	}
 
-
-	public void setTaglia(String taglia) {
-		this.taglia = taglia;
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
 	}
 
-
-	public String getColore() {
-		return colore;
+	public int getIva() {
+		return iva;
 	}
 
-
-	public void setColore(String colore) {
-		this.colore = colore;
+	public void setIva(int iva) {
+		this.iva = iva;
 	}
 
+	public boolean isIn_vendita() {
+		return in_vendita;
+	}
+
+	public void setIn_vendita(boolean in_vendita) {
+		this.in_vendita = in_vendita;
+	}
 
 	public String getFoto() {
 		return foto;
@@ -118,13 +123,6 @@ public class ProdottoBean implements Serializable {
 
 	public void setPromozione(int promozione) {
 		this.promozione = promozione;
-	}
-
-	@Override
-	public String toString() {
-		return "ProdottoBean [id_prodotto=" + id_prodotto + ", codice_prodotto=" + codice_prodotto + ", descrizione=" 
-				+ descrizione + ", marca=" + marca + ", modello=" + modello + ", taglia=" + taglia + ", colore="
-				+ colore + ", categoria" + categoria + ", promozione" + promozione + "]";
 	}
 
 	@Override

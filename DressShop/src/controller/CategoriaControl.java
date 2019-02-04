@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ProdottoBean;
-import model.ProdottoInCatalogoModelDM;
+import model.ProdottoModelDM;
 
 /**
  * Servlet implementation class CategoriaControl
@@ -20,7 +20,7 @@ import model.ProdottoInCatalogoModelDM;
 @WebServlet("/CategoriaControl")
 public class CategoriaControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     ProdottoInCatalogoModelDM model = new ProdottoInCatalogoModelDM();
+     ProdottoModelDM model = new ProdottoModelDM();
      Collection<ProdottoBean> lista = null;
     /**
      * @see HttpServlet#HttpServlet()

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	static ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
+	static ProdottoModel<ProdottoBean> model = new ProdottoModelDM();
 	
 	public ProductControl() {
 		super();
@@ -57,7 +57,7 @@ public class ProductControl extends HttpServlet {
 					String foto = request.getParameter("foto");
 					String categoria = request.getParameter("categoria");
 					int promozione = Integer.parseInt(request.getParameter("promozione"));
-					float ivaV = Float.parseFloat(request.getParameter("ivaVendita"));     //iva vendita;
+					int ivaV = Integer.parseInt(request.getParameter("ivaVendita"));     //iva vendita;
 					float prezzoV =Float.parseFloat(request.getParameter("prezzoVendita")); //prezzovendita
 					int codC= Integer.parseInt(request.getParameter("codiceC")); //codice categoria
 					int quantita= Integer.parseInt(request.getParameter("quantity"));
@@ -68,12 +68,11 @@ public class ProductControl extends HttpServlet {
 					bean.setDescrizione(descrizione);
 					bean.setMarca(marca);
 					bean.setModello(modello);
-					bean.setColore(colore);
 					bean.setFoto(foto);
 					bean.setCategoria(categoria);
 					bean.setPromozione(promozione);
-					((ProdottoInCatalogoBean)bean).setPrezzo(prezzoV);
-					((ProdottoInCatalogoBean)bean).setIva(ivaV);
+					((ProdottoBean)bean).setPrezzo(prezzoV);
+					((ProdottoBean)bean).setIva(ivaV);
 					((ProdottoInOrdineBean)bean).setQuantita(quantita);
 					((ProdottoInOrdineBean)bean).setReso(reso);
 					

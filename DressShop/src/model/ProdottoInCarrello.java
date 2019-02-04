@@ -1,38 +1,44 @@
 package model;
 
-public class ProdottoInCarrello extends ProdottoInCatalogoBean{
+public class ProdottoInCarrello extends ProdottoBean{
 
 	private static final long serialVersionUID = 1L;
 	
-	private int quantitaCar;
+	private int quantita;
+	private String taglia;
 	
-	public ProdottoInCarrello(ProdottoInCatalogoBean prod){
+	public ProdottoInCarrello(ProdottoBean prod){
 		this.setId_prodotto(prod.getId_prodotto());
 		this.setCodice_prodotto(prod.getCodice_prodotto());
 		this.setDescrizione(prod.getDescrizione());
 		this.setMarca(prod.getMarca());
 		this.setModello(prod.getModello());
-		this.setTaglia(prod.getTaglia());
-		this.setColore(prod.getColore());
 		this.setFoto(prod.getFoto());
 		this.setCategoria(prod.getCategoria());
 		this.setPromozione(prod.getPromozione());
 		this.setPrezzo(prod.getPrezzo());
 		this.setIva(prod.getIva());
-		quantitaCar = 1;
+		this.setIn_vendita(prod.isIn_vendita());
 	}
 	
 	public ProdottoInCarrello(){
-		super();
-		quantitaCar = 0;
+
 	}
 
-	public int getQuantitaCar() {
-		return quantitaCar;
+	public int getQuantita() {
+		return quantita;
 	}
 
-	public void setQuantitaCar(int quantitaCar) {
-		this.quantitaCar = quantitaCar;
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;
+	}
+
+	public String getTaglia() {
+		return taglia;
+	}
+
+	public void setTaglia(String taglia) {
+		this.taglia = taglia;
 	}
 	
 }
