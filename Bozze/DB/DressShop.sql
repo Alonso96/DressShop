@@ -84,7 +84,7 @@ sconto			int
 
 /*
 Prodotto ha prezzo e iva;
-Prodotto_in_catalogo aggiunge taglie e quantità per ogni taglia;
+Taglia aggiunge taglie e quantità per ogni taglia;
 Prodotto_in_ordine ha prezzo, iva, quantità e taglia riferite al prodotto acquistato al momento dell'acquisto.
 */
 CREATE TABLE PRODOTTO(
