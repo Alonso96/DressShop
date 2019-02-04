@@ -94,7 +94,8 @@ descrizione		varchar(50),
 marca			varchar(20),
 modello			varchar(20),
 prezzo			float,
-iva			int,	
+iva			int,
+in_vendita		boolean,
 categoria		varchar(20),	/*maxicategoria.categoria	es:uomo.camicie
 					maxicategorie tra:	uomo, donna, accessori
 					categorie tra:	giacche, jeans, camicie, intimo, maglie e felpe, cappotti, pantaloni*/
