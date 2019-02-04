@@ -27,7 +27,7 @@ public class AggiungiCarta extends HttpServlet {
 		HttpSession session=request.getSession();
 		synchronized(session)
 	    {
-	    	UtenteBean utente=(UtenteBean) session.getAttribute("name");
+	    	UtenteBean utente=(UtenteBean) session.getAttribute("email");
 	    	if(utente==null)
 	    	{
 	    		request.getRequestDispatcher("Login.jsp").forward(request, response);
@@ -46,9 +46,9 @@ public class AggiungiCarta extends HttpServlet {
 	    		try {
 					model.doSave(carta);
 					request.setAttribute("carta", carta);
-					request.getRequestDispatcher("MostraCarte").forward(request, response);
+					request.getRequestDispatcher("MostraCarte").forward(request, response); //passa chiamata ad altra servlet
 				} catch (SQLException e) {
-					request.getRequestDispatcher("MostraCarte.jsp").forward(request, response);
+					request.getRequestDispatcher("mostra_carte.jsp").forward(request, response);
 					e.printStackTrace();
 				}
 	    	}
