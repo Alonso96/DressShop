@@ -19,7 +19,7 @@ import model.*;
 @WebServlet("/CartControl")
 public class CartControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ProdottoModel<ProdottoBean> model = new ProdottoInCatalogoModelDM();
+	static ProdottoModel<ProdottoBean> model = new ProdottoModelDM();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -88,14 +88,14 @@ public class CartControl extends HttpServlet {
 					*/
 				} else if(action.equalsIgnoreCase("aggiungiP")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoInCatalogoBean)model.doRetrieveByKey(id));
+					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoBean)model.doRetrieveByKey(id));
 					cart.addProd(prod);
 					
 					
 				} else if(action.equalsIgnoreCase("rimuoviP")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					System.out.println("rimuovo elemento con id "+ id);
-					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoInCatalogoBean)model.doRetrieveByKey(id));
+					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoBean)model.doRetrieveByKey(id));
 					cart.rimElemento(prod);
 				}
 				else if( action.equalsIgnoreCase("acquista")) {
