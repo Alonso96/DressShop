@@ -88,7 +88,6 @@ codice_prodotto		varchar(20),
 descrizione		varchar(50),
 marca			varchar(20),
 modello			varchar(20),
-taglia			varchar(5),
 colore			varchar(20),
 categoria		varchar(20),	/*maxicategoria.categoria	es:uomo.camicie
 					maxicategorie tra:	uomo, donna, accessori
@@ -106,6 +105,7 @@ CREATE TABLE PRODOTTO_IN_CATALOGO(
 id_prodotto		int			primary key,
 prezzo			float,
 iva			int,
+taglia			varchar(5),
 quantita 		int,
 
 	foreign key (id_prodotto)
@@ -118,6 +118,7 @@ CREATE TABLE PRODOTTO_IN_ORDINE(
 id_prodotto		int			primary key,
 prezzo			float,
 iva			int,
+taglia			varchar(5),
 quantita 		int,
 reso			boolean,
 
