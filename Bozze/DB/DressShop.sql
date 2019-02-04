@@ -108,7 +108,7 @@ promozione		int,
 		on update cascade
 );
 
-CREATE TABLE TAGLIE(	//entita debole
+CREATE TABLE TAGLIA(	//entita debole
 id_prodotto		int,
 taglia			varchar(5),
 quantita 		int,
