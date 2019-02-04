@@ -8,11 +8,11 @@ nome			varchar(30),
 cognome			varchar(30),
 email			varchar(30)	not null,
 password		varchar(16)	not null,
-tipo			varchar(3),
-/*tipo:	cli=cliente
-	mag=magazziniere
-	mkt=gestore marketing
-	pro=proprietario
+tipo			int,
+/*tipo:	1=cliente
+	2=magazziniere
+	3=gestore marketing
+	4=proprietario
 */
 data_nascita		date
 );
