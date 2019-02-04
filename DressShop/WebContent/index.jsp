@@ -22,21 +22,21 @@
     <div class="carousel-item active" style="">
       <img class="d-block w-100" src="img/12.jpg" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
-   <a class="bordo1 box bounceIn" href="ricercaProdotti.jsp"> <h2>GUARDA ORA</h2> </a>
+   <a class="bordo1 box bounceIn" href="CategoriaControl?shirt.donna"> <h2>GUARDA ORA</h2> </a>
     <p class="bordo" >Gli ultimi modelli shirt donna: ora disponibili!</p>
   </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="img/lo.jpg" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
-    <a class="bordo box bounceIn"  href="ricercaProdotti.jsp"> <h2>GUARDA ORA</h2> </a>
+    <a class="bordo box bounceIn"  href="CategoriaControl?shirt.uomo"> <h2>GUARDA ORA</h2> </a>
     <p class="bordo" >Disponibile la nuova collezione di felpe</p>
   </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="img/lolo.jpg" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
-    <a class="bordo1" href="ricercaProdotti.jsp"> <h2>GUARDA ORA</h2> </a>
+    <a class="bordo1" href="CategoriaControl?borse.accessori"> <h2>GUARDA ORA</h2> </a>
     <p class="bordo">-10% su tutte le borse</p>
   </div>
     </div>

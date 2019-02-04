@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
    <link rel="stylesheet" href="css/stile.css">
-   
+   <script src="script/jquery.js" ></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -89,6 +89,7 @@
       
     </ul>
   </div>
+  <script src="script/jquery.js" ></script>
 </nav>
    <script src="scripts/animation.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

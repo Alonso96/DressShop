@@ -42,15 +42,15 @@ label {
 }
 
 input {
-  border: 2px solid #CCC !important;
+  border: 2px solid  ;
   height: 35px;
   border-radius: 3px;
   max-width: 100%;
 }
 
 .input-group-addon {
-  border: 2px solid #CCC !important;
-  border-right: 0px !important;
+  border: 2px solid ;
+  border-right: 0px ;
 }
 
 .btn {
