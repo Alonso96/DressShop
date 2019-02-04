@@ -102,7 +102,7 @@ promozione		int,
 );
 
 CREATE TABLE PRODOTTO_IN_CATALOGO(
-id_prodotto		int			primary key,
+id_prodotto		int,
 prezzo			float,
 iva			int,
 taglia			varchar(5),
@@ -115,7 +115,7 @@ quantita 		int,
 );
 
 CREATE TABLE PRODOTTO_IN_ORDINE(
-id_prodotto		int			primary key,
+id_prodotto		int,
 prezzo			float,
 iva			int,
 taglia			varchar(5),
