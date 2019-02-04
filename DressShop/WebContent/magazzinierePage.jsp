@@ -15,7 +15,7 @@
 		
 	String email = (String)session.getAttribute("email");
 	System.out.println(email);
-	int flag= (int)session.getAttribute("tipo");
+	int flag= (int)session.getAttribute("tipo"); //
 	System.out.println(flag);
 	
 if(email !=null)
