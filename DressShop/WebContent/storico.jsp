@@ -12,6 +12,8 @@
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;STORICO ACQUISTI</h4>
 <hr>
+<a href="area_utente.jsp"><img src="img/left.png"></a>
+
 <section class="pricing py-5">
   <div class="container">
     <div class="row">

@@ -12,16 +12,16 @@
 <%@ include file="header.jsp" %>
 
 <hr>
-<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;AGGIUNGI INDIRIZZO</h4>
+<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;AGGIUNGI CARTA DI CREDITO</h4>
 <hr>
 
-<a href="mostra_indirizzi.jsp"><img src="img/left.png"></a>
+<a href="mostra_carte.jsp"><img src="img/left.png"></a>
 
 <div id="wrapper" class="container">
   
   
 
-    <form id="form-work" class="" name="aggiungi_indirizzo" action="aggiungi_indirizzo">
+    <form id="form-work" class="" name="aggiungi_carta" action="aggiungi_carta">
       
       <fieldset>
       
@@ -43,41 +43,29 @@
 
           <div class="form-group">
             <div class="col-md-6">
-              <label class="control-label" for="mobile">Cellulare</label>
-              <div class="input-group">
-                <span class="input-group-addon">+39</span>
-                <input name="cellulare" class="form-control" placeholder="3334576298" type="text">
-              </div>
+              <label class="control-label" for="mobile">Numero Carta</label>
+              
+                <input name="cellulare" class="form-control" placeholder="1234 5678 9876 5432" type="text">
+             
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-md-6">
-              <label class="control-label" for="email">Città</label>
-              <input name="citta" class="form-control" placeholder="Napoli" type="text">
+              <label class="control-label" for="email">CVV</label>
+              <input name="CVV" class="form-control" placeholder="123" type="text">
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-md-6">
-              <label class="control-label" for="district">Via</label>
-              <input name="via" class="form-control" placeholder="Roma" type="text">
+              <label class="control-label" for="district">Data Scadenza</label>
+              <input name="data_scadenza" class="form-control" placeholder="01/22" type="text">
             </div>
           </div>
           
-          <div class="form-group">
-            <div class="col-md-6">
-              <label class="control-label" for="district">Cap</label>
-              <input name="cap" class="form-control" placeholder="80100" type="text">
-            </div>
-          </div>
           
-          <div class="form-group">
-            <div class="col-md-6">
-              <label class="control-label" for="district">Provincia</label>
-              <input name="provincia" class="form-control" placeholder="NA" type="text">
-            </div>
-          </div>
+         
         
         
           <div class="form-group">
@@ -91,6 +79,6 @@
 
 
 
- <%@ include file="footer.jsp" %>
+
 </body>
 </html>

@@ -12,6 +12,8 @@
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;DATI PERSONALI</h4>
 <hr>
+<a href="area_utente.jsp"><img src="img/left.png"></a>
+
 <div class= "contenitore">
 <table class="table">
     <tbody>
