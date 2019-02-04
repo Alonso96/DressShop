@@ -36,8 +36,8 @@ public class LoginControl extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		 response.setContentType("text/html");  
+
+		response.setContentType("text/html");  
 	        PrintWriter out = response.getWriter();  
 	        String tipo;
 	        String n=request.getParameter("eMail");  
@@ -93,9 +93,10 @@ public class LoginControl extends HttpServlet {
 				 
 				else{  
 				    out.print("<p style=\"color:red\">Spiacente E-Mail o password invalidi, riprova</p><br>");  
-				    out.print("<p style=\"color:blue\">Nuovo utente? <a href=\"Registration.html\">Registrati subito!</a> </br></p>");
+				    out.print("<p style=\"color:blue\">Nuovo utente? <a href=\"registrazione.jsp\">Registrati subito!</a> </br></p>");
+				    session.removeAttribute("tipo");
 				    session.invalidate();
-				    RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
+				    RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
 				    rd.include(request,response);  
 				}
 			} catch (SQLException e) {

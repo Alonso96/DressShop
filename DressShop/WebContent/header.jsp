@@ -57,11 +57,22 @@
     	<img  src="img/logodre.png" alt="Logo" height="80px" width="280px"> 
     	</a>
 
-    
+    <%! String s = new String();
+    	String r = new String();%>
+    <%s = (String) request.getSession().getAttribute("tipo");
+    	System.out.println(s);
+    	if(s == null){
+    		s = "Login";
+    		r = "login.jsp";
+    	} else {
+    		s = "Logout";
+    		r = "LogoutControl";
+    	}
+    %>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="carrello.jsp"><font color= GRAY><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</font></a></li>
       <li><a href="area_utente.jsp"><font color= GRAY><span class="glyphicon glyphicon-user"></span> Area Utente</font></a></li>
-      <li><a href="login.jsp"><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> Login</font></a></li>
+      <li><a href= <%= r %> ><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> <%= s %></font></a></li>
       
     </ul>
   </div>
