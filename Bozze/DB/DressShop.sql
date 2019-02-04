@@ -93,7 +93,6 @@ codice_prodotto		varchar(20),
 descrizione		varchar(50),
 marca			varchar(20),
 modello			varchar(20),
-colore			varchar(20),
 prezzo			float,
 iva			int,	
 categoria		varchar(20),	/*maxicategoria.categoria	es:uomo.camicie
