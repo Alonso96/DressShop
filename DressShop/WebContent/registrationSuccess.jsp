@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Registrazione Effetuata</title>
+</head>
 <body>
 <%@ include file="header.jsp" %>
 	
@@ -13,10 +14,10 @@
 	<hr>
 	Benvenuto <% String h = (String) request.getParameter("nome");%>
 			<% out.println(h); %>
-	<p>Ti confermiamo che la registrazione è stata effettuata con successo ,
-	controlla la tua email per confermare il tuo nuovo account !
-	Torna alla <a href="index.jsp">home</a> per iniziare a comprare.
+	<p>Ti confermiamo che la registrazione è stata effettuata con successo,
+	controlla la tua email per confermare il tuo nuovo account!
+	<br>Torna alla <a href="index.jsp">home</a> per iniziare a comprare.
 	
-
+ <%@ include file="footer.jsp" %>
 </body>
 </html>

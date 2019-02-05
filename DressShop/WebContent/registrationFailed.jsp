@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registrazione Fallita</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+<title>Registrazione Fallita</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
-	<p>Ops, abbiamo riscontrato un problema durante la registrazione , per favore , riprova.
+	<p>Ops, abbiamo riscontrato un problema durante la registrazione, per favore, riprova.
 
 
+ <%@ include file="footer.jsp" %>
 </body>
 </html>
