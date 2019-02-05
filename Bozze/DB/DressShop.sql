@@ -23,9 +23,7 @@ data_scadenza		date		not null,
 cvv			char(3)		not null,
 nome_proprietario	varchar(30)	not null,
 cognome_proprietario	varchar(30)	not null,
-utente			int,
-
-	foreign key (utente)
+utente			int
 	references UTENTE(id_utente)
 		on delete no action	
 		on update cascade
@@ -40,9 +38,7 @@ provincia		char(2),
 citta			varchar(30),
 via			varchar(50),
 cellulare		varchar(13),
-utente			int,
-
-	foreign key (utente)
+utente			int
 	references UTENTE(id_utente)
 		on delete no action
 		on update cascade
@@ -52,27 +48,24 @@ CREATE TABLE ORDINE(
 id_ordine		int		primary key auto_increment,
 data			date,
 pagato			boolean,
-carta_credito		varchar(16),
-indirizzo		int,
-utente			int,
-totale			float,
-tipo_spedizione		varchar(10),
-costo_spedizione	float,
-
-	foreign key (carta_credito)
+carta_credito		varchar(16)
 	references CARTA_CREDITO(numero_carta)
 		on delete no action
 		on update cascade,
-        
-	foreign key (indirizzo)
+
+indirizzo		int
 	references INDIRIZZO(id_indirizzo)
 		on delete no action
 		on update cascade,
-        
-	foreign key (utente)
+
+utente			int
 	references UTENTE(id_utente)
 		on delete no action
-		on update cascade
+		on update cascade,
+
+totale			float,
+tipo_spedizione		varchar(10),
+costo_spedizione	float
 );
 
 CREATE TABLE PROMOZIONE(
@@ -90,28 +83,26 @@ Prodotto_in_ordine ha prezzo, iva, quantità e taglia riferite al prodotto acqui
 CREATE TABLE PRODOTTO(
 id_prodotto		int		primary key auto_increment,
 codice_prodotto		varchar(20),
-descrizione		varchar(50),
+descrizione		varchar(200),
 marca			varchar(20),
 modello			varchar(20),
-prezzo			float,
+prezzo_compl		float,
 iva			int,
 in_vendita		boolean,
-categoria		varchar(20),	/*categoria.maxicategoria	es:camicie.uomo
+categoria		varchar(20),	/*categoria.maxicategoria	es:camicia.uomo
 					maxicategorie tra:	uomo, donna, accessori
-					categorie tra:	giacche, jeans, camicie, intimo, maglie e felpe, cappotti, pantaloni*/
+					categorie tra:	giacca, jeans, camicia, intimo, maglia e felpa, cappotto, pantalone*/
 foto			varchar(30),
-promozione		int,
-        
-	foreign key (promozione)
+promozione		int
 	references PROMOZIONE(id_promozione)
 		on delete set null
 		on update cascade
 );
 
-CREATE TABLE TAGLIA(	//entita debole
+CREATE TABLE TAGLIA(	/*entita debole*/
 id_prodotto		int,
 taglia			varchar(5),
-quantita 		int,
+quantita 		int,
 
 	foreign key (id_prodotto)
 	references PRODOTTO(id_prodotto)
@@ -120,17 +111,17 @@ quantita 		int,
 );
 
 CREATE TABLE PRODOTTO_IN_ORDINE(
-id_prodotto		int		primary key,
-prezzo			float,
-iva			int,
-taglia			varchar(5),
-quantita 		int,
-reso			boolean,
-
-	foreign key (id_prodotto)
+id_prodotto_ordine	int primary key auto_increment,
+id_prodotto		int	
 	references PRODOTTO(id_prodotto)
 		on delete no action
-		on update cascade
+		on update cascade,
+
+prezzo_compl		float,
+iva			int,
+taglia			varchar(5),
+quantita 		int,
+reso			boolean
 );
 
 CREATE TABLE ORDINAZIONE(
@@ -145,7 +136,7 @@ prodotto		int,
 		on update no action,
 
 	foreign key (prodotto)
-	references PRODOTTO_IN_ORDINE(id_prodotto)
+	references PRODOTTO_IN_ORDINE(id_prodotto_ordine)
 		on delete no action
 		on update no action
 );
