@@ -16,7 +16,7 @@ public class ProdottoInCarrello extends ProdottoBean{
 		this.setFoto(prod.getFoto());
 		this.setCategoria(prod.getCategoria());
 		this.setPromozione(prod.getPromozione());
-		this.setPrezzo(prod.getPrezzo());
+		this.setPrezzo_compl(prod.getPrezzo_compl());
 		this.setIva(prod.getIva());
 		this.setIn_vendita(prod.isIn_vendita());
 	}

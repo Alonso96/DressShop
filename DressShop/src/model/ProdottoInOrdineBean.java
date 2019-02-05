@@ -4,7 +4,8 @@ public class ProdottoInOrdineBean extends ProdottoBean{
 
 	private static final long serialVersionUID = 1L;
 
-	private float prezzo;
+	private int id_prodotto_ordine;
+	private float prezzo_compl;
 	private int iva;
 	private String taglia;
 	private int quantita;
@@ -12,17 +13,25 @@ public class ProdottoInOrdineBean extends ProdottoBean{
 	
 	public ProdottoInOrdineBean() {
 		super();
-		prezzo=0;
+		prezzo_compl=0;
 		iva=0;
 		quantita=0;
 	}
 
-	public float getPrezzo() {
-		return prezzo;
+	public int getId_prodotto_ordine() {
+		return id_prodotto_ordine;
 	}
 
-	public void setPrezzo(float prezzo) {
-		this.prezzo = prezzo;
+	public void setId_prodotto_ordine(int id_prodotto_ordine) {
+		this.id_prodotto_ordine = id_prodotto_ordine;
+	}
+
+	public float getPrezzo_compl() {
+		return prezzo_compl;
+	}
+
+	public void setPrezzo_compl(float prezzo_compl) {
+		this.prezzo_compl = prezzo_compl;
 	}
 
 	public int getIva() {

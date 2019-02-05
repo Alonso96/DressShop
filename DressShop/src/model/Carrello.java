@@ -39,8 +39,7 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	public float getTotale(){
 		float totale = 0;
 		for(ProdottoInCarrello p : list){
-			totale += ((model.ProdottoInCarrello)p).getPrezzo();
-			totale += ((model.ProdottoInCarrello)p).getIva();
+			totale += ((model.ProdottoInCarrello)p).getPrezzo_compl();
 		}
 		return totale;
 	}
@@ -61,7 +60,7 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 		for(ProdottoInCarrello prod : list){
 			ProdottoInOrdineBean prodBean = new ProdottoInOrdineBean();
 			prodBean.setId_prodotto(((model.ProdottoInCarrello)prod).getId_prodotto());
-			prodBean.setPrezzo(((model.ProdottoInCarrello)prod).getPrezzo());
+			prodBean.setPrezzo_compl(((model.ProdottoInCarrello)prod).getPrezzo_compl());
 			prodBean.setIva(((model.ProdottoInCarrello)prod).getIva());
 			prodBean.setQuantita(((model.ProdottoInCarrello)prod).getQuantita());
 			prodBean.setTaglia(((model.ProdottoInCarrello)prod).getTaglia());

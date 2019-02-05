@@ -53,7 +53,6 @@ public class ProductControl extends HttpServlet {
 					String descrizione= request.getParameter("description");
 					String marca = request.getParameter("marca");
 					String modello = request.getParameter("modello");
-					String colore = request.getParameter("colore");
 					String foto = request.getParameter("foto");
 					String categoria = request.getParameter("categoria");
 					int promozione = Integer.parseInt(request.getParameter("promozione"));
@@ -71,7 +70,7 @@ public class ProductControl extends HttpServlet {
 					bean.setFoto(foto);
 					bean.setCategoria(categoria);
 					bean.setPromozione(promozione);
-					((ProdottoBean)bean).setPrezzo(prezzoV);
+					((ProdottoBean)bean).setPrezzo_compl(prezzoV);
 					((ProdottoBean)bean).setIva(ivaV);
 					((ProdottoInOrdineBean)bean).setQuantita(quantita);
 					((ProdottoInOrdineBean)bean).setReso(reso);

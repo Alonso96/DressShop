@@ -11,7 +11,7 @@ public class ProdottoBean implements Serializable {
 	private String descrizione;
 	private String marca;
 	private String modello;
-	private float prezzo;
+	private float prezzo_compl;
 	private int iva;
 	private boolean in_vendita;
 	private String foto; //url
@@ -71,13 +71,12 @@ public class ProdottoBean implements Serializable {
 		this.modello = modello;
 	}
 
-
-	public float getPrezzo() {
-		return prezzo;
+	public float getPrezzo_compl() {
+		return prezzo_compl;
 	}
 
-	public void setPrezzo(float prezzo) {
-		this.prezzo = prezzo;
+	public void setPrezzo_compl(float prezzo_compl) {
+		this.prezzo_compl = prezzo_compl;
 	}
 
 	public int getIva() {

@@ -13,18 +13,18 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	private static final String TABLE_2 ="PRODOTTO_IN_ORDINE";
 
 	@Override
-	public ProdottoBean doRetrieveByKey(int id_prodotto) throws SQLException {
+	public ProdottoBean doRetrieveByKey(int id_prodotto_ordine) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 		ProdottoBean bean = new ProdottoInOrdineBean();
 		
 		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, " 
-		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE " + TABLE_1 + ".id_prodotto = ?";
+		+ TABLE_2 + ".prezzo_compl, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE " + TABLE_1 + ".id_prodotto_ordine = ?";
 		
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(queryString);
-			statement.setInt(1, id_prodotto);
+			statement.setInt(1, id_prodotto_ordine);
 			ResultSet result = statement.executeQuery();
 			while(result.next()){
 				bean = getBean(result);
@@ -43,7 +43,7 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
 		
 		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, " 
-		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " WHERE " + TABLE_1 + ".id_prodotto = ?";
+		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2;
 
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -65,13 +65,13 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		Connection connection = null;
 		PreparedStatement statement_2 = null;
 
-		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo, iva, quantita, reso) VALUES(?, ?, ?, ?, ?)";
+		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo_compl, iva, quantita, reso) VALUES(?, ?, ?, ?, ?)";
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement_2 = (PreparedStatement) connection.prepareStatement(insertString_2);
 
 			statement_2.setInt(1, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
-			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getPrezzo());
+			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getPrezzo_compl());
 			statement_2.setFloat(3, ((ProdottoInOrdineBean)prodotto).getIva());
 			statement_2.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
 			statement_2.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
@@ -90,17 +90,17 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		Connection connection = null;
 		PreparedStatement statement = null;
 
-		String insertString_2="UPDATE " + TABLE_2 + " SET prezzo = ?, iva = ?, taglia = ?, quantita = ? reso = ? WHERE id_prodotto = ?";
+		String insertString_2="UPDATE " + TABLE_2 + " SET prezzo_compl = ?, iva = ?, taglia = ?, quantita = ? reso = ? WHERE id_prodotto_ordine = ?";
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(insertString_2);
 
-			statement.setFloat(1, ((ProdottoInOrdineBean)prodotto).getPrezzo());
+			statement.setFloat(1, ((ProdottoInOrdineBean)prodotto).getPrezzo_compl());
 			statement.setInt(2, ((ProdottoInOrdineBean)prodotto).getIva());
 			statement.setString(3, ((ProdottoInOrdineBean)prodotto).getTaglia());
 			statement.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
 			statement.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
-			statement.setInt(6, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
+			statement.setInt(6, ((ProdottoInOrdineBean)prodotto).getId_prodotto_ordine());
 			statement.executeUpdate();
 			
 			connection.commit();
@@ -112,17 +112,17 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	}
 
 	@Override
-	public boolean doDelete(int id_prodotto) throws SQLException {
+	public boolean doDelete(int id_prodotto_ordine) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 		int result = 0;
 		
-		String deleteString ="DELETE FROM " + TABLE_2 + " WHERE id_prodotto = ?";
+		String deleteString ="DELETE FROM " + TABLE_2 + " WHERE id_prodotto_ordine = ?";
 		
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(deleteString);
-			statement.setInt(1, id_prodotto);
+			statement.setInt(1, id_prodotto_ordine);
 			
 			result = statement.executeUpdate();
 			
@@ -140,7 +140,7 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		PreparedStatement statement=null;
 		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
 
-		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, " 
+		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, id_prodotto_ordine, " 
 		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " join ORDINE WHERE ordine = ?";
 		
 		try{
@@ -169,7 +169,8 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		bean.setFoto(rs.getString("foto"));
 		bean.setCategoria(rs.getString("categoria"));
 		bean.setPromozione(rs.getInt("promozione"));
-		((ProdottoInOrdineBean)bean).setPrezzo(rs.getFloat("PRODOTTO_IN_ORDINE.prezzo"));
+		((ProdottoInOrdineBean)bean).setId_prodotto_ordine(rs.getInt("id_prodotto_ordine"));
+		((ProdottoInOrdineBean)bean).setPrezzo_compl(rs.getFloat("PRODOTTO_IN_ORDINE.prezzo_compl"));
 		((ProdottoInOrdineBean)bean).setIva(rs.getInt("PRODOTTO_IN_ORDINE.iva"));
 		((ProdottoInOrdineBean)bean).setQuantita(rs.getInt("quantita"));
 		((ProdottoInOrdineBean)bean).setTaglia(rs.getString("taglia"));
