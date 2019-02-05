@@ -10,7 +10,7 @@ import java.util.Collection;
 public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 
 	private static final String TABLE_1 ="PRODOTTO";
-
+	
 	@Override
 	public ProdottoBean doRetrieveByKey(int id_prodotto) throws SQLException {
 		Connection connection = null;
@@ -213,7 +213,7 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 		ProdottoBean bean = new ProdottoBean();
 		
 		bean.setId_prodotto(rs.getInt("id_prodotto"));
-		bean.setCodice_prodotto(rs.getString("codice_promozione"));
+		bean.setCodice_prodotto(rs.getString("codice_prodotto"));
 		bean.setDescrizione(rs.getString("descrizione"));
 		bean.setMarca(rs.getString("marca"));
 		bean.setModello(rs.getString("modello"));

@@ -43,7 +43,7 @@ public class CategoriaControl extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("prodotti", lista);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/header.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ricercaProdotti.jsp");
 		dispatcher.forward(request, response); // passo la chiamata alla jsp
 	}
 

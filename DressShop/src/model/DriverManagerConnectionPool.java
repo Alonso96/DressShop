@@ -14,7 +14,7 @@ public class DriverManagerConnectionPool {
 	static {
 		freeDbConnections = new LinkedList<Connection>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("DB driver not found:"+ e.getMessage());
 		} 
@@ -24,12 +24,12 @@ public class DriverManagerConnectionPool {
 		Connection newConnection = null;
 		String ip = "localhost";
 		String port = "3306";
-		String db = "prog";
-		String username = "alfonso";
-		String password = "alf";
+		String db = "DressShop";
+		String username = "root";
+		String password = "root";
 
 		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ 
-					port+"/"+db, username, password);
+					port+"/"+db +"?useSSL=false&serverTimezone=UTC", username, password);
 
 		System.out.println("Create a new DB connection");
 		newConnection.setAutoCommit(false);

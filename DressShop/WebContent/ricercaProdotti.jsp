@@ -13,42 +13,43 @@
 
 
 <%@ include file="header.jsp" %>
+<%@ page import="java.util.Collection, java.util.Iterator, model.ProdottoBean, java.text.DecimalFormat" %>
 
-<%-- 
-    	Collection<?> products = (Collection<?>) request.getAttribute("product");
-    	if(products == null) {
+
+<%
+    	Collection<ProdottoBean> products = (Collection<ProdottoBean>) request.getAttribute("prodotti");
+    /*	if(products == null) {
     		response.sendRedirect("./ProductControl");
     		return;
     	}
     	
-    	ProdottoBean product = (ProdottoBean) request.getAttribute("product");
-    --%>    
+    	ProdottoBean product = (ProdottoBean) request.getAttribute("product");*/
+%>    
    
 	
 	
 <div class="container">
 
-    <h3 class="h3">shopping Demo </h3>
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
-            <%--
+<%
 		if(products.size() > 0) {
 		//ok
 		Iterator<?> it = products.iterator();
+		DecimalFormat formatter = new DecimalFormat("#0.00");
 		
 		while(it.hasNext()) {
 			ProdottoBean bean = (ProdottoBean) it.next();
-*/	--%>
+%>
                 <div class="product-image6">
                     <a href="#">
-                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-1.jpg" <%--src="<%=bean.getFoto()--%>>
+                        <img class="pic-1" src= <%= bean.getFoto()%>>
                     </a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                    <div class="price"> &euro; 11.00 <%--= //bean.getPrezzoV()--%>
-                        <span>$14.00</span>
+                    <h3 class="title"><a href="#"><%= bean.getMarca().toUpperCase() + " - " + bean.getModello() %></a></h3>
+                    <div class="price"> &euro;<%= formatter.format(bean.getPrezzo_compl()) %>
                     </div>
                 </div>
                 <form action="CartControl" method="post">
@@ -56,14 +57,14 @@
                 </form>
             </div>
         </div>
-        <%-- 		} 
+        <% 		} 
 		} else {
-	--%>	
-		<%--<tr>
+	%>	
+		<tr>
 			<td colspan="4">No product available</td>
-		</tr>--%>
-<%--/*}*/--%> 
-        <div class="col-md-3 col-sm-6">
+		</tr>
+<% } %> 
+ <%--        <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
                 <div class="product-image6">
                     <a href="#">
@@ -123,6 +124,7 @@
                 </ul>
             </div>
         </div>
+        --%>
     </div>
 </div>
 <hr>

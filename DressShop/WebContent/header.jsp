@@ -12,7 +12,6 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse">
-//prova
   <div class="container-fluid">
   
     <ul class="nav navbar-nav sinistra">
