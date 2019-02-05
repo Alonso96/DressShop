@@ -64,12 +64,7 @@
               <input name="mese" class="form-control" placeholder="mese" type="text" required oninput ="controlloMese()">
               <input name="giorno" class="form-control" placeholder="giorno" type="text" required oninput ="controlloGiorno()">
             </div>
-          </div>
-          
-          
-         
-        
-        
+          </div>     
           <div class="form-group">
             <div class="col-md-12">
               <button type="button" value ="Aggiungi" class="btn btn-primary btn-lg btn-block info" onclick="validazione()">INVIA</button>

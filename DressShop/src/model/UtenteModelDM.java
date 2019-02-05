@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -74,7 +75,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			statement.setString(3, utente.getEmail());
 			statement.setString(4, utente.getPassword());
 			statement.setInt(5, utente.getTipo());
-			statement.setDate(6, utente.getData_nascita());
+			statement.setDate(6, (Date) utente.getData_nascita());
 			statement.executeUpdate();
 			
 			connection.commit();
@@ -101,7 +102,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			statement.setString(3, utente.getEmail());
 			statement.setString(4, utente.getPassword());
 			statement.setInt(5, utente.getTipo());
-			statement.setDate(6, utente.getData_nascita());
+			statement.setDate(6, (Date) utente.getData_nascita());
 			statement.setInt(7, utente.getId_utente());
 			statement.executeUpdate();
 

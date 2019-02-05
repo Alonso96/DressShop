@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,23 +37,28 @@ public class RegistrationControl extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// prendo il parametro action della form , che equivale al nome della servlet (?)
-		
-			
-				String action = request.getParameter("action");
+		// prendo il parametro action della form , che equivale al nome della servlet dd(?)
+		        response.setContentType("text/html");
+		        String action = request.getParameter("action");
+		        System.out.println("Mi ha chiamato il bottone registrazione");
+		        System.out.println(request.getParameter("nome"));
+		        System.out.println(request.getParameter(action));
+				PrintWriter out = response.getWriter();  
+				
 				try {
 				if(action != null) {
 				 
 					String nome = request.getParameter("nome");
 					String cognome = request.getParameter("cognome");
 					String sDate= request.getParameter("data_nascita");
-					Date data_nascita=(Date) new SimpleDateFormat("dd/MM/yy").parse(sDate);		
+					SimpleDateFormat format = new SimpleDateFormat("dd/MM/YY");
+					Date   data_nascita=  (Date) format.parse(sDate);    
 					String password = request.getParameter("password");
 					String eMail = request.getParameter("email");					
 					
 				
 
-						//response.setContentType("text/html");
+						
 				
 						UtenteBean newUser = new UtenteBean();
 						newUser.setNome(nome);
@@ -63,7 +68,7 @@ public class RegistrationControl extends HttpServlet {
 						newUser.setData_nascita(data_nascita);
 						newUser.setTipo(1);
 						
-						if(UtenteModelDM.checkUser(eMail) == false) {
+						if(UtenteModelDM.checkUser(eMail)) {
 							RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationFailed.jsp");
 							dispatcher.forward(request, response);
 						}
@@ -75,10 +80,14 @@ public class RegistrationControl extends HttpServlet {
 						}
 				
 				
-				else {
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationFailed.jsp");
-					dispatcher.forward(request, response);
-				}
+				else if(action==null){
+					   out.print("<p style=\"color:red\">Spiacente registrazione fallita, riprova</p><br>");  
+					    
+					    
+					    RequestDispatcher rd=request.getRequestDispatcher("registrationFailed.jsp");  
+					    rd.include(request,response);  
+					}
+				
 				}catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -87,7 +96,7 @@ public class RegistrationControl extends HttpServlet {
 					e.printStackTrace();
 				}
 					
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationSuccess.jsp");
 					dispatcher.forward(request, response);
 				
 				
