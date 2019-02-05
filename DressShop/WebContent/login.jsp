@@ -25,7 +25,7 @@
                             <input type="password" class="form-control" placeholder="Password *" name ="password" required oninput ="controlloPassword()" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" name="invio" value="Login" name="login"/>
+                            <input type="submit" class="btnSubmit" name="invio" value="Login" name="login" onclick="validazione()"/>
                         </div>
                     	<div class="form-group">
                        <p class="btnForgetPwd">Non hai un account? <a href="registrazione.jsp" >registrati</a></p>
