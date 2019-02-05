@@ -12,20 +12,20 @@
 <%@ include file="header.jsp" %>
 
 
-<form action="LoginControl" method="post">
+<form action="LoginControl" method="post" name="login">
 <div class="container login-container"> 
             <div class="row">
                 <div class="col-md-12 login-form-1">
                     <h3>Login</h3>
                     
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email *" name ="eMail"  />
+                            <input type="text" class="form-control" placeholder="Email *" name ="email"  required oninput ="controlloEmail()">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password *" name ="password" />
+                            <input type="password" class="form-control" placeholder="Password *" name ="password" required oninput ="controlloPassword()" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" name="login"/>
+                            <input type="submit" class="btnSubmit" name="invio" value="Login" name="login"/>
                         </div>
                     	<div class="form-group">
                        <p class="btnForgetPwd">Non hai un account? <a href="registrazione.jsp" >registrati</a></p>
@@ -37,6 +37,7 @@
             </div>
        
     </form>    
+    <script src="scripts/ValidazioneLogin.js"></script>
         <%@ include file="footer.jsp" %>
 </body>
 </html>

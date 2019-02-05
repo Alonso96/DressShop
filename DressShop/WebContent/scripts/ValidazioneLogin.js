@@ -1,17 +1,18 @@
-function controlloUsername()
+function controlloEmail()
 {
-    var username=document.login.username.value;
-	if(username.length<1 || username==" ")
+	var lettere5=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+	var email=document.login.email.value;
+	if(!email.match(lettere5))
 	{
-		document.login.username.style.borderColor="red";
+		document.login.email.style.borderColor="red";
 		return false;
 	}
-	else{
-		document.login.username.style.borderColor="green";
+	else
+	{
+		document.login.email.style.borderColor="green";
 		return true;
 	}
 }
-
 function controlloPassword()
 {
     var password=document.login.password.value;
