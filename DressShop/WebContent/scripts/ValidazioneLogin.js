@@ -29,7 +29,7 @@ function controlloPassword()
 
 function validazione()
 {
-	if(!controlloUsername())
+	if(!controlloEmail())
 	{
 		document.login.username.focus();
 		return false;

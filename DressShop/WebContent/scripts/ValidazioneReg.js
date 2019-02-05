@@ -96,34 +96,9 @@ function validazione()
 	
 	else
 	{
-		registrati();
+		document.registrazione.submit();
 	}
 }
 
 
 
-function registrati()
-{
-	$.post("Registrazione",
-	{
-		
-		nome : $("#due").val(),
-		cognome : $("#tre").val(),
-		
-		password : $("#cinque").val(),
-		email : $("#sei").val(),
-		
-	},
-	function(responseText)
-	{
-		if(responseText=="1")
-		{
-			$("#form").hide();
-			$("#scritta").replaceWith("<h1>Registrazione effettuata</h1>");
-		}
-		else
-		{
-			alert("Username esistente");
-		}
-    });
-}

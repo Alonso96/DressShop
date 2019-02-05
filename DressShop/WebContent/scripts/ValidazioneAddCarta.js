@@ -130,12 +130,17 @@ function validazione()
 	}
 	else if(!controlloNome())
 	{
-		document.aggiungiCarta.intestatario.focus();
+		document.aggiungiCarta.nome.focus();
+		return false;
+	}
+	else if(!controlloCvv())
+	{
+		document.aggiungiCarta.cvv.focus();
 		return false;
 	}
 	else if(!controlloCognome())
 	{
-		document.aggiungiCarta.intestatario.focus();
+		document.aggiungiCarta.cognome.focus();
 		return false;
 	}
 	else
