@@ -67,7 +67,7 @@
           </div>     
           <div class="form-group">
             <div class="col-md-12">
-              <button type="button" value ="Aggiungi" class="btn btn-primary btn-lg btn-block info" onclick="validazione()">INVIA</button>
+              <button type="button" value ="Aggiungi" class="btn btn-primary btn-lg btn-block info" onclick="validazione();">INVIA</button>
                <button class="btn btn-primary btn-lg btn-block info" type="reset" value="Cancella" name="reset"> RESET</button>
             </div>
           </div>     

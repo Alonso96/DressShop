@@ -1,6 +1,6 @@
 function controlloNumero()
 {
-	var lettere=/^[0-9]{8}$/;
+	var lettere=/^[0-9]{16}$/;
 	var numero_carta=document.aggiungiCarta.numero_carta.value;
 	if(!numero_carta.match(lettere))
 	{
@@ -16,9 +16,9 @@ function controlloNumero()
 function controlloAnno()
 {
 	var anno=document.aggiungiCarta.anno.value;
-	if(anno<2018 || anno>2030)
+	if(anno<2019 || anno>2030)
 	{
-		document.aggiungiCarta.mese.style.borderColor="red";
+		document.aggiungiCarta.anno.style.borderColor="red";
 		return false;
 	}
 	else
@@ -96,11 +96,11 @@ function controlloCvv()
 	var cvv=document.aggiungiCarta.cvv.value;
 	if(!cvv.match(lettere))
 	{
-		document.aggiungiCvv.cvv.style.borderColor="red";
+		document.aggiungiCarta.cvv.style.borderColor="red";
 		return false;
 	}
 	else{
-		document.aggiungiCvv.cvv.style.borderColor="green";
+		document.aggiungiCarta.cvv.style.borderColor="green";
 		return true;
 	}
 }
@@ -128,7 +128,12 @@ function validazione()
 		document.aggiungiCarta.giorno.focus();
 		return false;
 	}
-	else if(!controlloIntestatario())
+	else if(!controlloNome())
+	{
+		document.aggiungiCarta.intestatario.focus();
+		return false;
+	}
+	else if(!controlloCognome())
 	{
 		document.aggiungiCarta.intestatario.focus();
 		return false;
