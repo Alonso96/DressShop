@@ -112,9 +112,9 @@ public class ProductControl extends HttpServlet {
 			request.setAttribute("error", e.getMessage());
 		}
 		
+	 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
+		dispatcher.forward(request, response); // passo la chiamata alla jsp;
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/VisualizzaProdotti.jsp");
-		dispatcher.forward(request, response); // passo la chiamata alla jsp
 		
 	}
 

@@ -1,5 +1,10 @@
+<%
+
+ProdottoBean product = (ProdottoBean) request.getAttribute("prodotto");
+
+Carrello cart = (Carrello) session.getAttribute("cart"); %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.*, model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,18 +28,30 @@
 </div>
 
 <table class="table">
+<%
+		
+		List<ProdottoBean> prodcart = cart.ottieniElem();
+		if(prodcart.size()==0){
+			response.sendRedirect("index.jsp");
+		}else{
+		for(ProdottoBean beancart: prodcart) {
+			System.out.println(prodcart);
+		
+	%>
   <thead class="thead-dark">
     <tr>
-    
-      <th scope="col">Prodotto</th>
-      <th scope="col">Descrizione</th>
-      <th scope="col">Colore</th>
-      <th scope="col">Taglia</th>
-      <th scope="col">Quantità</th>
-      <th scope="col">Prezzo</th>
-      <th></th>
-    </tr>
-    
+			<td><%=beancart.getCodice_prodotto() %></td>
+			<td><a href="CartControl?action=rimuoviP&id=<%=beancart.getId_prodotto()%>">Cancella da carrello</a>
+			
+
+		</tr>
+					
+	<%
+		}
+		}
+	%>
+ 
+	
   </thead>
  
   <tbody class="bordo1" id="ye">
@@ -46,37 +63,17 @@
    {
 %>
 		--%>
-    <tr>
-      <th scope="row"><img alt="" src="img/via.jpg" width="200px" ></th>
-      <td>scarpe nike </td>
-      <td> silver</td>
-      <td>42</td>
-      <td>1</td>
-      <td>20€</td>
-      <td><a href="RimuoviCarrello?id_prodotto=">Rimuovi dal carrello</a></td>
-  
-    </tr>
-    
-    <tr>
-      <th scope="row"><img alt="" src="img/via.jpg" width="200px" ></th>
-      <td>scarpe nike </td>
-      <td> silver</td>
-      <td>42</td>
-      <td>1</td>
-      <td>20€</td>
-      <td><a href="RimuoviCarrello?id_prodotto=">Rimuovi dal carrello</a></td>
-  
-    </tr>
 
-  </tbody>
-    
+
+
+	
 </table>
+<form method="get" action="ProcediAcquisto" name ="ProcediAcquisto" >
+<input type="hidden" name="action" value="ProcediAcquisto">
+<input type="submit" value="Acquista!">
 
-<a href="aggiungi_indirizzo" class="shiny-button2 , sx2" >
-  <strong >PROCEDI CON L'ORDINE</strong>
-  </a>
 
-<br> <br> <br> <br> <br> <br> 
+</form>
 
 <%@ include file="footer.jsp" %>
 </body>

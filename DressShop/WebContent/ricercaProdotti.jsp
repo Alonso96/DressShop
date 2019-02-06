@@ -45,9 +45,12 @@
                     <div class="price"> &euro;<%= formatter.format(bean.getPrezzo_compl()) %>
                     </div>
                 </div>
-                <form action="CartControl" method="post">
-                <button class="btn btn-primary" type="submit" name="aggiungi_carrello">Aggiungi al carrello</button>
-                </form>
+               
+                <a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>">Dettagli</a>	
+			
+				<a href="ProductControl?action=addCart&id=<%=bean.getId_prodotto()%>">Aggiungi a carrello</a>
+                
+               
             </div>
         </div>
         <% 		} 

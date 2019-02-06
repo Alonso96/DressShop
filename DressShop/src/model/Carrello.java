@@ -4,27 +4,31 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-//gestire modifica quantità
+//gestire modifica quantitï¿½
 
 @SuppressWarnings("hiding")
-public class Carrello<ProdottoInCarrello> implements Serializable{
+public class Carrello<T> implements Serializable{
 	
-	List<ProdottoInCarrello> list;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	List<T> list;
 	
 	public Carrello() {
-		list = new ArrayList<ProdottoInCarrello>(); //costruttore
+		list = new ArrayList<T>(); //costruttore
 	}
 	
 	public boolean isEmpty(){
 		return list.isEmpty();
 	}
 	
-	public void addProd(ProdottoInCarrello prodotto) {
+	public void addProd(T prodotto) {
 		list.add(prodotto);
 	}
 	
-	public void rimElemento(ProdottoInCarrello prodotto) {
-		for(ProdottoInCarrello p : list) {
+	public void rimElemento(T prodotto) {
+		for(T p : list) {
 			if(p.equals(prodotto)) {
 				list.remove(p);
 				break;
@@ -32,13 +36,13 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 		}
 	}
 	
-	public List<ProdottoInCarrello> ottieniElem() {
+	public List<T> ottieniElem() {
 		return list;
 	}
 	
 	public float getTotale(){
 		float totale = 0;
-		for(ProdottoInCarrello p : list){
+		for(T p : list){
 			totale += ((model.ProdottoInCarrello)p).getPrezzo_compl();
 		}
 		return totale;
@@ -57,7 +61,7 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 		ordBean.setData(new java.sql.Date(new java.util.Date().getTime()));	//getTime di java.util.Date restituisce long al costruttore di java.sql.Date
 		int idOrdine = ordineModel.doSave(ordBean);
 		
-		for(ProdottoInCarrello prod : list){
+		for(T prod : list){
 			ProdottoInOrdineBean prodBean = new ProdottoInOrdineBean();
 			prodBean.setId_prodotto(((model.ProdottoInCarrello)prod).getId_prodotto());
 			prodBean.setPrezzo_compl(((model.ProdottoInCarrello)prod).getPrezzo_compl());
@@ -70,6 +74,6 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 			ordinazioneModel.doSave(ordinazioneBean);
 		}
 
-		list = new ArrayList<ProdottoInCarrello>();
+		list = new ArrayList<T>();
 	}	
 }

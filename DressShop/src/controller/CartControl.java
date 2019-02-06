@@ -33,11 +33,11 @@ public class CartControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Carrello<ProdottoInCarrello> cart = (Carrello<ProdottoInCarrello>)request.getSession().getAttribute("cart");
+		Carrello<ProdottoBean> cart = (Carrello<ProdottoBean>)request.getSession().getAttribute("cart");
 		
 		
 		if(cart == null) {
-			cart = new Carrello<ProdottoInCarrello>();
+			cart = new Carrello<ProdottoBean>();
 			request.getSession().setAttribute("cart", cart);
 		}
 		
@@ -88,15 +88,14 @@ public class CartControl extends HttpServlet {
 					*/
 				} else if(action.equalsIgnoreCase("aggiungiP")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoBean)model.doRetrieveByKey(id));
-					cart.addProd(prod);
+					cart.addProd(model.doRetrieveByKey(id));
 					
 					
 				} else if(action.equalsIgnoreCase("rimuoviP")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					System.out.println("rimuovo elemento con id "+ id);
-					ProdottoInCarrello prod = new ProdottoInCarrello((ProdottoBean)model.doRetrieveByKey(id));
-					cart.rimElemento(prod);
+					cart.rimElemento(model.doRetrieveByKey(id));
+					
 				}
 				else if( action.equalsIgnoreCase("acquista")) {
 					int id_utente = (int) request.getSession().getAttribute("id");
@@ -132,7 +131,7 @@ public class CartControl extends HttpServlet {
 		}
 		
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
 		dispatcher.forward(request, response); // passo la chiamata alla jsp
 		
 	}
