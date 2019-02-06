@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-||
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>VISUALIZZA PRODOTTO</title>
 <link rel="stylesheet" href="css/css/bootstrap.min.css">
@@ -22,6 +21,7 @@
 
 <%
     	ProdottoBean prod = (ProdottoBean) request.getAttribute("product");
+		request.getSession().setAttribute("product", prod);
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 %>    
 	<div class="container">
@@ -56,18 +56,16 @@
 						<p class="vote"><strong><%=prod.getPromozione() %> </strong></p>
 						 --%>
 						<form>
-						<h5 class="sizes" name="colore">sizes:
-					       <%--switch(prodotto.getTaglia()){ --%>
-							<%--case("S") :--%> <input type="radio" name="beantype" value ="s" class="size" data-toggle="tooltip" >s</input> 
-							<%--case("M") :--%><input type="radio" name="beantype" value ="m"  class="size" data-toggle="tooltip" >M</input> 
-							<%--case("L") :--%><input type="radio" name="beantype" value ="l"  class="size" data-toggle="tooltip" >s</input> 
-							<%--case("XL") :--%><input type="radio" name="beantype" value ="xl"  class="size" data-toggle="tooltip" >xl</input><%--break;
-							} --%>
+						<h5 class="sizes" name="taglia">sizes:
+							<input type="radio" name="beantype" value ="s" class="size" data-toggle="tooltip" >s</input> 
+							<input type="radio" name="beantype" value ="m"  class="size" data-toggle="tooltip" >M</input> 
+							<input type="radio" name="beantype" value ="l"  class="size" data-toggle="tooltip" >l</input> 
+							<input type="radio" name="beantype" value ="xl"  class="size" data-toggle="tooltip" >xl</input>
 						</h5>
 				</form>	
 						
 						<div class="action">
-								<a href="ProductControl?action=addCart&id=<%=prod.getId_prodotto()%>">Aggiungi a carrello</a>
+								<input type = "submit" name = "invia" value = "Aggiungi al carrello"></input>
 							
 						</div>
 					</div>

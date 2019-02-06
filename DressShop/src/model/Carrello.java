@@ -7,42 +7,42 @@ import java.util.List;
 //gestire modifica quantit�
 
 @SuppressWarnings("hiding")
-public class Carrello<T> implements Serializable{
+public class Carrello<ProdottoInCarrello> implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	List<T> list;
+	List<ProdottoInCarrello> list;
 	
 	public Carrello() {
-		list = new ArrayList<T>(); //costruttore
+		list = new ArrayList<ProdottoInCarrello>(); //costruttore
 	}
 	
 	public boolean isEmpty(){
 		return list.isEmpty();
 	}
 	
-	public void addProd(T prodotto) {
+	public void addProd(ProdottoInCarrello prodotto) {
 		list.add(prodotto);
 	}
 	
-	public void rimElemento(T prodotto) {
-		for(T p : list) {
-			if(p.equals(prodotto)) {
+	public void rimElemento(int id_prodotto) {
+		for(ProdottoInCarrello p : list) {
+			if(((model.ProdottoInCarrello)p).getId_prodotto() == id_prodotto) {
 				list.remove(p);
 				break;
 			}	
 		}
 	}
 	
-	public List<T> ottieniElem() {
+	public List<ProdottoInCarrello> ottieniElem() {
 		return list;
 	}
 	
 	public float getTotale(){
 		float totale = 0;
-		for(T p : list){
+		for(ProdottoInCarrello p : list){
 			totale += ((model.ProdottoInCarrello)p).getPrezzo_compl();
 		}
 		return totale;
@@ -61,7 +61,7 @@ public class Carrello<T> implements Serializable{
 		ordBean.setData(new java.sql.Date(new java.util.Date().getTime()));	//getTime di java.util.Date restituisce long al costruttore di java.sql.Date
 		int idOrdine = ordineModel.doSave(ordBean);
 		
-		for(T prod : list){
+		for(ProdottoInCarrello prod : list){
 			ProdottoInOrdineBean prodBean = new ProdottoInOrdineBean();
 			prodBean.setId_prodotto(((model.ProdottoInCarrello)prod).getId_prodotto());
 			prodBean.setPrezzo_compl(((model.ProdottoInCarrello)prod).getPrezzo_compl());
@@ -74,6 +74,6 @@ public class Carrello<T> implements Serializable{
 			ordinazioneModel.doSave(ordinazioneBean);
 		}
 
-		list = new ArrayList<T>();
+		list = new ArrayList<ProdottoInCarrello>();
 	}	
 }

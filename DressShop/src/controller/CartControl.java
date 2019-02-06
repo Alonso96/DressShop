@@ -41,96 +41,35 @@ public class CartControl extends HttpServlet {
 			request.getSession().setAttribute("cart", cart);
 		}
 		
-		System.out.println("ciao");
-		String action = request.getParameter("action");
-		
-		try {
-			if(action != null) {
-				if(action.equalsIgnoreCase("detail")) {
+//		try {
+			String invia = request.getParameter("invia");
+			System.out.println(invia);
+			if(invia != null) {
+				if(invia.equalsIgnoreCase("Aggiungi al carrello")) {
+					System.out.println("ciao");
+					ProdottoBean prod = (ProdottoBean) request.getSession().getAttribute("product");
+					String taglia = (String) request.getAttribute("beantype");
+					ProdottoInCarrello prodotto = new ProdottoInCarrello(prod);
+					prodotto.setQuantita(1);
+					prodotto.setTaglia(taglia);
+					cart.addProd(prodotto);
+				} else if(invia.equalsIgnoreCase("rimuovi")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					request.removeAttribute("product");
-					request.setAttribute("product", model.doRetrieveByKey(id));
-				/*} else if(action.equalsIgnoreCase("delete")) {
-					cart.rimElemento(model.doRetrieveByKey(id));
-				} else if(action.equalsIgnoreCase("insert")) {
-					
-					int id = Integer.parseInt(request.getParameter("Id"));
-					String codice= request.getParameter("codice");
-					String descrizione= request.getParameter("description");
-					String marca = request.getParameter("marca");
-					float ivaV = Float.parseFloat(request.getParameter("ivaVendita"));     //iva vendita;
-					float prezzoV =Float.parseFloat(request.getParameter("prezzoVendita")); //prezzovendita
-					String modello = request.getParameter("modello");
-					int codC= Integer.parseInt(request.getParameter("codiceC")); //codice categoria
-					int quantita= Integer.parseInt(request.getParameter("quantita"));
-					String taglia = request.getParameter("taglia"); 
-					String colore = request.getParameter("colore");
-					String foto = request.getParameter("foto"); //url
-					int promozione = Integer.parseInt(request.getParameter("promozione")); //id promozione
-					
-					
-					ProdottoBean bean = new ProdottoBean();
-					bean.setId_prodotto(id); 
-					bean.setCodice_prodotto(codice);
-					bean.setDescrizione(descrizione);
-					bean.setMarca(marca);
-					bean.setModello(modello);
-					bean.setTaglia(taglia);
-					bean.setColore(colore);
-					bean.setFoto(foto);
-				//	bean.setCategoria(categoria); dovrebbe essere un int ma è segnato stringa DA RIVEDERE!!
-					bean.setPromozione(promozione);
-					((ProdottoInCatalogoBean)bean).setPrezzo(prezzoV);
-					((ProdottoInCatalogoBean)bean).setIva(ivaV);
-					((ProdottoInCatalogoBean)bean).setQuantita(quantita);
-					
-					model.doSave(bean);
-					*/
-				} else if(action.equalsIgnoreCase("aggiungiP")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					cart.addProd(model.doRetrieveByKey(id));
-					
-					
-				} else if(action.equalsIgnoreCase("rimuoviP")) {
-					int id = Integer.parseInt(request.getParameter("id"));
+					cart.rimElemento(id);
 					System.out.println("rimuovo elemento con id "+ id);
-					cart.rimElemento(model.doRetrieveByKey(id));
-					
-				}
-				else if( action.equalsIgnoreCase("acquista")) {
-					int id_utente = (int) request.getSession().getAttribute("id");
-					IndirizzoBean indirizzo = (IndirizzoBean) request.getSession().getAttribute("indirizzo");
-					int id_indirizzo = indirizzo.getId_indirizzo();
-					CartaDiCreditoBean carta = (CartaDiCreditoBean) request.getSession().getAttribute("carta");
-					String numero_carta = carta.getNumero_carta();
-					cart.acquista(numero_carta, id_utente, id_indirizzo);
-				}
-				
-				
-			
-				
+				}				
+			} else {
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+				dispatcher.forward(request, response); // passo la chiamata alla jsp				
 			}
-		} catch(SQLException e) {
+/*		} catch(SQLException e) {
 			System.out.println("Error: "+ e.getMessage());
 			request.setAttribute("error", e.getMessage());
 		}
-		
+*/		
 		request.getSession().setAttribute("cart", cart);
 		request.setAttribute("cart", cart);
-		
-		
-		
-		String sort = request.getParameter("sort");
-		
-		try {
-			request.removeAttribute("products");
-			request.setAttribute("products", model.doRetrieveAll());  //dentro c'era "sort    
-		} catch(SQLException e) {
-			System.out.println("Error: "+ e.getMessage());
-			request.setAttribute("error", e.getMessage());
-		}
-		
-		
+				
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
 		dispatcher.forward(request, response); // passo la chiamata alla jsp
 		

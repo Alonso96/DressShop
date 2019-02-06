@@ -88,7 +88,7 @@ public class ProductControl extends HttpServlet {
 				} else if(action.equalsIgnoreCase("delCart")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					System.out.println("rimuovo elemento con id "+ id);
-					cart.rimElemento(model.doRetrieveByKey(id));
+//					cart.rimElemento(model.doRetrieveByKey(id));
 				}
 				
 				

@@ -29,30 +29,21 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 
 <table class="table">
 <%
-		if(cart==null){
-			response.sendRedirect("index.jsp");
-		}
-		else{
-		List<ProdottoBean> prodcart = cart.ottieniElem();
-		if(prodcart.size()==0){
-			response.sendRedirect("index.jsp");
-		}
-		else{
-		for(ProdottoBean beancart: prodcart) {
-			System.out.println(prodcart);
+		if((cart != null) && (cart.ottieniElem().size() > 0)){
+			List<ProdottoBean> prodcart = cart.ottieniElem();
+			for(ProdottoBean beancart : prodcart) {
+				System.out.println(prodcart);
 		
 	%>
   <thead class="thead-dark">
     <tr>
 			<td><%=beancart.getCodice_prodotto() %></td>
-			<td><a href="CartControl?action=rimuoviP&id=<%=beancart.getId_prodotto()%>">Cancella da carrello</a>
+			<td><a href="CartControl?invia=rimuovi&id=<%=beancart.getId_prodotto()%>">Cancella da carrello</a>
 			
 
 		</tr>
 					
 	<%
-		}
-		}
 		}
 	%>
  
@@ -76,6 +67,14 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 <form method="get" action="ProcediAcquisto" name ="ProcediAcquisto" >
 <input type="hidden" name="action" value="ProcediAcquisto">
 <input type="submit" value="Acquista!">
+
+	<%
+		} else {
+			%>	
+			
+			<p>No product available</p>
+		
+<% } %> 
 
 
 </form>
