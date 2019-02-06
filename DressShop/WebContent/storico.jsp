@@ -5,7 +5,7 @@
 <head>
 <link href="css/css/bootstrap.min.css" rel="stylesheet" >
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>STORICO ACQUISTI</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
