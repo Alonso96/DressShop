@@ -156,6 +156,11 @@ img {
             transform: scale(1); } }
 
 /*# fine Visualizza Prodotto*/
+html,
+body
+{
+   height: 100%;
+}
 body{
 
 background: linear-gradient(-90deg, #a08381, #e0d7d6 );
@@ -334,14 +339,15 @@ hover .social{opacity:1;bottom:20px}
 	font-family:Lucida Console, Courier New, Times, serif!important;
   font-size: 80%;
   text-align: center;
-  line-height: normal;
-  margin-top: 30px;
+  
+  height: 60px;
   color:#797979;
-  float:bottom;
+  
   background: white;
-  radiant: 2px;
+  radiant: 1px;
   font-weight: bold;
   border-radius: 0.8rem;
+  
 }
 
 .shiny-button {
@@ -652,3 +658,10 @@ table{
 	background-color: transparent !important;
 }
 
+#wrap2
+{
+  height: auto !important;
+  min-height: 100%;
+  position: relative;
+  margin: 0 auto -60px;
+}
