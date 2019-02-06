@@ -51,9 +51,9 @@
         <% 		} 
 		} else {
 	%>	
-		<tr>
-			<td colspan="4">No product available</td>
-		</tr>
+		
+			<p>No product available</p>
+		
 <% } %> 
     </div>
 </div>

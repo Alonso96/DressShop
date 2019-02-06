@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+||
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>VISUALIZZA PRODOTTO</title>
 <link rel="stylesheet" href="css/css/bootstrap.min.css">
@@ -54,16 +55,16 @@
 						<%--if(podotto.getPromozione!=0){ 
 						<p class="vote"><strong><%=prod.getPromozione() %> </strong></p>
 						 --%>
-						
+						<form>
 						<h5 class="sizes" name="colore">sizes:
 					       <%--switch(prodotto.getTaglia()){ --%>
-							<%--case("S") :--%><button class="size" data-toggle="tooltip" >s</button>
-							<%--case("M") :--%><button class="size" data-toggle="tooltip" >m</button>
-							<%--case("L") :--%><button class="size" data-toggle="tooltip" >l</button>
-							<%--case("XL") :--%><button class="size" data-toggle="tooltip" >xl</button><%--break;
+							<%--case("S") :--%> <input type="radio" name="beantype" value ="s" class="size" data-toggle="tooltip" >s</input> 
+							<%--case("M") :--%><input type="radio" name="beantype" value ="m"  class="size" data-toggle="tooltip" >M</input> 
+							<%--case("L") :--%><input type="radio" name="beantype" value ="l"  class="size" data-toggle="tooltip" >s</input> 
+							<%--case("XL") :--%><input type="radio" name="beantype" value ="xl"  class="size" data-toggle="tooltip" >xl</input><%--break;
 							} --%>
 						</h5>
-						
+				</form>	
 						
 						<div class="action">
 								<a href="ProductControl?action=addCart&id=<%=prod.getId_prodotto()%>">Aggiungi a carrello</a>

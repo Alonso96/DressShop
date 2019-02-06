@@ -12,7 +12,7 @@
 
 
 
- <div id="footer" style="position: absolute;
+ <div id="footer" style="position: relative;
 bottom: 0;
 left: 0; width: 100%">
 
