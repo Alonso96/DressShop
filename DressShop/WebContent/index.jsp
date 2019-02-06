@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <link href="css/css/bootstrap.min.css" rel="stylesheet" >
 
-<title>Insert title here</title>
+<title>HOME</title>
 </head>
 
 <body>

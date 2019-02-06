@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>MOSTRA CARTE</title>
 <link href="css/css/bootstrap.min.css" rel="stylesheet" >
 </head>
 <body>
