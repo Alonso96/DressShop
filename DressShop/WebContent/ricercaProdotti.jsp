@@ -28,7 +28,7 @@
         <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
 <%
-		if(products.size() > 0) {
+		if((products != null) && (products.size() > 0)) {
 		Iterator<?> it = products.iterator();
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		
