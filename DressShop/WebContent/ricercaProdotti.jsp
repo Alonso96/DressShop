@@ -36,7 +36,7 @@
 			ProdottoBean bean = (ProdottoBean) it.next();
 %>
                 <div class="product-image6">
-                    <a href="#">
+                    <a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>">
                         <img class="pic-1" src= <%= bean.getFoto()%>>
                     </a>
                 </div>
@@ -48,7 +48,7 @@
                
                 <a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>">Dettagli</a>	
 			
-				<a href="ProductControl?action=addCart&id=<%=bean.getId_prodotto()%>">Aggiungi a carrello</a>
+			
                 
                
             </div>

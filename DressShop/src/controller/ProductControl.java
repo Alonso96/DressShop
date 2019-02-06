@@ -43,6 +43,7 @@ public class ProductControl extends HttpServlet {
 					int id = Integer.parseInt(request.getParameter("id"));
 					request.removeAttribute("product");
 					request.setAttribute("product", model.doRetrieveByKey(id));
+					request.getRequestDispatcher("visualizzaProdotto.jsp").forward(request, response);
 				} else if(action.equalsIgnoreCase("delete")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					model.doDelete(id);
@@ -81,6 +82,8 @@ public class ProductControl extends HttpServlet {
 				} else if(action.equalsIgnoreCase("addCart")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					cart.addProd(model.doRetrieveByKey(id));
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
+					dispatcher.forward(request, response); // passo la chiamata alla jsp;
 					
 				} else if(action.equalsIgnoreCase("delCart")) {
 					int id = Integer.parseInt(request.getParameter("id"));
@@ -112,9 +115,9 @@ public class ProductControl extends HttpServlet {
 			request.setAttribute("error", e.getMessage());
 		}
 		
-	 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
+	   /* RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
 		dispatcher.forward(request, response); // passo la chiamata alla jsp;
-		
+		*/
 		
 	}
 

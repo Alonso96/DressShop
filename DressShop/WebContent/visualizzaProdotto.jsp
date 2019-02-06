@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"  import="java.util.Collection, java.util.Iterator, model.ProdottoBean, java.text.DecimalFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,34 +16,31 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<%@ include file="header.jsp" %>
 	<form action="CartControl" method="post">
-	<%--
-ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
+	
 
---%>
+
+<%
+    	ProdottoBean prod = (ProdottoBean) request.getAttribute("product");
+%>    
 	<div class="container">
+	
 		<div class="card">
 			<div class="container-fliud">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="<%--prodotto.getFoto() --%> http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="<%=prod.getFoto()%> http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
 						  <div class="tab-pane" id="pic-2"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
 						  <div class="tab-pane" id="pic-3"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
-						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
-						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
-						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
-						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></a></li>
-						</ul>
+						
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">men's shoes fashion<%--prodotto.getMarca(); prodotto.getModello() --%></h3>
+						<h3 class="product-title"><%=prod.getMarca().toUpperCase() + " - " + prod.getModello() %></h3>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -54,12 +51,12 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							</div>
 							
 						</div>
-						<p class="product-description"><%--prodotto.getDescrizione() --%>Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-						<h4 class="price">Prezzo: &euro; 180<%--prodotto.getPrezzo()>--%></h4>
+						<p class="product-description"><%=prod.getDescrizione() %></p>
+						<h4 class="price">Prezzo: &euro; <%=prod.getPrezzo_compl() %></h4>
 						<%--if(podotto.getPromozione!=0){ --%>
-						<p class="vote"><strong>Scontato del 91%<%--prodotto.getPromozione() --%></strong> </strong></p>
+						<p class="vote"><strong><%=prod.getPromozione() %> </strong></p>
 						<%-- --%>
-						<form>
+						
 						<h5 class="sizes" name="colore">sizes:
 					       <%--switch(prodotto.getTaglia()){ --%>
 							<%--case("S") :--%><button class="size" data-toggle="tooltip" >s</button>
@@ -68,16 +65,10 @@ ProdottoBean prodotto= (ProdottoBean) session.getAttribute("product");
 							<%--case("XL") :--%><button class="size" data-toggle="tooltip" >xl</button><%--break;
 							} --%>
 						</h5>
-						</form>
-						<form name="colore">
-						<h5 class="colors">colors:
-							<button class="color green" style="background-color: orange<%--prodotto.getColore()--%>;" > </button>
-							<button class="color green"></button>
-							<button class="color blue"></button>
-						</h5>
-						</form>
+						
+						
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button" name="prodotto">Aggiungi al carrello</button>
+								<a href="ProductControl?action=addCart&id=<%=prod.getId_prodotto()%>">Aggiungi a carrello</a>
 							
 						</div>
 					</div>
