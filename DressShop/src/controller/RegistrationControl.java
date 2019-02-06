@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import model.UtenteBean;
 import model.UtenteModel;
@@ -42,6 +42,7 @@ public class RegistrationControl extends HttpServlet {
 		response.setContentType("text/html");
 		System.out.println("Mi ha chiamato il bottone registrazione");
 		System.out.println(request.getParameter("nome"));
+		HttpSession session = request.getSession(false);
 
 		try {
 				String nome = request.getParameter("nome");
@@ -67,6 +68,9 @@ public class RegistrationControl extends HttpServlet {
 					dispatcher.forward(request, response);
 				} else {	
 					model.doSave(newUser);
+					 session.setAttribute("email", eMail);
+				  //   session.setAttribute("id", newUser.getId_utente()); //assegno l'id
+					
 					System.out.println("Ciao");
 				}
 				
