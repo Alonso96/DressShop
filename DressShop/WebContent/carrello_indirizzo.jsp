@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/css/bootstrap.min.css" rel="stylesheet" >
-<title>Insert title here</title>
+<title>CARRELLO 2-INDIRIZZO</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>

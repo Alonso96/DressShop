@@ -5,7 +5,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>ELIMINA UTENTI</title>
 <link rel="stylesheet" href="css/css/bootstrap.min.css">
 <link href="css/stile.css" rel="stylesheet" >
 </head>

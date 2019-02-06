@@ -9,7 +9,7 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>CARRELLO 1</title>
 <link href="css/css/bootstrap.min.css" rel="stylesheet" >
 </head>
 <body>
