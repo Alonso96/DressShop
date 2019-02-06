@@ -21,6 +21,7 @@
 
 <%
     	ProdottoBean prod = (ProdottoBean) request.getAttribute("product");
+		DecimalFormat formatter = new DecimalFormat("#0.00");
 %>    
 	<div class="container">
 	
@@ -49,10 +50,10 @@
 							
 						</div>
 						<p class="product-description"><%=prod.getDescrizione() %></p>
-						<h4 class="price">Prezzo: &euro; <%=prod.getPrezzo_compl() %></h4>
-						<%--if(podotto.getPromozione!=0){ --%>
+						<h4 class="price">Prezzo: &euro; <%= formatter.format(prod.getPrezzo_compl()) %></h4>
+						<%--if(podotto.getPromozione!=0){ 
 						<p class="vote"><strong><%=prod.getPromozione() %> </strong></p>
-						<%-- --%>
+						 --%>
 						
 						<h5 class="sizes" name="colore">sizes:
 					       <%--switch(prodotto.getTaglia()){ --%>

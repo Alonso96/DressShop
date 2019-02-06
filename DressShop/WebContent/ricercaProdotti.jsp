@@ -41,16 +41,11 @@
                     </a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#"><%= bean.getMarca().toUpperCase() + " - " + bean.getModello() %></a></h3>
+                    <h3 class="title"><a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>"><%= bean.getMarca().toUpperCase() + " - " + bean.getModello() %></a></h3>
                     <div class="price"> &euro;<%= formatter.format(bean.getPrezzo_compl()) %>
                     </div>
                 </div>
-               
-                <a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>">Dettagli</a>	
-			
-			
-                
-               
+                              
             </div>
         </div>
         <% 		} 
