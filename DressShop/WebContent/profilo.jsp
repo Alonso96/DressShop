@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"  import="model.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,10 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<% UtenteModel<UtenteBean> model = new UtenteModelDM();
+	UtenteBean utente = new UtenteBean();
+	utente= model.doRetrieveByEmail((String)session.getAttribute("email"));
+%>
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;DATI PERSONALI</h4>
 <hr>
@@ -19,10 +23,12 @@
     <tbody>
     <tr>
         <th>
-            Nome
+            Nome <br>
+            <%=utente.getNome() %>
         </th>
         <td>
-            Primo Nome
+         
+            <%=utente.getNome() %>
         </td>
         
     </tr>
@@ -31,18 +37,17 @@
             Cognome
         </th>
         <td>
-            Primo Cognome
+          <%=utente.getCognome() %>
         </td>
         
     </tr>
-    <tr>
+   
+   <tr>
         <th>
-            Anno di nascita
+           Anno di Nascita
         </th>
-        
-        
         <td>
-            Primo Anno di nascita
+            <%=utente.getData_nascita()%>
         </td>
 		</tr>
 		<tr>
@@ -50,29 +55,14 @@
            Email
         </th>
         <td>
-            email@
+            <%=utente.getEmail() %>
         </td>
 		</tr>
 		
 		
+		
 		<tr>
-        <th>
-            Numero Cellullare
-        </th>
-        <td>
-            Primo Anno di nascita
-        </td>
-		</tr>
-			
-		<tr>
-        <th>
-            	Password
-        </th>
         
-        
-        <td>
-            ******
-        </td>
         <td>
            <a href="#" class="myButton">MODIFICA PASSWORD</a>
         </td>

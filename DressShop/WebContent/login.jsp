@@ -19,7 +19,7 @@
                     <h3>Login</h3>
                     
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email *" name ="email"  required oninput ="controlloEmail()">
+                            <input type="email" class="form-control" placeholder="Email *" name ="email"   required oninput ="controlloEmail()">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password *" name ="password" required oninput ="controlloPassword()" />

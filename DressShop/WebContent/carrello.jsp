@@ -16,7 +16,7 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 <%@ include file="header.jsp" %>
 
 <hr>
-<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SHOPPING BAG</h4>
+<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;Carrello</h4>
 <hr>
  <div class="bottoni">
 <a href="index.jsp" class="shiny-button2" id="dx">
@@ -29,11 +29,15 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 
 <table class="table">
 <%
-		
+		if(cart==null){
+			response.sendRedirect("index.jsp");
+		}
+		else{
 		List<ProdottoBean> prodcart = cart.ottieniElem();
 		if(prodcart.size()==0){
 			response.sendRedirect("index.jsp");
-		}else{
+		}
+		else{
 		for(ProdottoBean beancart: prodcart) {
 			System.out.println(prodcart);
 		
@@ -47,6 +51,7 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 		</tr>
 					
 	<%
+		}
 		}
 		}
 	%>

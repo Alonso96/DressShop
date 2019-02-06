@@ -40,7 +40,7 @@ public class LoginControl extends HttpServlet {
 		response.setContentType("text/html");  
 	        PrintWriter out = response.getWriter();  
 	        int tipo;
-	        String n=request.getParameter("eMail");  
+	        String n=request.getParameter("email");  
 	        String p=request.getParameter("password"); //
 	        UtenteBean utente = new UtenteBean();
 	        try {
