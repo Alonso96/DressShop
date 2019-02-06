@@ -1,6 +1,8 @@
 @charset "ISO-8859-1";
 /*inizio visualizza Prodotto*/
-//
+
+* { margin:0; padding:0;}
+html, body { height: 100%; 
 img {
   max-width: 100%; }
 
@@ -654,3 +656,15 @@ table{
 	background-color: transparent !important;
 }
 
+
+body {
+	display: table;
+	width: 100%;
+}
+.main {
+	height: 100%;
+}
+#footer {
+	display: table-row;
+	height:1px;
+}
