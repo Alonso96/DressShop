@@ -30,11 +30,8 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="<%=prod.getFoto()%> http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
-						  <div class="tab-pane" id="pic-2"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://bestjquery.com/tutorial/product-grid/demo10/images/img-2.jpg" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="<%=prod.getFoto()%>" /></div>
+						  
 						</div>
 						
 						
