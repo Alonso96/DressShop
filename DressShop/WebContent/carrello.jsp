@@ -25,46 +25,43 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 
 </div>
 
-<table class="table">
-<%
-		if((cart != null) && (!cart.isEmpty())){
-			List<ProdottoBean> prodcart = cart.ottieniElem();
-			for(ProdottoBean beancart : prodcart) {
-				System.out.println(prodcart);
-		
-	%>
-  <thead class="thead-dark">
-    <tr>
-			<td><%=beancart.getCodice_prodotto() %></td>
-			<td><a href="CartControl?invia=rimuovi&id=<%=beancart.getId_prodotto()%>">Cancella da carrello</a>
-			
+<form action="">
+	 <table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	   
+	     <th scope="col">PRODOTTO</th>
+	      <th scope="col">MARCA</th>
+	      <th scope="col">MODELLO</th>
+	      <th scope="col">PREZZO</th>
+	      <th scope="col">QUANTITA'</th>
+	      <th></th>
+	    </tr>
+	    
+	  </thead>
+	 
+	  <tbody class="bordo1" id="ye">
+	  
+	  <tr>
+	 
+	      <td scope="row">
+	      			<img src="img/lo.jpg" width="10%" style="float:left;">  
+	      		
+	      	</td>
+	      <td>444444 </td>
+	      <td> 00/00</td>
+	      <td>111</td>
+	      <td>antonio</td>
+			<td><a href="">Rimuovi dal carrello</a></td>
+	    </tr>
+	    
+	  
+	  </tbody>
+	      	
+	</table>
 
-		</tr>
-					
-	<%
-		}
-	%>
- 
-	
-  </thead>
- 
-  <tbody class="bordo1" id="ye">
-	
-</table>
-<form method="get" action="ProcediAcquisto" name ="ProcediAcquisto" >
-<input type="hidden" name="action" value="ProcediAcquisto">
-<input type="submit" value="Acquista!" >
+ </form>
 
-	<%
-		} else {
-			%>	
-			
-			<h4>Non hai articoli nel carrello</h4>
-		
-<% } %> 
-
-
-</form>
 
 <%@ include file="footer.jsp" %>
 </body>
