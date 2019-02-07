@@ -1,14 +1,14 @@
 use DressShop;
 
-insert into UTENTE(nome, cognome, email, password, tipo)
-values('mario', 'bianchi', 'uno@due.it', 'Password1', 1), ('marco', 'rossi', 'due@tre.it', 'Password1', 4), 
-('antonio', 'verdi', 'tre@quattro.it', 'Password1', 2), ('luca', 'neri', 'quattro@cinque.it', 'Password1', 3);
+insert into UTENTE(nome, cognome, email, password, tipo, data_nascita)
+values('Mario', 'Bianchi', 'uno@due.it', 'Password1', 1, '1996/11/11'), ('Marco', 'Rossi', 'due@tre.it', 'Password1', 4, '1995/06/29'), 
+('Antonio', 'Verdi', 'tre@quattro.it', 'Password1', 2, '1998/12/29'), ('Luca', 'Neri', 'quattro@cinque.it', 'Password1', 3, '1989/08/13');
 
 insert into CARTA_CREDITO(numero_carta, data_scadenza, cvv, nome_proprietario, cognome_proprietario, utente)
-values('4444444444444444', '2020/10/20', '333', 'mario', 'bianchi', 1);
+values('4003600592874153', '2020/10/20', '333', 'Mario', 'Bianchi', 1);
 
 insert into INDIRIZZO(nome, cognome, cap, provincia, citta, via, cellulare, utente)
-values('mario', 'bianchi', '12345', 'SA', 'Fisciano', 'via Roma, 5', '3456789012', 1);
+values('Mario', 'Bianchi', '12345', 'SA', 'Fisciano', 'via Roma, 5', '3456789012', 1);
 
 insert into ORDINE(data, pagato, carta_credito, indirizzo, utente, totale)
 values('2018/12/15', true, 1, 1, 1, 50), ('2019/01/21', true, 1,1,1, 80);
