@@ -22,7 +22,7 @@
 
 
 </div>
- <form action="controller/VerificaCarta">
+ <form action="">
 	 <table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -70,7 +70,7 @@
   </a>
 
  
-  <input type="submit" value="CONCLUDI ORDINE">
+   <input id="sx" type="submit" value="PROCEDI CON L'ORDINE">
 </div>
 
 

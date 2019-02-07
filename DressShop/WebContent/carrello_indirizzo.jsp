@@ -84,7 +84,7 @@
   </a>
 
  
-  <input id="sx" type="submit" value="PROCEDI CON L'ORDINE">
+  <input id="sx" type="submit" value="PROCEDI CON L'ORDINE" >
 </div>
 
 

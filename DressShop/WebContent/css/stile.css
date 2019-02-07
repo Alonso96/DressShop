@@ -1,8 +1,6 @@
 @charset "ISO-8859-1";
 /*inizio visualizza Prodotto*/
 
-* { margin:0; padding:0;}
-html, body { height: 100%; 
 img {
   max-width: 100%; }
 
@@ -340,7 +338,7 @@ hover .social{opacity:1;bottom:20px}
   
   height: 16%;
   color:#797979;
-  
+  float: bottom !important;
   background: white;
   radiant: 1px;
   font-weight: bold;
@@ -657,14 +655,4 @@ table{
 }
 
 
-body {
-	display: table;
-	width: 100%;
-}
-.main {
-	height: 100%;
-}
-#footer {
-	display: table-row;
-	height:1px;
-}
+

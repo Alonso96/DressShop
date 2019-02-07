@@ -12,9 +12,7 @@
 
 
 
- <div id="footer" style="position: relative;
-bottom: 0;
-left: 0; width: 100%">
+ <div id="footer">
 
  <br>
 		 <div id="back_to_top">
