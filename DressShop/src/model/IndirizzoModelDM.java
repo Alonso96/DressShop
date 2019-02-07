@@ -139,10 +139,10 @@ public class IndirizzoModelDM implements IndirizzoModel<IndirizzoBean>{
 	}
 
 	@Override
-	public IndirizzoBean doRetrieveByUtente(int utente) throws SQLException {
+	public Collection<IndirizzoBean> doRetrieveByUtente(int utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
-		IndirizzoBean bean = new IndirizzoBean();
+		ArrayList<IndirizzoBean> listaBean = new ArrayList<IndirizzoBean>();
 		
 		String queryString ="Select * FROM " + TABLE + " WHERE utente = ?";
 		
@@ -152,13 +152,13 @@ public class IndirizzoModelDM implements IndirizzoModel<IndirizzoBean>{
 			statement.setInt(1, utente);
 			ResultSet result = statement.executeQuery();
 			while(result.next()){
-				bean = getBean(result);
+				listaBean.add(getBean(result));
 			}
 		} finally{
 			if(statement!=null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
-		return bean;
+		return listaBean;
 	}
 	
 	

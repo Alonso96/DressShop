@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
@@ -35,7 +36,7 @@ public class ProcediAcquisto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Carrello<ProdottoInCarrello> cart = (Carrello<ProdottoInCarrello>)request.getSession().getAttribute("cart");
-		CartaDiCreditoModel model = new CartaDiCreditoModelDM();
+		IndirizzoModel model = new IndirizzoModelDM();
 		HttpSession session = request.getSession();
 		
 		if((cart == null) || (cart.isEmpty())){
@@ -47,15 +48,15 @@ public class ProcediAcquisto extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			int id = (int) session.getAttribute("id");
-			ArrayList<CartaDiCreditoBean> carte = new ArrayList<CartaDiCreditoBean>();
+			Collection<IndirizzoBean> indirizzi = new ArrayList<IndirizzoBean>();
 			System.out.println(id);
 			try {
-				carte = model.doRetrieveByUtente(id);
+				indirizzi = model.doRetrieveByUtente(id);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getSession().setAttribute("carte", carte);
+			request.getSession().setAttribute("indirizzi", indirizzi);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("carrello_indirizzo.jsp");
 			dispatcher.forward(request, response);			
 		}

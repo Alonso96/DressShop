@@ -15,6 +15,6 @@ public interface IndirizzoModel<IndirizzoBean> {
 	
 	public boolean doDelete(int id_indirizzo) throws SQLException;
 	
-	public IndirizzoBean doRetrieveByUtente(int utente) throws SQLException;
+	public Collection<IndirizzoBean> doRetrieveByUtente(int utente) throws SQLException;
 
 }

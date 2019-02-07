@@ -9,6 +9,10 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<%@ page import="java.util.ArrayList, java.util.Iterator, model.IndirizzoBean" %>
+<% 
+	ArrayList<IndirizzoBean> indirizzi = (ArrayList<IndirizzoBean>) request.getSession().getAttribute("indirizzi");
+%>	 
 
 <hr>
 <h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UN INDIRIZZO</h3>
@@ -27,7 +31,7 @@
 	  <thead class="thead-dark">
 	    <tr>
 	     <th scope="col">Seleziona</th>
-	      <th scope="col">Città</th>
+	      <th scope="col">Citt&agrave;</th>
 	      <th scope="col">Via</th>
 	      <th scope="col">Cap</th>
 	      <th scope="col">Provincia</th>
@@ -41,19 +45,30 @@
 	  <tbody class="bordo1" id="ye">
 	  
 	  <tr>
-	 
+<%
+		if((indirizzi != null) && (indirizzi.size() > 0)) {
+			Iterator<IndirizzoBean> it = indirizzi.iterator();
+		
+			while(it.hasNext()) {
+				IndirizzoBean bean = (IndirizzoBean) it.next();
+				System.out.println(bean.getId_indirizzo());
+%>
+	  	  
 	      <th scope="row">
-	      			<input type="radio" name="indirizzo" value="y"> Male<br>  
+	      			<input type="radio" name="indirizzo" value= "<%= bean.getId_indirizzo()%>"><br>  
 	      		
-	      	</th>
-	      <td>Napoli </td>
-	      <td> via roma</td>
-	      <td>80033</td>
-	      <td>NA</td>
-	      <td>3333333333</td>
-	      <td>antonio de luca</td>
+	      </th>
+	      <td><%= bean.getCitta()%></td>
+	      <td><%= bean.getVia() %></td>
+	      <td><%= bean.getCap() %></td>
+	      <td><%= bean.getProvincia() %></td>
+	      <td><%= bean.getCellulare() %></td>
+	      <td><%= bean.getNome() + " " + bean.getCognome() %></td>
 	     
-	  
+<%
+			}
+		}
+%>	  
 	    </tr>
 	    
 	  
