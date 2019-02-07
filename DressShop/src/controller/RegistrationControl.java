@@ -48,8 +48,8 @@ public class RegistrationControl extends HttpServlet {
 				String nome = request.getParameter("nome");
 				String cognome = request.getParameter("cognome");
 				String sData= request.getParameter("data_nascita");
-				
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+				System.out.println(sData);
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date data_nascita = new Date(formatter.parse(sData).getTime());
 
 				String password = request.getParameter("password");
