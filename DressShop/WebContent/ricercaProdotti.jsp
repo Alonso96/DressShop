@@ -37,7 +37,7 @@
 %>
                 <div class="product-image6">
                     <a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>">
-                        <img class="pic-1" src= <%= bean.getFoto()%>>
+                        <img class="pic-1" src= <%= bean.getFoto()%> width="20%">
                     </a>
                 </div>
                 <div class="product-content">
