@@ -16,20 +16,18 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 <%@ include file="header.jsp" %>
 
 <hr>
-<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;Carrello</h4>
+<h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;CARRELLO</h3>
 <hr>
- <div class="bottoni">
+<div class="bottoni">
 <a href="index.jsp" class="shiny-button2" id="dx">
  <strong>CONTINUA A COMPRARE</strong>
   </a>
-
-
 
 </div>
 
 <table class="table">
 <%
-		if((cart != null) && (cart.ottieniElem().size() > 0)){
+		if((cart != null) && (!cart.isEmpty())){
 			List<ProdottoBean> prodcart = cart.ottieniElem();
 			for(ProdottoBean beancart : prodcart) {
 				System.out.println(prodcart);
@@ -51,28 +49,17 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
   </thead>
  
   <tbody class="bordo1" id="ye">
- <%-- 
-  <% ArrayList<ProdottoInOrdineBean> prodotti_acquistati=(ArrayList<ProdottoInOrdineBean>)session.getAttribute("Carrello");
-   if(prodotti_acquistati!=null)
-   {
-   for(ProdottoInOrdineBean c : prodotti_acquistati)
-   {
-%>
-		--%>
-
-
-
 	
 </table>
 <form method="get" action="ProcediAcquisto" name ="ProcediAcquisto" >
 <input type="hidden" name="action" value="ProcediAcquisto">
-<input type="submit" value="Acquista!">
+<input type="submit" value="Acquista!" >
 
 	<%
 		} else {
 			%>	
 			
-			<p>No product available</p>
+			<h4>Non hai articoli nel carrello</h4>
 		
 <% } %> 
 

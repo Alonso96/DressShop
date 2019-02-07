@@ -12,7 +12,7 @@
 <%@ include file="header.jsp" %>
 
 <hr>
-<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UNA CARTA DI CREDITO</h4>
+<h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UNA CARTA DI CREDITO</h3>
 <hr>
  <div class="bottoni">
 <a href="carrello_indirizzo.jsp" class="shiny-button2" id="dx">

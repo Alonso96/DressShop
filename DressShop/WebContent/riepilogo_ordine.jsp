@@ -10,7 +10,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <hr>
-<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;RIEPILOGO ORDINE</h4>
+<h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;RIEPILOGO ORDINE</h3>
 <hr>
  <div class="bottoni">
 <a href="carrello_carta.jsp" class="shiny-button2" id="dx">

@@ -11,7 +11,7 @@
 <%@ include file="header.jsp" %>
 
 <hr>
-<h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UN INDIRIZZO</h4>
+<h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UN INDIRIZZO</h3>
 <hr>
  <div class="bottoni">
 <a href="carrello.jsp" class="shiny-button2" id="dx">
