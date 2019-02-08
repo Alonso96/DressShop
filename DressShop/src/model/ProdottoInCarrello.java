@@ -41,4 +41,17 @@ public class ProdottoInCarrello extends ProdottoBean{
 		this.taglia = taglia;
 	}
 	
+	public boolean equals(Object obj){
+		if(obj == null)
+			return false;
+		if(getClass() != obj.getClass())
+			return false;
+		ProdottoInCarrello other = (ProdottoInCarrello) obj;
+		if(other.getId_prodotto() != this.getId_prodotto())
+			return false;
+		if(other.getTaglia() != this.getTaglia())
+			return false;
+		
+		return true;
+	}
 }

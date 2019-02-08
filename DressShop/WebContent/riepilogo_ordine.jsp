@@ -9,6 +9,15 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<%@ page import="java.util.ArrayList, java.util.*, model.*, java.text.DecimalFormat" %>
+<% 
+	Carrello cart = (Carrello) session.getAttribute("cart");
+	List<ProdottoInCarrello> prodcart = cart.ottieniElem();
+	DecimalFormat formatter = new DecimalFormat("#0.00");
+
+	IndirizzoBean indirizzo = (IndirizzoBean) request.getSession().getAttribute("indirizzo");
+	CartaDiCreditoBean carta = (CartaDiCreditoBean) request.getSession().getAttribute("carta");
+%>	 
 <hr>
 <h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;RIEPILOGO ORDINE</h3>
 <hr>
@@ -17,7 +26,7 @@
  <strong>TORNA INDIETRO</strong>
   </a>
 
-<a href="acquisto_completato.jsp" class="shiny-button2" id="sx" >
+<a href="ConfermaAcquistoControl" class="shiny-button2" id="sx" >
   <strong >CONCLUDI L'ORDINE</strong>
   </a>
 
@@ -25,31 +34,41 @@
 
 <table class="table">
   <thead class="thead-dark">
-    <tr>
-    
-      <th scope="col">Prodotto</th>
-      <th scope="col">Descrizione</th>
-      <th scope="col">Colore</th>
-      <th scope="col">Taglia</th>
-      <th scope="col">Quantità</th>
-      <th scope="col">Prezzo</th>
-      <th></th>
-    </tr>
+	    <tr>
+	   
+	     <th scope="col">PRODOTTO</th>
+	      <th scope="col">MARCA</th>
+	      <th scope="col">MODELLO</th>
+	      <th scope="col">TAGLIA</th>
+	      <th scope="col">QUANTITA'</th>
+	      <th scope="col">PREZZO</th>
+	      <th></th>
+	    </tr>
     
   </thead>
  
   <tbody class="bordo1" id="ye">
   
-  <tr>
-      <th scope="row"><img alt="" src="img/via.jpg" width="200px" ></th>
-      <td>scarpe nike </td>
-      <td> silver</td>
-      <td>42</td>
-      <td>1</td>
-      <td>20€</td>
-      
-  
-    </tr>
+<%
+			for(ProdottoInCarrello beancart : prodcart) {
+				System.out.println(prodcart);
+		
+%>
+
+	  <tr>	 
+	      <td scope="row">
+	      			<img src="<%= beancart.getFoto() %>" width="10%" style="float:left;">  
+	      		
+	      	</td>
+	      <td><%= beancart.getMarca() %></td>
+	      <td><%= beancart.getModello() %></td>
+	      <td><%= beancart.getTaglia() %></td>
+	      <td><%= beancart.getQuantita() %></td>
+	      <td>&euro; <%= formatter.format(beancart.getPrezzo_compl()) %></td>
+	    </tr>
+	<%
+		}
+	%>
 
   </tbody>
     
@@ -60,7 +79,7 @@
 	  <thead class="thead-dark">
 	    <tr>
 	     
-	      <th scope="col">Città</th>
+	      <th scope="col">Citt&agrave;�</th>
 	      <th scope="col">Via</th>
 	      <th scope="col">Cap</th>
 	      <th scope="col">Provincia</th>
@@ -75,12 +94,12 @@
 	  
 	  <tr>
 	 
-	      <th>Napoli </th>
-	      <td> via roma</td>
-	      <td>80033</td>
-	      <td>NA</td>
-	      <td>3333333333</td>
-	      <td>antonio de luca</td>
+	      <td><%= indirizzo.getCitta()%></td>
+	      <td><%= indirizzo.getVia() %></td>
+	      <td><%= indirizzo.getCap() %></td>
+	      <td><%= indirizzo.getProvincia() %></td>
+	      <td><%= indirizzo.getCellulare() %></td>
+	      <td><%= indirizzo.getNome() + " " + indirizzo.getCognome() %></td>
 	     
 	  
 	    </tr>
@@ -111,11 +130,11 @@
 	  <tr>
 	 
 	      
-	      <th>444444444444444444 </th>
-	      <td> 00/00</td>
-	      <td>111</td>
-	      <td>antonio</td>
-	      <td>de luca</td>
+	      <td><%= carta.getNumero_carta() %></td>
+	      <td><%= carta.getData_scadenza() %></td>
+	      <td><%= carta.getCvv() %></td>
+	      <td><%= carta.getNome_proprietario() %></td>
+	      <td><%= carta.getCognome_proprietario() %></td>
 	     
 	      
 	     

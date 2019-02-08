@@ -60,14 +60,13 @@ public class OrdineModelDM implements OrdineModel{
 	public int doSave(OrdineBean ordine) throws SQLException {	//restituisce l'id auto_increment della tupla inserita
 		Connection connection = null;
 		PreparedStatement statement=null;
-		PreparedStatement statement_2=null;
-
+		int id;
 		String insertString=" INSERT INTO " + TABLE + " (data, pagato, carta_credito, "
 				+ "indirizzo, utente, totale, tipo_spedizione, costo_spedizione) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement = (PreparedStatement) connection.prepareStatement(insertString);
+			statement = (PreparedStatement) connection.prepareStatement(insertString, statement.RETURN_GENERATED_KEYS);
 
 			statement.setDate(1, ordine.getData());
 			statement.setBoolean(2, ordine.isPagato());
@@ -77,23 +76,14 @@ public class OrdineModelDM implements OrdineModel{
 			statement.setFloat(6, ordine.getTotale());
 			statement.setString(7, ordine.getTipo_spedizione());
 			statement.setFloat(8, ordine.getCosto_spedizione());
-			statement.executeUpdate();
+			id = statement.executeUpdate();
 			
 			connection.commit();
 		} finally{
 			if(statement!= null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
-		int id;
-		try{ 
-			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			statement_2 = (PreparedStatement) connection.prepareStatement("SELECT last_insert_id()");
-			ResultSet rs = statement_2.executeQuery();
-			id = rs.getInt(1);
-		} finally{
-			if(statement_2 != null) statement_2.close();
-			DriverManagerConnectionPool.releaseConnection(connection);
-		}
+
 		return id;
 	}
 

@@ -10,6 +10,10 @@
 <body>
 
 <%@ include file="header.jsp" %>
+<%@ page import="java.util.ArrayList, java.util.Iterator, model.CartaDiCreditoBean" %>
+<% 
+	ArrayList<CartaDiCreditoBean> carte = (ArrayList<CartaDiCreditoBean>) request.getSession().getAttribute("carte");
+%>	 
 
 <hr>
 <h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;SCEGLI UNA CARTA DI CREDITO</h3>
@@ -22,7 +26,11 @@
 
 
 </div>
- <form action="">
+<%
+		if((carte != null) && (carte.size() > 0)) {
+			Iterator<CartaDiCreditoBean> it = carte.iterator();
+%>
+ <form action="VerificaCarta">
 	 <table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -41,40 +49,51 @@
 	  <tbody class="bordo1" id="ye">
 	  
 	  <tr>
+<%		
+			while(it.hasNext()) {
+				CartaDiCreditoBean bean = (CartaDiCreditoBean) it.next();
+				System.out.println(bean.getNumero_carta());
+%>
 	 
 	      <th scope="row">
-	      			<input type="radio" name="gender" value="male"><br>  
+	      			<input type="radio" name="carta" value="<%= bean.getNumero_carta()%>"><br>  
 	      		
 	      	</th>
-	      <td>444444444444444444 </td>
-	      <td> 00/00</td>
-	      <td>111</td>
-	      <td>antonio</td>
-	      <td>de luca</td>
+	      <td><%= bean.getNumero_carta() %></td>
+	      <td><%= bean.getData_scadenza() %></td>
+	      <td><%= bean.getCvv() %></td>
+	      <td><%= bean.getNome_proprietario() %></td>
+	      <td><%= bean.getCognome_proprietario() %></td>
 	     
-	      
-	     
-	  
+<%
+			}
+%>	  
 	    </tr>
 	    
 	  
 	  </tbody>
 	      	
 	</table>
-
- </form>
+<%
+			}
+%>	  
 
 <div class="bottoni">
 <a href="aggiungi_carta.jsp" class="shiny-button2" id="dx">
  <strong>AGGIUNGI UNA CARTA DI CREDITO</strong>
   </a>
 
+<%
+	if((carte != null) && (carte.size() > 0)) {
+%>
  
    <input id="sx" type="submit" value="PROCEDI CON L'ORDINE">
+<%
+	}
+%>	  
 </div>
 
-
-
+ </form>
 
 <%@ include file="footer.jsp" %>
 

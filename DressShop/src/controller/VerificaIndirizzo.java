@@ -6,6 +6,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.CartaDiCreditoBean;
+import model.CartaDiCreditoModelDM;
+import model.IndirizzoBean;
+import model.IndirizzoModelDM;
 
 /**
  * Servlet implementation class VerificaIndirizzo
@@ -34,7 +41,7 @@ public class VerificaIndirizzo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -43,35 +50,46 @@ public class VerificaIndirizzo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("ciao");
-		String action = request.getParameter("action");
 		String flag =null;
 		PrintWriter out = response.getWriter();
-	
-			if(action != null) {
-			
-				 flag = request.getParameter("indirizzo");
-			}
-			if (flag!=null) 
-			{
+		flag = request.getParameter("indirizzo");
+		System.out.println(flag);
+		if (flag != null) {
+			int id_indirizzo = Integer.parseInt(flag);
+			if(request.getSession().getAttribute("id") == null){
+				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				IndirizzoBean indirizzo = new IndirizzoBean();
+				try{
+					IndirizzoModelDM model = new IndirizzoModelDM();
+					indirizzo = model.doRetrieveByKey(id_indirizzo);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int id = (int) request.getSession().getAttribute("id");
+				Collection<CartaDiCreditoBean> carte = new ArrayList<CartaDiCreditoBean>();
+				System.out.println(id);
+				try {
+					CartaDiCreditoModelDM model = new CartaDiCreditoModelDM();
+					carte = model.doRetrieveByUtente(id);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				request.getSession().setAttribute("indirizzo", indirizzo);
+				
+				request.getSession().setAttribute("carte", carte);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello_carta.jsp");
 				dispatcher.forward(request, response);
 			}
-			else {
-				   out.println("<script type=\"text/javascript\">");
-				   out.println("alert('Seleziona un indirizzo');");
-				   out.println("location='carrello_indirizzo.jsp';");
-				   out.println("</script>");
-			}   
-		
-		// TODO Auto-generated catch block
-		
-		
-	/*	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registrationSuccess.jsp");
-		dispatcher.forward(request, response);
-	*/
-	
-}
-
-	
+		} else {
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Seleziona un indirizzo');");
+			out.println("location='carrello_indirizzo.jsp';");
+			out.println("</script>");
+		}   
+	}
 }
 

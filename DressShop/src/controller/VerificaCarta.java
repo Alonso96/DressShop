@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.CartaDiCreditoBean;
+import model.CartaDiCreditoModelDM;
 
 /**
  * Servlet implementation class VerificaCarta
@@ -28,7 +32,7 @@ public class VerificaCarta extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -36,29 +40,29 @@ public class VerificaCarta extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("ciao");
-		String action = request.getParameter("action");
-		String flag =null;
 		PrintWriter out = response.getWriter();
-	
-			if(action != null) {
-			
-				 flag = request.getParameter("carta");
+		String flag = request.getParameter("carta");
+		if (flag != null) {
+			System.out.println(flag);
+			CartaDiCreditoModelDM model = new CartaDiCreditoModelDM();
+			CartaDiCreditoBean carta = new CartaDiCreditoBean();
+			try {
+				carta = model.doRetrieveByKey(flag);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			if (flag!=null) 
-			{
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello_carta.jsp");
-				dispatcher.forward(request, response);
-			}
-			else {
-				   out.println("<script type=\"text/javascript\">");
-				   out.println("alert('Seleziona una carta');");
-				   out.println("location='carrello_carta.jsp';");
-				   out.println("</script>");
-			}   
-		
+			request.getSession().setAttribute("carta", carta);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/riepilogo_ordine.jsp");
+			dispatcher.forward(request, response);
+		}
+		else {
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Seleziona una carta');");
+			out.println("location='carrello_carta.jsp';");
+			out.println("</script>");
+		}   
 	}
-
 }

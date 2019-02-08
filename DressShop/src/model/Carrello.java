@@ -24,7 +24,18 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	}
 	
 	public void addProd(ProdottoInCarrello prodotto) {
-		list.add(prodotto);
+		//controllo se esiste ed eventualmente incremento quantita
+		boolean incrementato = false;
+		for(ProdottoInCarrello p : list){
+			if(p.equals(prodotto)){
+				((model.ProdottoInCarrello)p).setQuantita(((model.ProdottoInCarrello)p).getQuantita() + 1);
+				incrementato = true;
+				break;
+			}
+		}
+		//in caso contrario aggiungo
+		if(!incrementato)
+			list.add(prodotto);
 	}
 	
 	public void rimElemento(int id_prodotto) {

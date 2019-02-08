@@ -25,7 +25,11 @@
 
 
 </div>
- <form action="VerificaIndirizzo">
+<%
+		if((indirizzi != null) && (indirizzi.size() > 0)) {
+			Iterator<IndirizzoBean> it = indirizzi.iterator();
+%>
+ <form action="VerificaIndirizzo" method="form">
  
 	 <table class="table">
 	  <thead class="thead-dark">
@@ -45,10 +49,7 @@
 	  <tbody class="bordo1" id="ye">
 	  
 	  <tr>
-<%
-		if((indirizzi != null) && (indirizzi.size() > 0)) {
-			Iterator<IndirizzoBean> it = indirizzi.iterator();
-		
+<%		
 			while(it.hasNext()) {
 				IndirizzoBean bean = (IndirizzoBean) it.next();
 				System.out.println(bean.getId_indirizzo());
@@ -67,7 +68,6 @@
 	     
 <%
 			}
-		}
 %>	  
 	    </tr>
 	    
@@ -76,20 +76,24 @@
 	      	
 	</table>
 
- </form>
+
+<%
+			}
+%>	  
 
 <div class="bottoni">
 <a href="aggiungi_indirizzo.jsp" class="shiny-button2" id="dx">
  <strong>AGGIUNGI UN INDIRIZZO</strong>
   </a>
-
- 
+<%
+	if((indirizzi != null) && (indirizzi.size() > 0)) {
+%>
   <input id="sx" type="submit" value="PROCEDI CON L'ORDINE" >
+<%
+	}
+%>	  
 </div>
-
-
-
-
+ </form>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

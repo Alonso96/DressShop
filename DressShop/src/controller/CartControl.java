@@ -41,32 +41,27 @@ public class CartControl extends HttpServlet {
 			request.getSession().setAttribute("cart", cart);
 		}
 		
-//		try {
-			String invia = request.getParameter("invia");
-			System.out.println(invia);
-			if(invia != null) {
-				if(invia.equalsIgnoreCase("Aggiungi al carrello")) {
-					System.out.println("ciao");
-					ProdottoBean prod = (ProdottoBean) request.getSession().getAttribute("product");
-					String taglia = (String) request.getAttribute("beantype");
-					ProdottoInCarrello prodotto = new ProdottoInCarrello(prod);
-					prodotto.setQuantita(1);
-					prodotto.setTaglia(taglia);
-					cart.addProd(prodotto);
-				} else if(invia.equalsIgnoreCase("rimuovi")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					cart.rimElemento(id);
-					System.out.println("rimuovo elemento con id "+ id);
-				}				
-			} else {
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-				dispatcher.forward(request, response); // passo la chiamata alla jsp				
-			}
-/*		} catch(SQLException e) {
-			System.out.println("Error: "+ e.getMessage());
-			request.setAttribute("error", e.getMessage());
+		String invia = request.getParameter("invia");
+		System.out.println(invia);
+		if(invia != null) {
+			if(invia.equalsIgnoreCase("Aggiungi al carrello")) {
+				System.out.println("ciao");
+				ProdottoBean prod = (ProdottoBean) request.getSession().getAttribute("product");
+				String taglia = (String) request.getParameter("beantype");
+				System.out.println(taglia);
+				ProdottoInCarrello prodotto = new ProdottoInCarrello(prod);
+				prodotto.setQuantita(1);
+				prodotto.setTaglia(taglia);
+				cart.addProd(prodotto);
+			} else if(invia.equalsIgnoreCase("rimuovi")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+				cart.rimElemento(id);
+				System.out.println("rimuovo elemento con id "+ id);
+			}				
+		} else {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+			dispatcher.forward(request, response); // passo la chiamata alla jsp				
 		}
-*/		
 		request.getSession().setAttribute("cart", cart);
 		request.setAttribute("cart", cart);
 				

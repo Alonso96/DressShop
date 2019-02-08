@@ -1,10 +1,7 @@
 <%
-
-ProdottoBean product = (ProdottoBean) request.getAttribute("prodotto");
-
 Carrello cart = (Carrello) session.getAttribute("cart"); %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.*, model.*"%>
+    pageEncoding="ISO-8859-1" import="java.util.*, model.*, java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +21,11 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
   </a>
 
 </div>
-
+<%
+		if((cart != null) && (!cart.isEmpty())){
+			List<ProdottoInCarrello> prodcart = cart.ottieniElem();
+			DecimalFormat formatter = new DecimalFormat("#0.00");
+%>
 <form action="">
 	 <table class="table">
 	  <thead class="thead-dark">
@@ -33,8 +34,9 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 	     <th scope="col">PRODOTTO</th>
 	      <th scope="col">MARCA</th>
 	      <th scope="col">MODELLO</th>
-	      <th scope="col">PREZZO</th>
+	      <th scope="col">TAGLIA</th>
 	      <th scope="col">QUANTITA'</th>
+	      <th scope="col">PREZZO</th>
 	      <th></th>
 	    </tr>
 	    
@@ -42,18 +44,27 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 	 
 	  <tbody class="bordo1" id="ye">
 	  
-	  <tr>
-	 
+<%
+			for(ProdottoInCarrello beancart : prodcart) {
+				System.out.println(prodcart);
+		
+%>
+
+	  <tr>	 
 	      <td scope="row">
-	      			<img src="img/lo.jpg" width="10%" style="float:left;">  
+	      			<img src="<%= beancart.getFoto() %>" width="10%" style="float:left;">  
 	      		
 	      	</td>
-	      <td>444444 </td>
-	      <td> 00/00</td>
-	      <td>111</td>
-	      <td>antonio</td>
-			<td><a href="">Rimuovi dal carrello</a></td>
+	      <td><%= beancart.getMarca() %></td>
+	      <td><%= beancart.getModello() %></td>
+	      <td><%= beancart.getTaglia() %></td>
+	      <td><%= beancart.getQuantita() %></td>
+	      <td>&euro; <%= formatter.format(beancart.getPrezzo_compl()) %></td>
+			<td><a href="CartControl?invia=rimuovi&id=<%=beancart.getId_prodotto()%>">Rimuovi dal carrello</a></td>
 	    </tr>
+	<%
+		}
+	%>
 	    
 	  
 	  </tbody>
@@ -62,6 +73,19 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 
  </form>
 
+<form method="get" action="ProcediAcquisto" name ="ProcediAcquisto" >
+<input type="hidden" name="action" value="ProcediAcquisto">
+<input type="submit" value="Acquista!" >
+
+</form>
+
+	<%
+		} else {
+			%>	
+			
+			<h4>Non hai articoli nel carrello</h4>
+		
+<% } %> 
 
 <%@ include file="footer.jsp" %>
 </body>

@@ -22,5 +22,5 @@
 
  <%@ include file="footer.jsp" %>
 
-</body>ewf
+</body>
 </html>
