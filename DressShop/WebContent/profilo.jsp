@@ -24,7 +24,7 @@
     <tr>
         <th>
             Nome <br>
-            <%=utente.getNome() %>
+            
         </th>
         <td>
          
