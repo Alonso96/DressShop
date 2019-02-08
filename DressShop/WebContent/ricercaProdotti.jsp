@@ -20,24 +20,25 @@
     	Collection<ProdottoBean> products = (Collection<ProdottoBean>) request.getAttribute("prodotti");
 %>    
    
+	<div class="container">
 	
-	
-<div class="container">
 
-    <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid6">
 <%
-		if((products != null) && (products.size() > 0)) {
+		if((products != null) && (products.size() >= 0)) {
 		Iterator<?> it = products.iterator();
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 		
 		while(it.hasNext()) {
 			ProdottoBean bean = (ProdottoBean) it.next();
 %>
+
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid6">
                 <div class="product-image6">
                     <a href="ProductControl?action=detail&id=<%=bean.getId_prodotto()%>">
-                        <img class="pic-1" src= <%= bean.getFoto()%> width="20%">
+                        <img class="pic-1" src= <%= bean.getFoto()%> width="20%" height="30%">
                     </a>
                 </div>
                 <div class="product-content">
