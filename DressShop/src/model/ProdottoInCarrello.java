@@ -49,7 +49,7 @@ public class ProdottoInCarrello extends ProdottoBean{
 		ProdottoInCarrello other = (ProdottoInCarrello) obj;
 		if(other.getId_prodotto() != this.getId_prodotto())
 			return false;
-		if(other.getTaglia() != this.getTaglia())
+		if(!other.getTaglia().equalsIgnoreCase(this.getTaglia()))
 			return false;
 		
 		return true;

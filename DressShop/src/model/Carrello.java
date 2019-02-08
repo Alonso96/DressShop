@@ -41,7 +41,9 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	public void rimElemento(int id_prodotto) {
 		for(ProdottoInCarrello p : list) {
 			if(((model.ProdottoInCarrello)p).getId_prodotto() == id_prodotto) {
-				list.remove(p);
+				((model.ProdottoInCarrello)p).setQuantita(((model.ProdottoInCarrello)p).getQuantita() - 1);
+				if(((model.ProdottoInCarrello)p).getQuantita() <= 0)
+					list.remove(p);
 				break;
 			}	
 		}
