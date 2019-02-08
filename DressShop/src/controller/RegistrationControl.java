@@ -69,6 +69,7 @@ public class RegistrationControl extends HttpServlet {
 				} else {	
 					model.doSave(newUser);
 					 session.setAttribute("email", eMail);
+					 session.setAttribute("tipo", 1);
 				  //   session.setAttribute("id", newUser.getId_utente()); //assegno l'id
 					
 					System.out.println("Ciao");

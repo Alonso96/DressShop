@@ -123,7 +123,66 @@ public class ProductControl extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+            String action = request.getParameter("action");
+		
+		
+		/*	if(action != null) {
+			/*	if(action.equalsIgnoreCase("detail")) {
+					int id = Integer.parseInt(request.getParameter("id"));
+					request.removeAttribute("product");
+					request.setAttribute("product", model.doRetrieveByKey(id));
+					request.getRequestDispatcher("visualizzaProdotto.jsp").forward(request, response);
+					
+				
+				//
+					*/
+				//	int id = Integer.parseInt(request.getParameter("Id"));
+				//	String codice= request.getParameter("codice");
+					String descrizione= request.getParameter("descrizione");
+					String marca = request.getParameter("marca");
+					String modello = request.getParameter("modello");
+					String foto = request.getParameter("foto");
+					String categoria = request.getParameter("categoria");
+					String taglia = request.getParameter("taglia");
+				//	int promozione = Integer.parseInt(request.getParameter("promozione"));
+					int ivaV = 0; //Integer.parseInt(request.getParameter("ivaVendita"));     //iva vendita;
+					float prezzoV =  0; //Float.parseFloat(request.getParameter("prezzoVendita")); //prezzovendita
+					//int codC= Integer.parseInt(request.getParameter("codiceC")); //codice categoria
+					int quantita= Integer.parseInt(request.getParameter("quantita"));
+				//	boolean reso = Boolean.parseBoolean(request.getParameter("reso"));
+					ProdottoBean bean = new ProdottoBean();
+					TagliaBean tagliab = new TagliaBean();
+			//		bean.setId_prodotto(id);
+					//bean.setCodice_prodotto(codice);
+					bean.setDescrizione(descrizione);
+					bean.setMarca(marca);
+					bean.setModello(modello);
+					bean.setFoto(foto);
+					bean.setCategoria(categoria);
+				//	bean.setPromozione(promozione);
+					bean.setIn_vendita(true);
+					((ProdottoBean)bean).setPrezzo_compl(prezzoV);
+					((ProdottoBean)bean).setIva(ivaV);
+					
+			//		((ProdottoInOrdineBean)bean).setReso(reso);
+					
+					
+					
+					try {
+						model.doSave(bean);
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/magazzinierePage.jsp");
+					dispatcher.forward(request, response); // passo la chiamata alla jsp;
+				
+		
+		
+		
+		
+	
+	
 	}
-
 }

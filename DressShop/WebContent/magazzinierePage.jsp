@@ -14,7 +14,7 @@
 <%	
 UtenteModel<UtenteBean> model = new UtenteModelDM();
 UtenteBean utente = new UtenteBean();
-utente= model.doRetrieveByEmail((String)session.getAttribute("email"));
+//utente= model.doRetrieveByEmail((String)session.getAttribute("email"));
 	
 String email = (String)session.getAttribute("email");
 	System.out.println(email);
@@ -74,17 +74,18 @@ else {
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(3)">Modifica prodotto</button>
 </div>
 
- <form class="container col-sm-6"  action="ProductControl" method="post">
- 
+ <form class="container col-sm-6"  action="ProductControl" name="insert" method="post">
+  <input type="hidden" name="insert" value="insert">
   <div class="form-group" id='ins'>
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci categoria" name="categoria">   
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci tipo" name="tipo">
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci marca" name="marca"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci modello" name="modello"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci foto" name="foto"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci taglia" name="taglia"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci quantità" name="quantita"> 
-<input class="form-control form-control-lg" type="text" placeholder="Inserisci colore" name="colore"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci categoria" name="categoria">   
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci tipo" name="tipo">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci taglia" name="taglia"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci quantità" name="quantita"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci colore" name="colore"> 
   <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" name="categoria">Categoria
     <span class="caret"></span></button>
@@ -127,8 +128,10 @@ else {
     </ul>
   </div>
   
-  	<button type="submit" class="btn btn-secondary btn-lg" onclick="">Inserisci</button> 
+  	<button type="submit" class="btn btn-secondary btn-lg" >Inserisci</button> 
   </div>
+  
+  </form>
   <div class="form-group" id='com'>
 
   <p>Invia a</p>   
@@ -137,7 +140,7 @@ else {
 <input class="form-control form-control-lg" type="text" placeholder="Id Prodotto" name="idProdotto">
 </form>
 </div>
-</form>
+
 <div class="container" id="modi">
 
     <h3 class="h3">Modifica prodotti </h3>
@@ -291,7 +294,8 @@ $(document).ready(function(){
 	       break;
 				
 		}
- }</script>
+ }
+ </script>
  <br>
  <hr>
  <%@ include file="footer.jsp" %>

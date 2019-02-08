@@ -89,7 +89,7 @@ public class AggiungiIndirizzo extends HttpServlet {
 			//Dispatch into success page
 	    	 out.print("<p style=\"color:green\">Indirizzo Aggiunto con successo</p><br>");  
 			   
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("aggiungi_indirizzo.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("mostra_indirizzi.jsp");
 			requestDispatcher.forward(request, response);
 		
 		

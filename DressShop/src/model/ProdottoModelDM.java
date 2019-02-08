@@ -103,9 +103,9 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 		Connection connection = null;
 		PreparedStatement statement = null;
 		
-		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, decrizione, marca, modello, "
-				+ "prezzo_compl, iva, in_vendita, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, descrizione, marca, modello, "
+				+ "prezzo_compl, iva, in_vendita, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		System.out.println("Eseguo query: "+ insertString_1);
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(insertString_1);
