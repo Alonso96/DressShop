@@ -26,7 +26,7 @@ public class AggiungiCarta extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");  
+		response.setContentType("text/html");   //j
         PrintWriter out = response.getWriter();  
 		HttpSession session=request.getSession();
 		synchronized(session)
