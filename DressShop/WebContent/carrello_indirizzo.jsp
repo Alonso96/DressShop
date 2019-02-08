@@ -30,7 +30,11 @@
 			Iterator<IndirizzoBean> it = indirizzi.iterator();
 %>
  <form action="VerificaIndirizzo" method="form">
- 
+ <%		
+			while(it.hasNext()) {
+				IndirizzoBean bean = (IndirizzoBean) it.next();
+				System.out.println(bean.getId_indirizzo());
+%>
 	 <table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -49,11 +53,7 @@
 	  <tbody class="bordo1" id="ye">
 	  
 	  <tr>
-<%		
-			while(it.hasNext()) {
-				IndirizzoBean bean = (IndirizzoBean) it.next();
-				System.out.println(bean.getId_indirizzo());
-%>
+
 	  	  
 	      <th scope="row">
 	      			<input type="radio" name="indirizzo" value= "<%= bean.getId_indirizzo()%>"><br>  

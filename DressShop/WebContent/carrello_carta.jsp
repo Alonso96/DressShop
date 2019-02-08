@@ -30,6 +30,11 @@
 		if((carte != null) && (carte.size() > 0)) {
 			Iterator<CartaDiCreditoBean> it = carte.iterator();
 %>
+<%		
+			while(it.hasNext()) {
+				CartaDiCreditoBean bean = (CartaDiCreditoBean) it.next();
+				System.out.println(bean.getNumero_carta());
+%>
  <form action="VerificaCarta">
 	 <table class="table">
 	  <thead class="thead-dark">
@@ -49,11 +54,7 @@
 	  <tbody class="bordo1" id="ye">
 	  
 	  <tr>
-<%		
-			while(it.hasNext()) {
-				CartaDiCreditoBean bean = (CartaDiCreditoBean) it.next();
-				System.out.println(bean.getNumero_carta());
-%>
+
 	 
 	      <th scope="row">
 	      			<input type="radio" name="carta" value="<%= bean.getNumero_carta()%>"><br>  
