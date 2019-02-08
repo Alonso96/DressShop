@@ -9,7 +9,7 @@ public interface ProdottoModel<ProdottoBean> {
 	
 	public Collection<ProdottoBean> doRetrieveAll() throws SQLException;
 	
-	public void doSave(ProdottoBean prodotto) throws SQLException;
+	public int doSave(ProdottoBean prodotto) throws SQLException;
 	
 	public void doUpdate(ProdottoBean prodotto) throws SQLException;
 	

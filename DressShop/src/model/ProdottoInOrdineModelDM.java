@@ -61,10 +61,11 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	}
 
 	@Override
-	public void doSave(ProdottoBean prodotto) throws SQLException {
+	public int doSave(ProdottoBean prodotto) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement_2 = null;
-
+		PreparedStatement statement_1 = null;
+		int id;
 		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo_compl, iva, quantita, reso) VALUES(?, ?, ?, ?, ?)";
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -76,13 +77,27 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 			statement_2.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
 			statement_2.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
 			statement_2.executeUpdate();
-			
 			connection.commit();
 			
 		} finally{
 			if(statement_2 != null) statement_2.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
+		String insertString_1="SELECT last_insert_id() as last_id from " + TABLE_2 + ";";
+		try{ 
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement_1 = (PreparedStatement) connection.prepareStatement(insertString_1);
+			ResultSet rs = statement_1.executeQuery();
+			rs.next();
+			id = rs.getInt("last_id");
+			
+			connection.commit();
+		} finally{
+			if(statement_1 != null) statement_1.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		
+		return id;
 	}
 //da rivedere
 	@Override

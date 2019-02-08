@@ -73,6 +73,7 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 		int idOrdine = ordineModel.doSave(ordBean);
 		
 		for(ProdottoInCarrello prod : list){
+			int id;
 			ProdottoInOrdineBean prodBean = new ProdottoInOrdineBean();
 			prodBean.setId_prodotto(((model.ProdottoInCarrello)prod).getId_prodotto());
 			prodBean.setPrezzo_compl(((model.ProdottoInCarrello)prod).getPrezzo_compl());
@@ -80,8 +81,8 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 			prodBean.setQuantita(((model.ProdottoInCarrello)prod).getQuantita());
 			prodBean.setTaglia(((model.ProdottoInCarrello)prod).getTaglia());
 			prodBean.setReso(false);
-			prodottoModel.doSave(prodBean);
-			OrdinazioneBean ordinazioneBean = new OrdinazioneBean(idOrdine, ((model.ProdottoInCarrello)prod).getId_prodotto());
+			id = prodottoModel.doSave(prodBean);
+			OrdinazioneBean ordinazioneBean = new OrdinazioneBean(idOrdine, id);
 			ordinazioneModel.doSave(ordinazioneBean);
 		}
 

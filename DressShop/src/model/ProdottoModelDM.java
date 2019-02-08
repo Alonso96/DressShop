@@ -99,13 +99,14 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 	}
 
 	@Override
-	public void doSave(ProdottoBean prodotto) throws SQLException {	//fare inserimento per ogni taglia
+	public int doSave(ProdottoBean prodotto) throws SQLException {	//fare inserimento per ogni taglia
 		Connection connection = null;
 		PreparedStatement statement = null;
+		PreparedStatement statement_1 = null;
+		int id;
+		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, decrizione, marca, modello, "
+				+ "prezzo_compl, iva, in_vendita, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, descrizione, marca, modello, "
-				+ "prezzo_compl, iva, in_vendita, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		System.out.println("Eseguo query: "+ insertString_1);
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(insertString_1);
@@ -120,14 +121,28 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 			statement.setString(8, prodotto.getCategoria());
 			statement.setString(9, prodotto.getFoto());
 			statement.setInt(10, prodotto.getPromozione());
-			statement.executeUpdate();
-			
+			id = statement.executeUpdate();
+			System.out.println("prodotto" + id);
 			connection.commit();
 			
 		} finally{
 			if(statement != null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
+		String insertString="SELECT last_insert_id() as last_id";
+		try{ 
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement_1 = (PreparedStatement) connection.prepareStatement(insertString);
+			ResultSet rs = statement_1.executeQuery();
+			rs.next();
+			id = rs.getInt("last_id");
+			
+			connection.commit();
+		} finally{
+			if(statement_1 != null) statement_1.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return id;
 	}
 
 	@Override

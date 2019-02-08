@@ -57,7 +57,7 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 	      	</td>
 	      <td><%= beancart.getMarca() %></td>
 	      <td><%= beancart.getModello() %></td>
-	      <td><%= beancart.getTaglia() %></td>
+	      <td><%= beancart.getTaglia().toUpperCase() %></td>
 	      <td><%= beancart.getQuantita() %></td>
 	      <td>&euro; <%= formatter.format(beancart.getPrezzo_compl()) %></td>
 			<td><a href="CartControl?invia=rimuovi&id=<%=beancart.getId_prodotto()%>">Rimuovi dal carrello</a></td>

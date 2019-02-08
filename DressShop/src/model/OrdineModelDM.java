@@ -60,6 +60,7 @@ public class OrdineModelDM implements OrdineModel{
 	public int doSave(OrdineBean ordine) throws SQLException {	//restituisce l'id auto_increment della tupla inserita
 		Connection connection = null;
 		PreparedStatement statement=null;
+		PreparedStatement statement_1=null;
 		int id;
 		String insertString=" INSERT INTO " + TABLE + " (data, pagato, carta_credito, "
 				+ "indirizzo, utente, totale, tipo_spedizione, costo_spedizione) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -77,10 +78,23 @@ public class OrdineModelDM implements OrdineModel{
 			statement.setString(7, ordine.getTipo_spedizione());
 			statement.setFloat(8, ordine.getCosto_spedizione());
 			id = statement.executeUpdate();
-			
+			System.out.println("ordine" + id);
 			connection.commit();
 		} finally{
 			if(statement!= null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		String insertString_1="SELECT last_insert_id() as last_id from " + TABLE + ";";
+		try{ 
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement_1 = (PreparedStatement) connection.prepareStatement(insertString_1);
+			ResultSet rs = statement_1.executeQuery();
+			rs.next();
+			id = rs.getInt("last_id");
+			
+			connection.commit();
+		} finally{
+			if(statement_1 != null) statement_1.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 
