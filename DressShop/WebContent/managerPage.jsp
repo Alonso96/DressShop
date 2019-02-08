@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +11,9 @@
 <body>
 <%@ include file="header.jsp" %>
 	<%	
-		
+	UtenteModel<UtenteBean> model = new UtenteModelDM();
+	UtenteBean utente = new UtenteBean();
+	utente= model.doRetrieveByEmail((String)session.getAttribute("email"));
 	String email = (String)session.getAttribute("email");
 	System.out.println(email);
 	int flag= (int)session.getAttribute("tipo");
@@ -42,14 +44,14 @@ else {
 
   <div class="col-sm-6">
     <div class="card">
-      <h4 class="card-header bg-dark text-white">Nome  <%--=session.getAttribute("nome")--%>
+      <h4 class="card-header bg-dark text-white"><%=utente.getNome() %> <%--=session.getAttribute("nome")--%>
       </h4>
       <div class="card-body">
           <div class="image float-left user-l">
             <img src="http://31.media.tumblr.com/tumblr_lw2lhqjrel1qfmi03o9_r1_500.gif" class="img-thumbnail" alt="avatar"/>
           </div>
         <h4 class="card-title">Gestore Marketing</h4>
-          <p class="card-text"><br>Cognome <%--=session.getAttribute("cognome")--%><br> E-Mail<%--=session.getAttribute("eMail")--%><br> Data di nascita.<%--=session.getAttribute("dataDiNascita")--%></p>
+          <p class="card-text"><br><%= utente.getCognome()%><%--=session.getAttribute("cognome")--%><br> <%=email%><%--=session.getAttribute("eMail")--%><br> <%=utente.getData_nascita()%><%--=session.getAttribute("dataDiNascita")--%></p>
       </div>
     </div>
   </div>

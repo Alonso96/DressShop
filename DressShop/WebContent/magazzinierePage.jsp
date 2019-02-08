@@ -12,8 +12,6 @@
 <%@ include file="header.jsp" %>
 
 <%	
-String nome = (String)session.getAttribute("nome");	
-String cognome = (String)session.getAttribute("cognome");
 UtenteModel<UtenteBean> model = new UtenteModelDM();
 UtenteBean utente = new UtenteBean();
 utente= model.doRetrieveByEmail((String)session.getAttribute("email"));
