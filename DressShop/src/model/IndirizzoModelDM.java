@@ -10,7 +10,7 @@ import java.util.Collection;
 public class IndirizzoModelDM implements IndirizzoModel<IndirizzoBean>{
 
 	private static final String TABLE ="INDIRIZZO";
-
+//
 	@Override
 	public IndirizzoBean doRetrieveByKey(int id_indirizzo) throws SQLException {
 		Connection connection = null;

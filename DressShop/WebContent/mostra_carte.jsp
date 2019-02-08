@@ -65,7 +65,7 @@
 		} else {
 	%>	
 		
-			<p>Nessuna carta disponibile, aggiungila </p>
+			<p>Nessuna carta disponibile, </p>
 		
 <% } %> 
 

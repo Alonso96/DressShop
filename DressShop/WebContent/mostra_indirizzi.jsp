@@ -68,7 +68,7 @@
 		} else {
 	%>	
 		
-			<p>Nessuna indirizzo disponibile, aggiungilo</p>
+			<p>Nessuna indirizzo disponibile,</p>
 		
 <% } %> 
 

@@ -2,7 +2,7 @@ package model;
 import java.sql.Date;
 
 public class CartaDiCreditoBean {
-
+//
 	private String numero_carta;
 	private Date data_scadenza;
 	private String cvv;

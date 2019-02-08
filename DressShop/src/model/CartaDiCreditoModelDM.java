@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-
+//a
 public class CartaDiCreditoModelDM implements CartaDiCreditoModel<CartaDiCreditoBean>{
 
 	private static final String TABLE ="CARTA_CREDITO";
