@@ -103,7 +103,7 @@ function controlloProvincia()
 {
 	var lettere=/^[a-zA-Z]+$/;
 	var provincia=document.aggiungi_indirizzo.provincia.value;
-	if(!provincia.match(lettere))
+	if(!provincia.match(lettere) || provincia.length>2)
 	{
 		document.aggiungi_indirizzo.provincia.style.borderColor="red";
 		return false;

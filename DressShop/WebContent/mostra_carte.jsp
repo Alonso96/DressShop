@@ -9,12 +9,25 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-
+<%@ page import="java.util.Collection, java.util.Iterator, model.*, java.text.DecimalFormat" %>
+<%		CartaDiCreditoModel<CartaDiCreditoBean> cards = new CartaDiCreditoModelDM();                // mi richiamo tutte le carte dell'utente 
+		
+    	Collection<CartaDiCreditoBean> carte = cards.doRetrieveByUtente((int)session.getAttribute("id"));  //le salvo 
+%>    
+   
 
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;LE TUE CARTE</h4>
 <hr>
 <a href="area_utente.jsp"><img src="img/left.png"></a>
+<%
+		if((carte != null) && (carte.size() > 0)) {
+		Iterator<?> it = carte.iterator();
+		//DecimalFormat formatter = new DecimalFormat("#0.00");
+		
+		while(it.hasNext()) {
+			CartaDiCreditoBean bean = (CartaDiCreditoBean) it.next();
+%>
 <table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -34,11 +47,11 @@
 	  
 	<tr> 
 	     
-	      <td>Antonio </td>
-	      <td> DE LUCA</td>
-	      <td>00000000000000</td>
-	      <td>123</td>
-	      <td>01/21</td>
+	      <td><%=bean.getNome_proprietario() %> </td>
+	      <td><%=bean.getCognome_proprietario() %> </td>
+	      <td><%=bean.getNumero_carta() %> </td>
+	      <td><%=bean.getCvv() %> </td>
+	      <td><%=bean.getData_scadenza() %></td>
 	      
 	     
 	  
@@ -48,8 +61,15 @@
 	  </tbody>
 	      	
 	</table>
+	 <% 		} 
+		} else {
+	%>	
+		
+			<p>Nessuna carta disponibile, aggiungila </p>
+		
+<% } %> 
 
-<a href="aggiungi_carta.jsp" class="shiny-button2">
+<a href="aggiungiCarta.jsp" class="shiny-button2">
  <strong>AGGIUNGI UNA CARTA</strong>
   </a>
 

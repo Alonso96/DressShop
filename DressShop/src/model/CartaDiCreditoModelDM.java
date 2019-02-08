@@ -58,7 +58,7 @@ public class CartaDiCreditoModelDM implements CartaDiCreditoModel<CartaDiCredito
 	}
 
 	@Override
-	public void doSave(CartaDiCreditoBean carta) throws SQLException {
+	public void doSave(CartaDiCreditoBean carta ) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 
@@ -167,5 +167,44 @@ public class CartaDiCreditoModelDM implements CartaDiCreditoModel<CartaDiCredito
 		
 		return bean;
 	}	
+	public static boolean checkCarta(String nCarta ) throws SQLException { // verifica se carta esiste gia 
+		boolean flag =false;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String checkSQL="Select numero_carta  from "+TABLE+" where numero_carta= ?;" ;
+		
+		try {
+			try {
+				connection = DriverManagerConnectionPool.getConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // crea la connessione se non esiste
+			preparedStatement = connection.prepareStatement(checkSQL);
+
+			preparedStatement.setString(1,nCarta);
+		
+
+			System.out.println("validate..." + preparedStatement.toString());
+
+			ResultSet rs = preparedStatement.executeQuery(); // la query viene eseguita
+			
+			flag=rs.next();
+			
+		} finally {
+
+			try {
+				if(preparedStatement != null ) {
+					preparedStatement.close(); // rilascio risorse
+				}
+			}
+			finally {
+				DriverManagerConnectionPool.releaseConnection(connection); // evita di far reinstanziare ogni volta una connection
+				// la connection viene "conservata" nella collection Pool
+			}
+		}
+
+		return flag;
+	}
 	
 }

@@ -55,6 +55,7 @@ public class LoginControl extends HttpServlet {
 	        session.setAttribute("email", n);
 	        
 				session.setAttribute("id", utente.getId_utente()); //assegno l'id
+				session.setAttribute("nome", utente.getNome());
 			
 	        
 

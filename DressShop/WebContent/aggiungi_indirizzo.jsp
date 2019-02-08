@@ -21,21 +21,21 @@
   
   
 
-    <form id="form-work" class="" name="aggiungi_indirizzo" action="aggiungiIndirizzo" method ="post">
+    <form id="form-work" class="" name="aggiungi_indirizzo" action="AggiungiIndirizzo" method ="post">
       
       <fieldset>
       
         <div class="form-group">
           <div class="col-md-6">
             <label class="control-label" for="nome">Nome</label>
-            <input name="nome" class="form-control" placeholder="Mario" type="text" required oninput ="controlloNome()">
+            <input type="text" name="nome" class="form-control" placeholder="Mario"  required oninput ="controlloNome()">
             </div>
           </div>
 
         <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="surname">Cognome</label>
-              <input name="cognome" class="form-control" placeholder="Rossi" type="text" required oninput ="controlloCognome()">
+              <input type="text" name="cognome" class="form-control" placeholder="Rossi" required oninput ="controlloCognome()">
             </div>
           </div>
 
@@ -46,7 +46,7 @@
               <label class="control-label" for="mobile">Cellulare</label>
               <div class="input-group">
                 <span class="input-group-addon">+39</span>
-                <input name="cellulare" class="form-control" placeholder="3334576298" type="text" required oninput ="controlloCellulare()">
+                <input type="text" name="cellulare" class="form-control" placeholder="3334576298" required oninput ="controlloCellulare()">
               </div>
             </div>
           </div>
@@ -54,28 +54,28 @@
           <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="email">Città</label>
-              <input name="citta" class="form-control" placeholder="Napoli" type="text" required oninput ="controlloCitta()">
+              <input type="text" name="citta" class="form-control" placeholder="Napoli" required oninput ="controlloCitta()">
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="district">Via</label>
-              <input name="via" class="form-control" placeholder="Via Roma" type="text" required oninput ="controlloVia()">
+              <input type="text" name="via" class="form-control" placeholder="Via Roma"  required oninput ="controlloVia()">
             </div>
           </div>
           
           <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="district">Cap</label>
-              <input name="cap" class="form-control" placeholder="80100" type="text" required oninput ="controlloCap()">
+              <input type="text" name="cap" class="form-control" placeholder="80100"  required oninput ="controlloCap()">
             </div>
           </div>
           
           <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="district">Provincia</label>
-              <input name="provincia" class="form-control" placeholder="Napoli" type="text" required oninput ="controlloProvincia()">
+              <input type="text" name="provincia" class="form-control" placeholder="NA"  required oninput ="controlloProvincia()">
             </div>
           </div>
         

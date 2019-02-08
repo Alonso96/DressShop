@@ -9,13 +9,26 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-
+<%@ page import="java.util.Collection, java.util.Iterator, model.*, java.text.DecimalFormat" %>
+<%		IndirizzoModel<IndirizzoBean> indirizzi = new IndirizzoModelDM();                // mi richiamo tutti gli indirizzi  dell'utente 
+		
+    	Collection<IndirizzoBean> ind = indirizzi.doRetrieveByUtente((int)session.getAttribute("id"));  //le salvo 
+%>    
+   
 
 <hr>
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;INDIRIZZI</h4>
 <hr>
 <a href="area_utente.jsp"><img src="img/left.png"></a>
 
+<%
+		if((ind != null) && (ind.size() > 0)) {
+		Iterator<?> it = ind.iterator();
+		//DecimalFormat formatter = new DecimalFormat("#0.00");
+		
+		while(it.hasNext()) {
+			IndirizzoBean bean = (IndirizzoBean) it.next();
+%>
 <table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -36,12 +49,12 @@
 	  <tr>
 	 
 	     
-	      <td>Napoli </td>
-	      <td> via roma</td>
-	      <td>80033</td>
-	      <td>NA</td>
-	      <td>3333333333</td>
-	      <td>antonio de luca</td>
+	      <td><%=bean.getCitta() %></td>
+	      <td><%=bean.getVia() %></td>
+	      <td><%=bean.getCap() %></td>
+	      <td><%=bean.getProvincia() %></td>
+	      <td><%=bean.getCellulare() %></td>
+	      <td><%=bean.getNome() + " "+ bean.getCognome() %></td>
 	     
 	  
 	    </tr>
@@ -50,8 +63,16 @@
 	  </tbody>
 	      	
 	</table>
+	
+	 <% 		} 
+		} else {
+	%>	
+		
+			<p>Nessuna indirizzo disponibile, aggiungilo</p>
+		
+<% } %> 
 
-<a href="aggiungi_indirizzo" class="shiny-button2">
+<a href="aggiungi_indirizzo.jsp" class="shiny-button2">
  <strong>AGGIUNGI UN INDIRIZZO</strong>
   </a>
 

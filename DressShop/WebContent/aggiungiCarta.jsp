@@ -21,21 +21,21 @@
   
   
 
-    <form id="form-work" class="" name="aggiungiCarta" action="aggiungiCarta" method="post">
+    <form id="form-work" class="" name="aggiungiCarta" action="AggiungiCarta" method="post">
       
       <fieldset>
       
         <div class="form-group">
           <div class="col-md-6">
             <label class="control-label" for="nome">Nome</label>
-            <input name="nome" class="form-control" placeholder="Mario" type="text"  oninput ="controlloNome()" >
+            <input type="text" name="nome" class="form-control" placeholder="Mario"   oninput ="controlloNome()" >
             </div>
           </div>
 
         <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="surname">Cognome</label>
-              <input name="cognome" class="form-control" placeholder="Rossi" type="text" required oninput ="controlloCognome()">
+              <input type="text" name="cognome" class="form-control" placeholder="Rossi" required oninput ="controlloCognome()">
             </div>
           </div>
 
@@ -45,7 +45,7 @@
             <div class="col-md-6">
               <label class="control-label" for="mobile">Numero Carta</label>
               
-                <input name="numero_carta" class="form-control" placeholder="1234 5678 9876 5432" type="text" required oninput ="controlloNumero()">
+                <input type="text" name="numero_carta" class="form-control" placeholder="1234 5678 9876 5432"  required oninput ="controlloNumero()">
              
             </div>
           </div>
@@ -53,16 +53,16 @@
           <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="email">CVV</label>
-              <input name="cvv" class="form-control" placeholder="123" type="text" required oninput ="controlloCvv()">
+              <input type="text" name="cvv" class="form-control" placeholder="123"  required oninput ="controlloCvv()">
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-md-6">
               <label class="control-label" for="district">Data di Scadenza</label>
-              <input name="anno" class="form-control" placeholder="anno" type="text" required oninput ="controlloAnno()" >
-              <input name="mese" class="form-control" placeholder="mese" type="text" required oninput ="controlloMese()">
-              <input name="giorno" class="form-control" placeholder="giorno" type="text" required oninput ="controlloGiorno()">
+              <input type="text" name="anno" class="form-control" placeholder="anno" required oninput ="controlloAnno()" >
+              <input type="text" name="mese" class="form-control" placeholder="mese"  required oninput ="controlloMese()">
+              <input type="text" name="giorno" class="form-control" placeholder="giorno"  required oninput ="controlloGiorno()">
             </div>
           </div>     
           <div class="form-group">
