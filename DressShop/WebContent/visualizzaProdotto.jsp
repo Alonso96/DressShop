@@ -52,9 +52,9 @@
 						</div>
 						<p class="product-description"><%=prod.getDescrizione() %></p>
 						<h4 class="price">Prezzo: &euro; <%= formatter.format(prod.getPrezzo_compl()) %></h4>
-						<form >
+						<form>
 						<h5 class="sizes" name="taglia">sizes:
-							<input type="radio" name="beantype" value ="s" class="size" data-toggle="tooltip" >s</input> 
+							<input type="radio" name="beantype" checked value ="s" class="size" data-toggle="tooltip" >s</input> 
 							<input type="radio" name="beantype" value ="m"  class="size" data-toggle="tooltip" >M</input> 
 							<input type="radio" name="beantype" value ="l"  class="size" data-toggle="tooltip" >l</input> 
 							<input type="radio" name="beantype" value ="xl"  class="size" data-toggle="tooltip" >xl</input>
@@ -71,6 +71,7 @@
 		</div>
 	</div>
 	</form>
+
 	<%@include file="footer.jsp" %>
 </body>
 </html>
