@@ -19,8 +19,11 @@ public class LogoutControl extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getSession().removeAttribute("tipo");
+		request.getSession().setAttribute("tipo", 0);
 		request.getSession().removeAttribute("id");
+		request.getSession().setAttribute("id", null);
 		request.getSession().removeAttribute("email");
+		request.getSession().setAttribute("email", null);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response); // passo la chiamata alla jsp
 	}

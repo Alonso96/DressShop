@@ -12,9 +12,9 @@
 </head>
 <body>
  
-    <%! String aut = new String();
-    	String autCtrl = new String();
-    	String areaUt = new String();
+    <%! String aut = "Login";
+    	String autCtrl = "login.jsp";
+    	String areaUt = "login.jsp";
     	int tipo = 0;
     %>
     <%	if(request.getSession().getAttribute("tipo") != null){
@@ -59,6 +59,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 	<%
+	System.out.println("tipo : " + tipo);
 	if(tipo <= 0 || tipo == 1){
 	%>
     <ul class="nav navbar-nav sinistra">
