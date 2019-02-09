@@ -77,12 +77,34 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 		return listaBean;
 	}
 
+	@Override
 	public Collection<ProdottoBean> doRetrieveAllNotInVendita() throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
 		
 		String queryString ="Select * FROM " + TABLE_1 + "WHERE in_vendita = false";
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				listaBean.add(getBean(result));
+			}
+			
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return listaBean;
+	}
+	@Override
+	public Collection<ProdottoBean> doRetrieveAllPrezzoZero() throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
+		
+		String queryString ="select * from "+TABLE_1+" where prezzo_compl=0";
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement = (PreparedStatement) connection.prepareStatement(queryString);
@@ -117,7 +139,7 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 			statement.setString(4, prodotto.getModello());
 			statement.setFloat(5, 0); //metto 0 perchè magazziniere non può impostare
 			statement.setInt(6, 0); //idem
-			statement.setBoolean(7, true); //metto sempre true perchè in vendita
+			statement.setBoolean(7, false); //metto sempre false perchè non in vendita all'inizio
 			statement.setString(8, prodotto.getCategoria());
 			statement.setString(9, prodotto.getFoto());
 			//statement.setInt(10, prodotto.getPromozione());

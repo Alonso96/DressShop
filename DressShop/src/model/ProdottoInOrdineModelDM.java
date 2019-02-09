@@ -193,4 +193,16 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		
 		return bean;
 	}
+
+	@Override
+	public Collection<ProdottoBean> doRetrieveAllNotInVendita() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<ProdottoBean> doRetrieveAllPrezzoZero() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

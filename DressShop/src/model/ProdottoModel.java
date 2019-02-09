@@ -14,5 +14,9 @@ public interface ProdottoModel<ProdottoBean> {
 	public void doUpdate(ProdottoBean prodotto) throws SQLException;
 	
 	public boolean doDelete(int id_prodotto) throws SQLException;
+
+	Collection<ProdottoBean> doRetrieveAllNotInVendita() throws SQLException;
+
+	Collection<ProdottoBean> doRetrieveAllPrezzoZero() throws SQLException;
 	
 }
