@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/css/bootstrap.min.css">
 <link href="css/stile.css" rel="stylesheet" >
 </head>
-<body>\\
+<body>
 
 <%@ include file="header.jsp" %>
 

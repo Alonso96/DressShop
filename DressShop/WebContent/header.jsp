@@ -11,10 +11,56 @@
    <script src="script/jquery.js" ></script>
 </head>
 <body>
+ 
+    <%! String aut = new String();
+    	String autCtrl = new String();
+    	String areaUt = new String();
+    	int tipo = 0;
+    %>
+    <%	if(request.getSession().getAttribute("tipo") != null){
+    		tipo = (int) request.getSession().getAttribute("tipo");
+    		System.out.println(tipo);
+     		switch(tipo){
+    		case 0:
+    			aut = "Login";
+    			autCtrl = "login.jsp";
+    			break;
+	    	
+    		case 1:
+    			aut="Logout";
+    			areaUt = "area_utente.jsp";
+    			autCtrl="LogoutControl";
+    			break;
+    		case 2: 
+    			aut="Logout";
+				areaUt="magazzinierePage.jsp";
+				autCtrl="LogoutControl";
+				break;
+	    	
+	    		
+    		case 3: 
+    			aut="Logout";
+	    		areaUt="managerPage.jsp";
+	    		autCtrl="LogoutControl";
+	    		break;
+	    	default:
+	    		areaUt="login.jsp";
+		}
+    		
+    		}
+    else{
+    	aut = "Login";
+		autCtrl = "login.jsp";
+		areaUt = "login.jsp";
+		}
+    %>
+    
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-  
+	<%
+	if(tipo <= 0 || tipo == 1){
+	%>
     <ul class="nav navbar-nav sinistra">
      
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><font color= midnightblue>UOMO</font> <span class="caret"></span></a>
@@ -52,55 +98,22 @@
       </li>
       
     </ul>
+    <%
+	}
+    %>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     	<a href= "index.jsp">
     	<img  src="img/logodre.png" alt="Logo" height="80px" width="280px"> 
     	</a>
 
-    <%! String aut = new String();
-    	String autCtrl = new String();
-    	String areaUt = new String();
-    	int tipo;
-    %>
-    <%	if(request.getSession().getAttribute("tipo") != null){
-    		tipo = (int) request.getSession().getAttribute("tipo");
-    		System.out.println(tipo);
-    		switch(tipo){
-    		case 0:
-    			aut = "Login";
-    			autCtrl = "login.jsp";
-    			break;
-	    	
-    		case 1:
-    			aut="Logout";
-    			areaUt = "area_utente.jsp";
-    			autCtrl="LogoutControl";
-    			break;
-    		case 2: 
-    			aut="Logout";
-				areaUt="magazzinierePage.jsp";
-				autCtrl="LogoutControl";
-				break;
-	    	
-	    		
-    		case 3: 
-    			aut="Logout";
-	    		areaUt="managerPage.jsp";
-	    		autCtrl="LogoutControl";
-	    		break;
-	    	default:
-	    		areaUt="login.jsp";
-		}
-    		
-    		}
-    else{
-    	aut = "Login";
-		autCtrl = "login.jsp";
-		areaUt = "login.jsp";
-		}
-    %>
     <ul class="nav navbar-nav navbar-right">
+    <%
+	if(tipo <= 0 || tipo == 1){
+	%>
       <li><a href=carrello.jsp><font color= GRAY><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</font></a></li>
+    <%
+	}
+    %>
       <li><a href=<%= areaUt %>><font color= GRAY><span class="glyphicon glyphicon-user"></span> Area Utente</font></a></li>
       <li><a href= <%= autCtrl %> ><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> <%= aut %></font></a></li>
       

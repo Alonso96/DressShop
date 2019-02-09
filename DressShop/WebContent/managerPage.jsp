@@ -9,7 +9,7 @@
 <link href="css/stile.css" rel="stylesheet" >
 </head>
 <body>
-<%@ include file="header_gestori.jsp" %>
+<%@ include file="header.jsp" %>
 	<%	
 	UtenteModel<UtenteBean> model = new UtenteModelDM();
 	UtenteBean utente = new UtenteBean();
