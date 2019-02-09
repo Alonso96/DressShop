@@ -16,4 +16,6 @@ public interface UtenteModel<UtenteBean> {
 	public boolean doDelete(int id) throws SQLException;
 	
 	public UtenteBean doRetrieveByEmail(String email) throws SQLException;
+
+	int getIdUtente() throws SQLException;
 }

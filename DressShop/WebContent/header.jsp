@@ -65,21 +65,38 @@
     <%	if(request.getSession().getAttribute("tipo") != null){
     		tipo = (int) request.getSession().getAttribute("tipo");
     		System.out.println(tipo);
-    		if(tipo == 0){
+    		switch(tipo){
+    		case 0:
     			aut = "Login";
     			autCtrl = "login.jsp";
-	    	} else {
-    			aut = "Logout";
-    			autCtrl = "LogoutControl";
-    		}
-	    	if(tipo == 1)
+    			break;
+	    	
+    		case 1:
+    			aut="Logout";
     			areaUt = "area_utente.jsp";
-    		else
-		   		areaUt = "login.jsp";
-		} else{
-		    aut = "Login";
-			autCtrl = "login.jsp";
-			areaUt = "login.jsp";
+    			autCtrl="LogoutControl";
+    			break;
+    		case 2: 
+    			aut="Logout";
+				areaUt="magazzinierePage.jsp";
+				autCtrl="LogoutControl";
+				break;
+	    	
+	    		
+    		case 3: 
+    			aut="Logout";
+	    		areaUt="managerPage.jsp";
+	    		autCtrl="LogoutControl";
+	    		break;
+	    	default:
+	    		areaUt="login.jsp";
+		}
+    		
+    		}
+    else{
+    	aut = "Login";
+		autCtrl = "login.jsp";
+		areaUt = "login.jsp";
 		}
     %>
     <ul class="nav navbar-nav navbar-right">

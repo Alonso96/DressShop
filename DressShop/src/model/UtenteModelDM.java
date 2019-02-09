@@ -298,5 +298,26 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 
 		return flag;
 	}
+	@Override
+	public int getIdUtente() throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		int id_utente = 0;
+		String sql ="Select last_insert_id() as id_ut from utente;";
+		
+		try {
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(sql);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				id_utente = result.getInt("id_ut");
+			}
+			return id_utente;
+		}
+		finally {
+			if(statement != null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
 	
+}
 }
