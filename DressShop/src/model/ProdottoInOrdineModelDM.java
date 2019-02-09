@@ -66,7 +66,7 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		PreparedStatement statement_2 = null;
 		PreparedStatement statement_1 = null;
 		int id;
-		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo_compl, iva, quantita, reso) VALUES(?, ?, ?, ?, ?)";
+		String insertString_2=" INSERT INTO " + TABLE_2 + "(id_prodotto, prezzo_compl, iva, taglia, quantita, reso) VALUES(?, ?, ?, ?, ?, ?)";
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			statement_2 = (PreparedStatement) connection.prepareStatement(insertString_2);
@@ -74,8 +74,9 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 			statement_2.setInt(1, ((ProdottoInOrdineBean)prodotto).getId_prodotto());
 			statement_2.setFloat(2, ((ProdottoInOrdineBean)prodotto).getPrezzo_compl());
 			statement_2.setFloat(3, ((ProdottoInOrdineBean)prodotto).getIva());
-			statement_2.setInt(4, ((ProdottoInOrdineBean)prodotto).getQuantita());
-			statement_2.setBoolean(5, ((ProdottoInOrdineBean)prodotto).isReso());
+			statement_2.setString(4, ((ProdottoInOrdineBean)prodotto).getTaglia());
+			statement_2.setInt(5, ((ProdottoInOrdineBean)prodotto).getQuantita());
+			statement_2.setBoolean(6, ((ProdottoInOrdineBean)prodotto).isReso());
 			statement_2.executeUpdate();
 			connection.commit();
 			
