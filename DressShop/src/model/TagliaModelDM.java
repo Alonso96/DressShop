@@ -33,6 +33,30 @@ public class TagliaModelDM implements TagliaModel<TagliaBean>{
 		}
 		return listaBean;
 	}
+	
+	public TagliaBean doRetrieveByProdottoTaglia(int id_prodotto, String taglia) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+		TagliaBean bean = new TagliaBean();
+		
+		String queryString ="Select * FROM " + TABLE + " WHERE id_prodotto = ? and taglia = ?";
+		
+		try{
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(queryString);
+			statement.setInt(1, id_prodotto);
+			statement.setString(2, taglia);
+			ResultSet result = statement.executeQuery();
+			while(result.next()){
+				bean = getBean(result);
+			}
+		} finally{
+			if(statement!=null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+		return bean;
+	}
+	
 	@Override
 	public void doSave(TagliaBean taglia) throws SQLException {
 		Connection connection = null;

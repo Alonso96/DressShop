@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-//gestire modifica quantit�
+//gestire modifica quantita
 
 @SuppressWarnings("hiding")
 public class Carrello<ProdottoInCarrello> implements Serializable{
@@ -62,9 +62,12 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 	}
 	
 	public void acquista(String carta_credito, int utente, int indirizzo) throws SQLException {
-		ProdottoModel<ProdottoBean> prodottoModel = new ProdottoInOrdineModelDM();
+		ProdottoModel<ProdottoBean> prodottoOrdineModel = new ProdottoInOrdineModelDM();
+		ProdottoModel<ProdottoBean> prodottoModel = new ProdottoModelDM();
 		OrdineModel<OrdineBean> ordineModel = new OrdineModelDM();
 		OrdinazioneModel ordinazioneModel= new OrdinazioneModelDM();
+		TagliaModelDM tModel = new TagliaModelDM();
+
 		OrdineBean ordBean = new OrdineBean();
 		ordBean.setCarta_credito(carta_credito);
 		ordBean.setUtente(utente);
@@ -83,9 +86,14 @@ public class Carrello<ProdottoInCarrello> implements Serializable{
 			prodBean.setQuantita(((model.ProdottoInCarrello)prod).getQuantita());
 			prodBean.setTaglia(((model.ProdottoInCarrello)prod).getTaglia());
 			prodBean.setReso(false);
-			id = prodottoModel.doSave(prodBean);
+			id = prodottoOrdineModel.doSave(prodBean);
 			OrdinazioneBean ordinazioneBean = new OrdinazioneBean(idOrdine, id);
 			ordinazioneModel.doSave(ordinazioneBean);
+			
+			TagliaBean tBean = new TagliaBean();
+			tBean = tModel.doRetrieveByProdottoTaglia(((model.ProdottoInCarrello)prod).getId_prodotto(), ((model.ProdottoInCarrello)prod).getTaglia());
+			tBean.setQuantita(tBean.getQuantita() - ((model.ProdottoInCarrello)prod).getQuantita());
+			tModel.doUpdate(tBean);
 		}
 
 		list = new ArrayList<ProdottoInCarrello>();
