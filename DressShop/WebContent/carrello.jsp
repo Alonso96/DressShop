@@ -11,7 +11,12 @@ Carrello cart = (Carrello) session.getAttribute("cart"); %>
 </head>
 <body>
 <%@ include file="header.jsp" %>
-
+<%
+int tipo = (int)session.getAttribute("tipo");
+if( tipo ==2 || tipo ==3 || tipo == 4)
+	response.sendRedirect("index.jsp");
+else 
+%>
 <hr>
 <h3 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;CARRELLO</h3>
 <hr>
