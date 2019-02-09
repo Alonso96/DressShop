@@ -13,6 +13,36 @@ function controlloNumero()
 	}
 }
 
+function controlloQnt()
+{
+	var lettere=/^[0-9]$/;
+	var qnt=document.magazzinierePage.qnt.value;
+	if(!qnt.match(lettere))
+	{
+		document.magazzinierePage.qnt.style.borderColor="red";
+		return false;
+	}
+	else{
+		document.magazzinierePage.qnt.style.borderColor="green";
+		return true;
+	}
+}
+
+function controlloCognome2()
+{
+	var lettere=/^[a-zA-Z]+$/;
+	var cognome2=document.magazzinierePage.cognome2.value;
+	if(!cognome2.match(lettere))
+	{
+		document.magazzinierePage.cognome2.style.borderColor="red";
+		return false;
+	}
+	else
+	{
+		document.magazzinierePage.cognome2.style.borderColor="green";
+		return true;
+	}
+}
 function controlloAnno()
 {
 	var anno=document.aggiungiCarta.anno.value;
@@ -146,5 +176,24 @@ function validazione()
 	else
 	{
 		document.aggiungiCarta.submit();
+	}
+}
+
+function validazione2()
+{
+	if(!controlloQnt())
+	{
+		document.magazzinierePage.qnt.focus();
+		return false;
+	}
+	
+	else if(!controlloCognome2())
+	{
+		document.magazzinierePage.cognome2.focus();
+		return false;
+	}
+	else
+	{
+		document.magazzinierePage.submit();
 	}
 }

@@ -77,15 +77,15 @@ else {
  <form class="container col-sm-6"  action="ProductControl" name="insert" method="post">
   <input type="hidden" name="insert" value="insert">
   <div class="form-group" id='ins'>
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci categoria" name="categoria">   
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci tipo" name="tipo">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca"> 
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto"> 
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci taglia" name="taglia"> 
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci quantità" name="quantita"> 
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci colore" name="colore"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci categoria" name="categoria" required oninput ="controlloCognome2()">   
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci tipo" name="tipo" required oninput ="controlloCognome2()">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca" required oninput ="controlloCognome2()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello" required oninput ="controlloCognome2()">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione" required oninput ="controlloCognome2()">
+<input type="file" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto" required oninput ="controlloCognome2()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci taglia" name="taglia" required oninput ="controlloCognome2()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci quantità" name="quantita" required oninput ="controlloQnt()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci colore" name="colore" required oninput ="controlloCognome2()"> 
   <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" name="categoria">Categoria
     <span class="caret"></span></button>
@@ -128,7 +128,7 @@ else {
     </ul>
   </div>
   
-  	<button type="submit" class="btn btn-secondary btn-lg" >Inserisci</button> 
+  	<button type="submit" class="btn btn-secondary btn-lg" onclick="validazione2();" >Inserisci</button> 
   </div>
   
   </form>
@@ -299,6 +299,6 @@ $(document).ready(function(){
  <br>
  <hr>
  <%@ include file="footer.jsp" %>
-
+<script src="scripts/ValidazioneAddCarta.js"></script>
 </body>
 </html>
