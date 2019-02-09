@@ -17,7 +17,7 @@ public class ProductControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	static ProdottoModel<ProdottoBean> model = new ProdottoModelDM();
-	
+	static TagliaModel<TagliaBean> model1 = new TagliaModelDM();
 	public ProductControl() {
 		super();
 	}
@@ -137,13 +137,15 @@ public class ProductControl extends HttpServlet {
 				//
 					*/
 				//	int id = Integer.parseInt(request.getParameter("Id"));
-				//	String codice= request.getParameter("codice");
+					String codice= request.getParameter("codice");
 					String descrizione= request.getParameter("descrizione");
 					String marca = request.getParameter("marca");
 					String modello = request.getParameter("modello");
 					String foto = request.getParameter("foto");
 					String categoria = request.getParameter("categoria");
 					String taglia = request.getParameter("taglia");
+					String tipo = request.getParameter("tipo");
+					
 				//	int promozione = Integer.parseInt(request.getParameter("promozione"));
 					int ivaV = 0; //Integer.parseInt(request.getParameter("ivaVendita"));     //iva vendita;
 					float prezzoV =  0; //Float.parseFloat(request.getParameter("prezzoVendita")); //prezzovendita
@@ -152,8 +154,12 @@ public class ProductControl extends HttpServlet {
 				//	boolean reso = Boolean.parseBoolean(request.getParameter("reso"));
 					ProdottoBean bean = new ProdottoBean();
 					TagliaBean tagliab = new TagliaBean();
+					tagliab.setQuantita(quantita);
+					tagliab.setTaglia(taglia);
+					categoria=categoria+"."+tipo;
+					System.out.println("Categoria nuova e': "+categoria);
 			//		bean.setId_prodotto(id);
-					//bean.setCodice_prodotto(codice);
+					bean.setCodice_prodotto(codice);
 					bean.setDescrizione(descrizione);
 					bean.setMarca(marca);
 					bean.setModello(modello);
@@ -170,6 +176,7 @@ public class ProductControl extends HttpServlet {
 					
 					try {
 						model.doSave(bean);
+						model1.doSave(tagliab);
 						
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block

@@ -77,56 +77,44 @@ else {
  <form class="container col-sm-6"  action="ProductControl" name="insert" method="post">
   <input type="hidden" name="insert" value="insert">
   <div class="form-group" id='ins'>
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci categoria" name="categoria">   
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci tipo" name="tipo">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca"> 
+  <label for="categoria">Categoria</label>
+  <select name="categoria">
+  <option value="giacca">Giacche</option>
+  <option value="jeans">Jeans</option>
+  <option value="camicia">Camicie</option>
+  <option value="intimo">Intimo</option>
+  <option value="shirt">Shirts</option>
+  <option value="cappotto">Cappotti</option>
+  <option value="pantalone">Pantalone</option>
+   <option value="borsa">Borse</option>
+  <option value="cintura">Cintura</option>
+  <option value="cappello">Cappello</option>
+  </select>  
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci codice" name="codice">  
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello">
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione">
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto"> 
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci taglia" name="taglia"> 
+<label for="taglia">Taglia</label>
+<select name="taglia">
+  <option value="s">S</option>
+  <option value="m">M</option>
+  <option value="l">L</option>
+  <option value="xl">XL</option>
+  <option value="xxl">XXL</option>
+  <option value="xxxl">XXXL</option>
+  
+  </select>  
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci quantità" name="quantita"> 
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci colore" name="colore"> 
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" name="categoria">Categoria
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li class="dropdown-submenu">
-            <a class="test" href="#">Uomo<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a value="giacca.uomo">Giacche</a></li>
-          <li><a value="jeans.uomo">Jeans</a></li>
-          <li><a value="camicia.uomo">Camicie</a></li>
-          <li><a value="intimo.uomo">Intimo</a></li>
-          <li><a value="shirt.uomo">Shirt e felpe</a></li>
-          <li><a value="cappotti.uomo">Cappotti</a></li>
-          <li><a value="pantaloni.uomo">Pantaloni</a></li>
-            </ul>
-          </li>
-      <li class="dropdown-submenu">
-            <a class="test" href="#">Donna <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-           <li><a value="giacca.donna">Giacche</a></li>
-          <li><a value="jeans.donna">Jeans</a></li>
-          <li><a value="camicia.donna">Camicie</a></li>
-          <li><a value="intimo.donna">Intimo</a></li>
-          <li><a value="shirt.donna">Shirt e felpe</a></li>
-          <li><a value="cappotti.donna">Cappotti</a></li>
-          <li><a value="pantaloni.donna">Pantaloni</a></li>
-            </ul>
-          </li>
-      <li class="dropdown-submenu">
-        <a class="test" tabindex="-1" href="#">Accessori <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a value="borse.accessori">Borse</a></li>
-          <li><a value="occhiali.accessori">Occhiali</a></li>
-          <li><a value="cappelli.accessori">Cappelli</a></li>
-          <li><a value="cinture.accessori">Cinture</a></li>
-          <li><a value="borse.accessori">Sciarpe</a></li>
-         
-        </ul>
-      </li>
-    </ul>
-  </div>
+<label for="tipo">Uomo/Donna</label>
+<select name="tipo">
+  <option value="uomo">Uomo</option>
+  <option value="donna">Donna</option>
+ </select>  
+ 
+  
+  
+  
   
   	<button type="submit" class="btn btn-secondary btn-lg" >Inserisci</button> 
   </div>

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class TagliaModelDM implements TagliaModel{
+public class TagliaModelDM implements TagliaModel<TagliaBean>{
 
 	private static final String TABLE ="TAGLIA";
 
@@ -33,7 +33,6 @@ public class TagliaModelDM implements TagliaModel{
 		}
 		return listaBean;
 	}
-
 	@Override
 	public void doSave(TagliaBean taglia) throws SQLException {
 		Connection connection = null;
@@ -132,4 +131,6 @@ public class TagliaModelDM implements TagliaModel{
 		
 		return bean;
 	}
+
+	
 }

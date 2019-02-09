@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface TagliaModel {
+public interface TagliaModel<TagliaBean> {
 
 	public Collection<TagliaBean> doRetrieveByProdotto(int id_prodotto) throws SQLException;
 	
@@ -12,5 +12,9 @@ public interface TagliaModel {
 	public void doUpdate(TagliaBean taglia) throws SQLException;
 	
 	public boolean doDelete(TagliaBean taglia) throws SQLException;
+
+	boolean doDelete(model.TagliaBean taglia) throws SQLException;
+
+	
 
 }

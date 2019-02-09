@@ -104,8 +104,8 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 		PreparedStatement statement = null;
 		PreparedStatement statement_1 = null;
 		int id;
-		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, decrizione, marca, modello, "
-				+ "prezzo_compl, iva, in_vendita, categoria, foto, promozione) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String insertString_1=" INSERT INTO " + TABLE_1 + " (codice_prodotto, descrizione, marca, modello, "
+				+ "prezzo_compl, iva, in_vendita, categoria,foto) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try{ 
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -115,12 +115,12 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 			statement.setString(2, prodotto.getDescrizione());
 			statement.setString(3, prodotto.getMarca());
 			statement.setString(4, prodotto.getModello());
-			statement.setFloat(5, prodotto.getPrezzo_compl());
-			statement.setInt(6, prodotto.getIva());
-			statement.setBoolean(7, prodotto.isIn_vendita());
+			statement.setFloat(5, 0); //metto 0 perchè magazziniere non può impostare
+			statement.setInt(6, 0); //idem
+			statement.setBoolean(7, true); //metto sempre true perchè in vendita
 			statement.setString(8, prodotto.getCategoria());
 			statement.setString(9, prodotto.getFoto());
-			statement.setInt(10, prodotto.getPromozione());
+			//statement.setInt(10, prodotto.getPromozione());
 			id = statement.executeUpdate();
 			System.out.println("prodotto" + id);
 			connection.commit();
