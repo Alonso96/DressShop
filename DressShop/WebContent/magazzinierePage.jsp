@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="css/css/bootstrap.min.css">
 <link href="css/stile.css" rel="stylesheet" >
 </head>
-<body>
+<body>\\
+
 <%@ include file="header.jsp" %>
 
 <%	
@@ -77,6 +78,7 @@ else {
  <form class="container col-sm-6"  action="ProductControl" name="insert" method="post">
   <input type="hidden" name="insert" value="insert">
   <div class="form-group" id='ins'>
+
   <label for="categoria">Categoria</label>
   <select name="categoria">
   <option value="giacca">Giacche</option>
@@ -90,11 +92,13 @@ else {
   <option value="cintura">Cintura</option>
   <option value="cappello">Cappello</option>
   </select>  
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci codice" name="codice">  
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione">
-<input type="text" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto"> 
+ <input type="text" class="form-control form-control-lg"  placeholder="Inserisci codice" name="codice" required oninput ="controlloCognome2()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca" required oninput ="controlloCognome2()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello" required oninput ="controlloCognome2()">
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione" required oninput ="controlloCognome2()">
+<input type="file" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto" required oninput ="controlloCognome2()"> 
+<input type="text" class="form-control form-control-lg"  placeholder="Inserisci quantità" name="quantita" required oninput ="controlloQnt()"> 
+
 <label for="taglia">Taglia</label>
 <select name="taglia">
   <option value="s">S</option>
@@ -115,8 +119,10 @@ else {
   
   
   
+
+
   
-  	<button type="submit" class="btn btn-secondary btn-lg" >Inserisci</button> 
+  	<button type="submit" class="btn btn-secondary btn-lg" onclick="validazione2();" >Inserisci</button> 
   </div>
   
   </form>
@@ -287,6 +293,6 @@ $(document).ready(function(){
  <br>
  <hr>
  <%@ include file="footer.jsp" %>
-
+<script src="scripts/ValidazioneAddCarta.js"></script>
 </body>
 </html>
