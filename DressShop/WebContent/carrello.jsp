@@ -1,5 +1,5 @@
 <%
-Carrello cart = (Carrello) session.getAttribute("cart"); %>
+Carrello cart = (Carrello) session.getAttribute("cart"); //a%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.util.*, model.*, java.text.DecimalFormat"%>
 <!DOCTYPE html>

@@ -14,7 +14,7 @@
 <%
 String email= (String) session.getAttribute("email");
 if (email != null)
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("index.jsp"); // 
 else {}
 %>
 
