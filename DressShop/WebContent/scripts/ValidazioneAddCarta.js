@@ -1,3 +1,4 @@
+
 function controlloNumero()
 {
 	var lettere=/^[0-9]{16}$/;
