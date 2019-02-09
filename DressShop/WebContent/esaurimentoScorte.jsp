@@ -9,7 +9,7 @@
 <link href="css/stile.css" rel="stylesheet" >
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="header_gestori.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
