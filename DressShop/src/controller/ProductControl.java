@@ -123,8 +123,8 @@ public class ProductControl extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-            String action = request.getParameter("action");
-		
+           
+          
 		
 		/*	if(action != null) {
 			/*	if(action.equalsIgnoreCase("detail")) {
@@ -184,12 +184,12 @@ public class ProductControl extends HttpServlet {
 					}
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/magazzinierePage.jsp");
 					dispatcher.forward(request, response); // passo la chiamata alla jsp;
-				
+            }
 		
 		
 		
 		
 	
 	
-	}
+	
 }

@@ -32,6 +32,7 @@
     	ProdottoBean product = (ProdottoBean) request.getAttribute("product");
     --%>    
     <div class="container">
+     <h3 class="h3">Prodotti</h3>
 <%
 		if((products != null) && (prod.size() >= 0)) {
 		Iterator<?> it = prod.iterator();
@@ -40,7 +41,7 @@
 		while(it.hasNext()) {
 			ProdottoBean bean = (ProdottoBean) it.next();
 %>
-    <h3 class="h3">Prodotti</h3>
+    
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
@@ -52,16 +53,24 @@
 		while(it.hasNext()) {
 			ProdottoBean bean = (ProdottoBean) it.next();
 			if(bean.getPrezzo()==null){
-*/	--%>
-                <div class="product-image6">
-                    <a href="inserisciPrezzo.jsp?<%=bean.getId_prodotto()%>">
+*/	--%>		<form action="InsPrezzoControl" method="post" name="insP">
+
+					<div class="product-image6">
+                   
                         <img class="pic-1" src=<%=bean.getFoto() %> <%--src="<%=bean.getFoto()--%>>
-                    </a>
+                    
                 </div>
                 <div class="product-content">
+                	<input type ="hidden" name=id_prodotto value=<%=bean.getId_prodotto() %> >
                     <h3 class="title"><%=bean.getMarca() + " "+  bean.getModello() %></h3>
                     <div class="price" id='prezzo'> &euro; x <%=bean.getPrezzo_compl() %>
                     
+               <input type="text" class="form-control form-control-sm" id="myText" placeholder="Inserisci prezzo" name="prezzo">
+               <button type="submit"class="btn btn-primary" >Aggiungi prezzo</button>
+               </div>
+               </div>
+                </form>
+                
                        
                     </div>
                 </div>
@@ -92,7 +101,7 @@
 function aggiungiPrezzo() {
   var x = document.getElementById("myText").value;
   document.getElementById("prezzo").innerHTML = "&euro;"+x;
-  //bean.setPrezzo(x);
+  
 }
 </script>
 </body>

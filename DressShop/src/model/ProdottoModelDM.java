@@ -245,6 +245,30 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 		}
 		return listaBean;
 	}
+	
+	@Override
+	public void doUpdatePrezzo(int id, float prezzo) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement=null;
+
+		String insertString="UPDATE " + TABLE_1 + " SET prezzo_compl= ?, iva=?, in_vendita=? where id_prodotto= ? ;";
+		
+		try{ 
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			statement = (PreparedStatement) connection.prepareStatement(insertString);
+
+			statement.setFloat(1, prezzo);
+			statement.setInt(2, 10);
+			statement.setBoolean(3,true);
+			statement.setInt(4,id);
+			statement.executeUpdate();
+			
+			connection.commit();
+		} finally{
+			if(statement!= null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+	}
 
 	private static ProdottoBean getBean(ResultSet rs) throws SQLException{
 		ProdottoBean bean = new ProdottoBean();

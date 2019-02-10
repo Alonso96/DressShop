@@ -206,4 +206,12 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void doUpdatePrezzo(int id, float prezzo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

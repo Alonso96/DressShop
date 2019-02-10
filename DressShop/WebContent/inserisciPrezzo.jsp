@@ -13,7 +13,7 @@
 
 
 
-<form action="ProductControl" method="post">
+<form action="ProductControl" method="get" name="insP">
                <input type="text" class="form-control form-control-sm" id="myText" placeholder="Inserisci prezzo" name="prezzo">
                <button class="btn btn-primary" type="submit" onclick="aggiungiPrezzo()">Aggiungi prezzo</button>
                 </form>
