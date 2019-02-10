@@ -18,4 +18,6 @@ public interface UtenteModel<UtenteBean> {
 	public UtenteBean doRetrieveByEmail(String email) throws SQLException;
 
 	int getIdUtente() throws SQLException;
+
+	void doUpdatePassword(String password, int id_utente) throws SQLException;
 }

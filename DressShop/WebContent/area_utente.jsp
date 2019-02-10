@@ -48,7 +48,7 @@ if(request.getSession().getAttribute("tipo") != null){
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Visualizza i tuoi dati personali</strong></li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Modifica password</strong></li>
+              <a href="modifica_password.jsp"><li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Modifica password</strong></li></a>
             </ul>
             <a href="profilo.jsp" class="btn btn-block btn-primary text-uppercase">Il Mio profilo</a>
           </div>

@@ -112,7 +112,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}
-
+	@Override
 	public void doUpdatePassword(String password, int id_utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement = null;
