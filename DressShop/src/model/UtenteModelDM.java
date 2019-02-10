@@ -113,6 +113,27 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		}
 	}
 
+	public void doUpdatePassword(String password, int id_utente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+
+		String insertSQL = "UPDATE " + TABLE + " SET password = ? WHERE id_utente = ?;";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			statement = connection.prepareStatement(insertSQL);
+			
+			statement.setString(1, password);
+			statement.setInt(2, id_utente);
+			statement.executeUpdate();
+
+			connection.commit();
+		} finally{
+			if(statement!= null) statement.close();
+			DriverManagerConnectionPool.releaseConnection(connection);
+		}
+	}
+
 	@Override
 	public boolean doDelete(int id) throws SQLException {
 		Connection connection = null;
