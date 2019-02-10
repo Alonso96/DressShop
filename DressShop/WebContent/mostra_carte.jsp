@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<%@ page import="java.util.Collection, java.util.Iterator, model.*, java.text.DecimalFormat" %>
+<%@ page import = "java.util.*, model.indirizzo.*, model.ordine.*, model.prodotto.*, model.carta.*,model.carrello.*, model.utente.*,java.text.DecimalFormat" %>
 <%
 if(request.getSession().getAttribute("tipo") != null){
 	int tipo = (int) session.getAttribute("tipo");

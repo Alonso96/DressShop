@@ -3,10 +3,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.sun.xml.internal.ws.policy.AssertionSet;
+
 
 import junit.framework.TestCase;
-import model.ProdottoBean;
+import model.prodotto.ProdottoBean;
 
 public class TestProdottoBean extends TestCase {
 ProdottoBean prodotto;

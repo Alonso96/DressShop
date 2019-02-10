@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import model.OrdineBean;
+import model.ordine.OrdineBean;
 
 public class TestOrdineBean extends TestCase {
 OrdineBean ordine;

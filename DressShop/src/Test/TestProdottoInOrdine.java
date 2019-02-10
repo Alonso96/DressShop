@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import model.ProdottoBean;
-import model.ProdottoInOrdineBean;
+import model.prodotto.ProdottoBean;
+import model.prodotto.ProdottoInOrdineBean;
 
 public class TestProdottoInOrdine extends TestCase{
 ProdottoInOrdineBean prodotto;

@@ -8,6 +8,7 @@
 
 </head>
 <body>
+<%@ page import = "java.util.*, model.indirizzo.*, model.ordine.*, model.prodotto.*, model.carta.*,model.carrello.*, model.utente.*,java.text.DecimalFormat" %>
 <%@ include file="header.jsp" %>
 <%
 if(request.getSession().getAttribute("tipo") != null){

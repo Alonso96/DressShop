@@ -13,7 +13,7 @@
 
 
 <%@ include file="header.jsp" %>
-<%@ page import="java.util.Collection, java.util.Iterator, model.ProdottoBean, java.text.DecimalFormat" %>
+<%@ page import="java.util.Collection, java.util.Iterator,model.prodotto.ProdottoBean, java.text.DecimalFormat" %>
 <%
 if(request.getSession().getAttribute("tipo") != null){
 	int tipo = (int) session.getAttribute("tipo");

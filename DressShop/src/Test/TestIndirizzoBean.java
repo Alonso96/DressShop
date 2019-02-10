@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import model.IndirizzoBean;
+import model.indirizzo.IndirizzoBean;
 
 public class TestIndirizzoBean extends TestCase {
 	IndirizzoBean indirizzo;
@@ -41,9 +41,9 @@ public class TestIndirizzoBean extends TestCase {
 	}
 	@Test
 	public void testSetNomeInvalido(){
-		String nome="è";
+		String nome="ï¿½";
 		indirizzo.setNome(nome);
-		assertEquals("è", indirizzo.getNome());
+		assertEquals("ï¿½", indirizzo.getNome());
 	}
 	@Test
 	public void testSetCognome(){

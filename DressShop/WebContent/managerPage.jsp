@@ -10,6 +10,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<%@ page import = "java.util.*, model.indirizzo.*, model.ordine.*, model.prodotto.*, model.carta.*,model.carrello.*, model.utente.*,java.text.DecimalFormat" %>
 	<%	
 	UtenteModel<UtenteBean> model = new UtenteModelDM();
 	UtenteBean utente = new UtenteBean();

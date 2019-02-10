@@ -3,8 +3,8 @@ package Test;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import model.OrdineBean;
-import model.UtenteBean;
+import model.ordine.OrdineBean;
+import model.utente.UtenteBean;
 
 import static org.junit.Assert.*;
 
