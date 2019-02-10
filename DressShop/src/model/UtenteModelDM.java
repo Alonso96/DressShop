@@ -1,14 +1,16 @@
 package model;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.security.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	
@@ -225,7 +227,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		return status;
 	}
 	
-	public static boolean checkUser(String email ) throws SQLException { // verifica se utente esiste già 
+	public static boolean checkUser(String email ) throws SQLException { // verifica se utente esiste giï¿½ 
 		boolean flag =false;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -345,13 +347,27 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	
 	private static String CalculateHash(String pass) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
-		MessageDigest md = MessageDigest.getInstance("SHA-512");//oppure SHA-1
+		  // getInstance() method is called with algorithm SHA-512 
+        MessageDigest md = MessageDigest.getInstance("SHA-512"); 
 
-		md.update(pass.getBytes("UTF8"));
-		byte[] hash = md.digest();
-		
-		String st = new String(hash, StandardCharsets.UTF_8);
-		return st;
+        // digest() method is called 
+        // to calculate message digest of the input string 
+        // returned as array of byte 
+        byte[] messageDigest = md.digest(pass.getBytes()); 
+
+        // Convert byte array into signum representation 
+        BigInteger no = new BigInteger(1, messageDigest); 
+
+        // Convert message digest into hex value 
+        String hashtext = no.toString(16); 
+
+        // Add preceding 0s to make it 32 bit 
+        while (hashtext.length() < 32) { 
+            hashtext = "0" + hashtext; 
+        } 
+
+        // return the HashText 
+        return hashtext; 
 	}
 	
 }
