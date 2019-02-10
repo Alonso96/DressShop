@@ -10,6 +10,13 @@
 <body>
 <%@ include file="header.jsp" %>
 <%@ page import="java.util.Collection, java.util.Iterator, model.*, java.text.DecimalFormat" %>
+<%
+if(request.getSession().getAttribute("tipo") != null){
+	int tipo = (int) session.getAttribute("tipo");
+	if( tipo ==2 || tipo ==3 || tipo == 4)
+		response.sendRedirect("index.jsp");
+}
+%>
 <%		CartaDiCreditoModel<CartaDiCreditoBean> cards = new CartaDiCreditoModelDM();                // mi richiamo tutte le carte dell'utente 
 		
     	Collection<CartaDiCreditoBean> carte = cards.doRetrieveByUtente((int)session.getAttribute("id"));  //le salvo 

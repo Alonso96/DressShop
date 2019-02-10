@@ -10,6 +10,13 @@
 <body>
 <%@ include file="header.jsp" %>
 <%@ page import = "java.util.*, model.*, java.text.DecimalFormat" %>
+<%
+if(request.getSession().getAttribute("tipo") != null){
+	int tipo = (int) session.getAttribute("tipo");
+	if( tipo ==2 || tipo ==3 || tipo == 4)
+		response.sendRedirect("index.jsp");
+}
+%>
 <%	
 	Collection<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
 	if(request.getSession().getAttribute("listaOrdini") != null){
