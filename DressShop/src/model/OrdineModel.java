@@ -15,6 +15,6 @@ public interface OrdineModel<OrdineModel> {
 	
 	public boolean doDelete(int id_ordine) throws SQLException;
 	
-	public OrdineBean doRetrieveByUtente(int utente) throws SQLException;
+	public Collection<OrdineBean> doRetrieveByUtente(int utente) throws SQLException;
 
 }

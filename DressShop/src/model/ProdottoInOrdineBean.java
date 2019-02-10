@@ -26,10 +26,12 @@ public class ProdottoInOrdineBean extends ProdottoBean{
 		this.id_prodotto_ordine = id_prodotto_ordine;
 	}
 
+	@Override
 	public float getPrezzo_compl() {
 		return prezzo_compl;
 	}
 
+	@Override
 	public void setPrezzo_compl(float prezzo_compl) {
 		this.prezzo_compl = prezzo_compl;
 	}

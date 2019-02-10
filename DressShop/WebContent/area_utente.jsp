@@ -28,7 +28,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Visualizza gli ordini effettuati fin'ora</strong></li>
               
             </ul>
-            <a href="storico.jsp" class="btn btn-block btn-primary text-uppercase">Storico Acquisti</a>
+            <a href="StoricoControl" class="btn btn-block btn-primary text-uppercase">Storico Acquisti</a>
           </div>
         </div>
       </div>

@@ -156,8 +156,10 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		PreparedStatement statement=null;
 		Collection<ProdottoBean> listaBean = new ArrayList<ProdottoBean>();
 
-		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, categoria, foto, promozione, id_prodotto_ordine, " 
-		+ TABLE_2 + ".prezzo, " + TABLE_2 + ".iva, taglia, quantita, reso FROM " + TABLE_1 + "join" + TABLE_2 + " join ORDINE WHERE ordine = ?";
+		String queryString ="Select " + TABLE_1 + ".id_prodotto, codice_prodotto, descrizione, marca, modello, "
+			+ "categoria, foto, promozione, id_prodotto_ordine, " + TABLE_2 + ".prezzo_compl, " + TABLE_2 + ".iva, taglia, "
+			+ "quantita, reso FROM " + TABLE_1 + " join " + TABLE_2 + " join ORDINAZIONE WHERE ordine = ? and ordine = id_prodotto_ordine "
+			+ "and " + TABLE_1 + ".id_prodotto = " + TABLE_2 + ".id_prodotto";
 		
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -178,7 +180,7 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 		ProdottoBean bean = new ProdottoInOrdineBean();
 		
 		bean.setId_prodotto(rs.getInt("PRODOTTO.id_prodotto"));
-		bean.setCodice_prodotto(rs.getString("codice_promozione"));
+		bean.setCodice_prodotto(rs.getString("promozione"));
 		bean.setDescrizione(rs.getString("descrizione"));
 		bean.setMarca(rs.getString("marca"));
 		bean.setModello(rs.getString("modello"));

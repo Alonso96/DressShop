@@ -155,12 +155,12 @@ public class OrdineModelDM implements OrdineModel{
 	}
 
 	@Override
-	public OrdineBean doRetrieveByUtente(int utente) throws SQLException {
+	public Collection<OrdineBean> doRetrieveByUtente(int utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement statement=null;
-		OrdineBean bean = new OrdineBean();
+		Collection<OrdineBean> listaBean = new ArrayList<OrdineBean>();
 		
-		String queryString ="Select * FROM " + TABLE + " WHERE utente = ?";
+		String queryString ="Select * FROM " + TABLE + " WHERE utente = ? order by data desc";
 		
 		try{
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
@@ -168,13 +168,13 @@ public class OrdineModelDM implements OrdineModel{
 			statement.setInt(1, utente);
 			ResultSet result = statement.executeQuery();
 			while(result.next()){
-				bean = getBean(result);
+				listaBean.add(getBean(result));
 			}
 		} finally{
 			if(statement!=null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
-		return bean;
+		return listaBean;
 	}
 
 	private static OrdineBean getBean(ResultSet rs) throws SQLException{
