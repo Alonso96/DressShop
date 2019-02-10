@@ -247,7 +247,7 @@ public class ProdottoModelDM implements ProdottoModel<ProdottoBean>{
 	}
 	
 	@Override
-	public void doUpdatePrezzo(int id, float prezzo) throws SQLException {
+	public void doUpdatePrezzo(int id, float prezzo) throws SQLException { //salvo solo il prezzo del prodotto
 		Connection connection = null;
 		PreparedStatement statement=null;
 

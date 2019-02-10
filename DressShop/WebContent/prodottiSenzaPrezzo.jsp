@@ -82,7 +82,7 @@
 		
 			<p>Nessun prodotto disponibile</p>
 		
-<% } %> 
+<% } //fine ciclo %> 
 
 
 

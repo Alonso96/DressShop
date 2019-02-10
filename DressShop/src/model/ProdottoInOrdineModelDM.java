@@ -212,7 +212,7 @@ public class ProdottoInOrdineModelDM implements ProdottoModel<ProdottoBean>{
 	@Override
 	public void doUpdatePrezzo(int id, float prezzo) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		//
 	}
 
 	
