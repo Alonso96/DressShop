@@ -74,7 +74,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Visualizza le tue carte di credito</strong></li>
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Aggiungi o elimina una o più carte di credito</strong></li>
             </ul>
-            <a href="mostra_carte.jsp" class="btn btn-block btn-primary text-uppercase">Carte di Credito</a>
+            <a href="mostra_carte.jsp" class="btn btn-block btn-primary text-uppercase" name="addcarta">Carte di Credito</a>
           </div>
         </div>
       </div>

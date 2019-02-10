@@ -69,7 +69,7 @@
 		
 <% } %> 
 
-<a href="aggiungiCarta.jsp" class="shiny-button2">
+<a href="aggiungiCarta.jsp" class="shiny-button2" name="addcarta2">
  <strong>AGGIUNGI UNA CARTA</strong>
   </a>
 

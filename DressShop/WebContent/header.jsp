@@ -115,7 +115,7 @@
     <%
 	}
     %>
-      <li><a href=<%= areaUt %>><font color= GRAY><span class="glyphicon glyphicon-user"></span> Area Utente</font></a></li>
+      <li><a href=<%= areaUt %>><font color= GRAY><span class="glyphicon glyphicon-user" name="areaUtente"></span> Area Utente</font></a></li>
       <li><a href= <%= autCtrl %> ><font color= GRAY><span class="glyphicon glyphicon-log-in"></span> <%= aut %></font></a></li>
       
     </ul>

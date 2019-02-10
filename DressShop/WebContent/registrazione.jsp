@@ -55,13 +55,10 @@
     		 </div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-        <input class="form-control" placeholder="Ripeti password" type="password" required oninput="controlloPassword()" id="cinque">
-    		 </div>
+    	
      </div> <!-- form-group// -->                                      
     <div class="form-group">
-        <input type="submit" class="btn btn-primary btn-block" value="Registrati" onclick="validazione();">
+        <input type="submit" class="btn btn-primary btn-block" value="Registrati" onclick="validazione();"name="regButtom">
         
 </div>
     <p class="text-center">Hai già un account? <a href="login.jsp">Log In</a> </p>                                                                 
