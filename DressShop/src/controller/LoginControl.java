@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -101,6 +102,9 @@ public class LoginControl extends HttpServlet {
 				    rd.include(request,response);  
 				}
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}  

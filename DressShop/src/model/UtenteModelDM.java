@@ -5,9 +5,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.*;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
 
 public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	
@@ -59,7 +60,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	}
 
 	@Override
-	public void doSave(UtenteBean utente) throws SQLException {
+	public void doSave(UtenteBean utente) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
 		Connection connection = null;
 		PreparedStatement statement=null;
 
@@ -73,7 +74,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			statement.setString(1, utente.getNome());
 			statement.setString(2, utente.getCognome());
 			statement.setString(3, utente.getEmail());
-			statement.setString(4, utente.getPassword());
+			statement.setString(4, CalculateHash(utente.getPassword()));
 			statement.setInt(5, utente.getTipo());
 			statement.setDate(6, (Date) utente.getData_nascita());
 			statement.executeUpdate();
@@ -112,8 +113,9 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 	}
+
 	@Override
-	public void doUpdatePassword(String password, int id_utente) throws SQLException {
+	public void doUpdatePassword(String password, int id_utente) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 
@@ -123,7 +125,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			connection = DriverManagerConnectionPool.getConnection();
 			statement = connection.prepareStatement(insertSQL);
 			
-			statement.setString(1, password);
+			statement.setString(1, CalculateHash(password));
 			statement.setInt(2, id_utente);
 			statement.executeUpdate();
 
@@ -182,27 +184,12 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	}
 	
 	
-	private static UtenteBean getBean(ResultSet rs) throws SQLException{
-		UtenteBean bean = new UtenteBean();
-		
-		bean.setId_utente(rs.getInt("id_utente"));
-		bean.setNome(rs.getString("nome"));
-		bean.setCognome(rs.getString("cognome"));
-		bean.setEmail(rs.getString("email"));
-		bean.setPassword(rs.getString("password"));
-		bean.setTipo(rs.getInt("tipo"));
-		bean.setData_nascita(rs.getDate("data_nascita"));
-		
-		return bean;
-	}
-	
-	
-	public static boolean  validate(String email, String password) throws SQLException { //verifica se email e password coincidono per il login
+	public static boolean  validate(String email, String password) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException { //verifica se email e password coincidono per il login
 		boolean status = false;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String selectSQL = "SELECT * FROM " + TABLE + " WHERE email = ? and password =? ;";
+		String selectSQL = "SELECT * FROM " + TABLE + " WHERE email = ? and password = ? ;";
 				
 		try {
 			try {
@@ -214,7 +201,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			preparedStatement.setString(1, email);
-			preparedStatement.setString(2, password) ;
+			preparedStatement.setString(2, CalculateHash(password));
 
 			System.out.println("validate..." + preparedStatement.toString());
 
@@ -238,7 +225,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		return status;
 	}
 	
-	public static boolean checkUser(String email ) throws SQLException { // verifica se utente esiste gi√† 
+	public static boolean checkUser(String email ) throws SQLException { // verifica se utente esiste gi‡ 
 		boolean flag =false;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -279,7 +266,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 	}
 	
 	
-	public static int getTipo(String email, String password) throws SQLException{
+	public static int getTipo(String email, String password) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException{
 		int flag = 0;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -296,7 +283,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			preparedStatement.setString(1, email);
-			preparedStatement.setString(2, password) ;
+			preparedStatement.setString(2, CalculateHash(password)) ;
 
 			System.out.println("validate..." + preparedStatement.toString());
 
@@ -339,6 +326,32 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 			if(statement != null) statement.close();
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
+	}
 	
-}
+	
+	private static UtenteBean getBean(ResultSet rs) throws SQLException{
+		UtenteBean bean = new UtenteBean();
+		
+		bean.setId_utente(rs.getInt("id_utente"));
+		bean.setNome(rs.getString("nome"));
+		bean.setCognome(rs.getString("cognome"));
+		bean.setEmail(rs.getString("email"));
+		bean.setPassword(rs.getString("password"));
+		bean.setTipo(rs.getInt("tipo"));
+		bean.setData_nascita(rs.getDate("data_nascita"));
+		
+		return bean;
+	}
+	
+	private static String CalculateHash(String pass) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+		MessageDigest md = MessageDigest.getInstance("SHA-512");//oppure SHA-1
+
+		md.update(pass.getBytes("UTF8"));
+		byte[] hash = md.digest();
+		
+		String st = new String(hash, StandardCharsets.UTF_8);
+		return st;
+	}
+	
 }

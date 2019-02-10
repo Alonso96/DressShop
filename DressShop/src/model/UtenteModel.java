@@ -1,5 +1,7 @@
 package model;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -9,7 +11,7 @@ public interface UtenteModel<UtenteBean> {
 	
 	public Collection<UtenteBean> doRetrieveAll() throws SQLException;
 	
-	public void doSave(UtenteBean utente) throws SQLException;
+	public void doSave(UtenteBean utente) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException ;
 	
 	public void doUpdate(UtenteBean utente) throws SQLException;
 	
@@ -19,5 +21,6 @@ public interface UtenteModel<UtenteBean> {
 
 	int getIdUtente() throws SQLException;
 
-	void doUpdatePassword(String password, int id_utente) throws SQLException;
+	void doUpdatePassword(String password, int id_utente) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException ;
+
 }

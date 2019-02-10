@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.text.ParseException;
@@ -80,6 +81,9 @@ public class RegistrationControl extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
