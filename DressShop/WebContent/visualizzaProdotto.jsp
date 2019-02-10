@@ -54,10 +54,10 @@
 						<h4 class="price">Prezzo: &euro; <%= formatter.format(prod.getPrezzo_compl()) %></h4>
 						<form>
 						<h5 class="sizes" name="taglia">sizes:
-							<input type="radio" name="beantype" checked value ="s" class="size" data-toggle="tooltip" >s</input> 
-							<input type="radio" name="beantype" value ="m"  class="size" data-toggle="tooltip" >M</input> 
-							<input type="radio" name="beantype" value ="l"  class="size" data-toggle="tooltip" >l</input> 
-							<input type="radio" name="beantype" value ="xl"  class="size" data-toggle="tooltip" >xl</input>
+							<input type="radio" name="beantype" checked value ="S" class="size" data-toggle="tooltip" >S</input> 
+							<input type="radio" name="beantype" value ="M"  class="size" data-toggle="tooltip" >M</input> 
+							<input type="radio" name="beantype" value ="L"  class="size" data-toggle="tooltip" >L</input> 
+							<input type="radio" name="beantype" value ="XL"  class="size" data-toggle="tooltip" >XL</input>
 						</h5>
 				</form>	
 						

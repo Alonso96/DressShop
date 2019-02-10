@@ -12,7 +12,7 @@
 <h4 class="scrittacarrello , bordo1" >&emsp; &emsp; &emsp;ACQUISTO COMPLETATO</h4>
 <hr>
 
-<h2>&emsp; &emsp; &emsp;Complimenti hai completato il tuo acquisto! Vai allo <a href="storico_acquisto.jsp">storico</a> per visualizzare il tuo ordine</h4>
+<h2>&emsp; &emsp; &emsp;Complimenti hai completato il tuo acquisto! Vai allo <a href="StoricoControl">storico</a> per visualizzare il tuo ordine</h4>
 
 
 
