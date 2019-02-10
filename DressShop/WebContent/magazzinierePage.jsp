@@ -69,7 +69,7 @@ else {
 </div>
 
 <div class="btn-group-vertical pull-left">
-  <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(1)">Inserisci prodotto</button>
+  <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(1)" name="ins">Inserisci prodotto</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(2)">Comunica esaurimento prodotto</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick=location.href="esaurimentoScorte.jsp">Scorte in esaurimento</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick="visualizza(3)">Modifica prodotto</button>
@@ -122,7 +122,7 @@ else {
 
 
   
-  	<button type="submit" class="btn btn-secondary btn-lg" onclick="validazione2();" >Inserisci</button> 
+  	<button type="submit" class="btn btn-secondary btn-lg" onclick="validazione2();" name="insProd" >Inserisci</button> 
   </div>
   
   </form>
