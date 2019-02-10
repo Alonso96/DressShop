@@ -39,24 +39,26 @@ public class DeleteUser extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-		PrintWriter out = response.getWriter();
-
-		int id = Integer.parseInt(request.getParameter("id"));
-
-		 try {
-				bean.doDelete(id);
-				
+		if(request.getSession().getAttribute("id") != null){
+			int id = (int) (request.getSession().getAttribute("id"));
+			UtenteModel model = new UtenteModelDM();
+			try {
+				model.doDelete(id);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			
+			request.getSession().removeAttribute("tipo");
+			request.getSession().setAttribute("tipo", 0);
+			request.getSession().removeAttribute("id");
+			request.getSession().setAttribute("id", null);
+			request.getSession().removeAttribute("email");
+			request.getSession().setAttribute("email", null);
 
-		} catch (Exception e) {
-			System.out.println(e);
 		}
-		
-		 response.sendRedirect("amministrazione.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+		dispatcher.forward(request, response); // passo la chiamata alla jsp		
 	}
 
  

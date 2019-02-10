@@ -119,7 +119,7 @@ public class UtenteModelDM implements UtenteModel<UtenteBean> {
 		PreparedStatement statement=null;
 		int result = 0;
 		
-		String deleteString ="DELETE FROM " + TABLE + " WHERE email= ?";
+		String deleteString ="DELETE FROM " + TABLE + " WHERE id_utente = ?";
 		
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();

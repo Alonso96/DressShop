@@ -80,7 +80,7 @@
 %>	  
 
 <div class="bottoni">
-<a href="aggiungi_carta.jsp" class="shiny-button2" id="dx">
+<a href="aggiungiCarta.jsp" class="shiny-button2" id="dx">
  <strong>AGGIUNGI UNA CARTA DI CREDITO</strong>
   </a>
 

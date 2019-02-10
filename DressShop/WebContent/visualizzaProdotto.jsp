@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<%@ include file="header.jsp" %>
-	<form action="CartControl" method="form">
+	<form action="CartControl" method="get">
 	
 
 
@@ -54,10 +54,10 @@
 						<h4 class="price">Prezzo: &euro; <%= formatter.format(prod.getPrezzo_compl()) %></h4>
 						<form>
 						<h5 class="sizes" name="taglia">sizes:
-							<input type="radio" name="beantype" checked value ="s" class="size" data-toggle="tooltip" >s</input> 
-							<input type="radio" name="beantype" value ="m"  class="size" data-toggle="tooltip" >M</input> 
-							<input type="radio" name="beantype" value ="l"  class="size" data-toggle="tooltip" >l</input> 
-							<input type="radio" name="beantype" value ="xl"  class="size" data-toggle="tooltip" >xl</input>
+							<input type="radio" name="beantype" checked value ="S" class="size" data-toggle="tooltip" >S</input> 
+							<input type="radio" name="beantype" value ="M"  class="size" data-toggle="tooltip" >M</input> 
+							<input type="radio" name="beantype" value ="L"  class="size" data-toggle="tooltip" >L</input> 
+							<input type="radio" name="beantype" value ="XL"  class="size" data-toggle="tooltip" >XL</input>
 						</h5>
 				</form>	
 						

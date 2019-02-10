@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
@@ -28,48 +30,28 @@ public class StoricoControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OrdineModel<OrdineBean> oModel = new OrdineModelDM();
-		System.out.println("ciao1");
-		HttpSession session = request.getSession();
-		//String id = request.getSession().getId();
-		if(session != null) {
-		
-		 
-		 
+		if(request.getSession().getAttribute("id") != null){
+			int id_utente = (int) request.getSession().getAttribute("id");
+			OrdineModel<OrdineBean> oModel = new OrdineModelDM();
+			Collection<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
 			
-		 
-		 
-	
-		 
-			String name = (String)session.getAttribute("name");
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-		
-		
-			System.out.println("Caricamento dello storico...");
 			try {
-				//preleva utente tramite email
-				UtenteModelDM uModel = new UtenteModelDM();
-				UtenteBean uBean = uModel.doRetrieveByEmail((String) session.getAttribute("email"));
-				
-				//Inserire storico giusto
-				request.removeAttribute("products");
-				request.setAttribute("products", oModel.doRetrieveByUtente(uBean.getId_utente()));
-				//request.setAttribute("date",model.getStoricoData((String) request.getSession().getAttribute("name")));
-			
-			} catch(SQLException e) {
-				System.out.println("Error: "+ e.getMessage());
-				request.setAttribute("error", e.getMessage());
+				listaOrdini = oModel.doRetrieveByUtente(id_utente);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		
-		
+			request.getSession().setAttribute("listaOrdini", listaOrdini);
+			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/storico.jsp");
 			dispatcher.forward(request, response); // passo la chiamata alla jsp
-		
-		} else
-			response.sendRedirect("home.jsp");
-		
+		} else {
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
+			dispatcher.forward(request, response); // passo la chiamata alla jsp
+
 		}
+	}
 	
 
 	/**
