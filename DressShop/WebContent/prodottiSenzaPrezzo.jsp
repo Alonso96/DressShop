@@ -54,7 +54,7 @@
 			if(bean.getPrezzo()==null){
 */	--%>
                 <div class="product-image6">
-                    <a href="#">
+                    <a href="inserisciPrezzo.jsp?<%=bean.getId_prodotto()%>">
                         <img class="pic-1" src=<%=bean.getFoto() %> <%--src="<%=bean.getFoto()--%>>
                     </a>
                 </div>
@@ -76,14 +76,7 @@
 <% } %> 
 
 
-</div>
-</div>
 
-
-                <form action="ProductControl" method="post">
-               <input type="text" class="form-control form-control-sm" id="myText" placeholder="Inserisci prezzo" name="prezzo">
-               <button class="btn btn-primary" type="submit" onclick="aggiungiPrezzo()">Aggiungi prezzo</button>
-                </form>
         
         <%-- 	}
         	} 
@@ -102,6 +95,5 @@ function aggiungiPrezzo() {
   //bean.setPrezzo(x);
 }
 </script>
-<%@ include file="footer.jsp" %>
 </body>
 </html>

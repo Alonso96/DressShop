@@ -96,7 +96,7 @@ else {
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci marca" name="marca" required oninput ="controlloCognome2()"> 
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci modello" name="modello" required oninput ="controlloCognome2()">
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci descrizione" name="descrizione" required oninput ="controlloCognome2()">
-<input type="file" class="form-control form-control-lg"  placeholder="Inserisci foto" name="foto" required oninput ="controlloCognome2()"> 
+<input type="file" accept="image/*" class="form-control form-control-lg"   name="foto" > 
 <input type="text" class="form-control form-control-lg"  placeholder="Inserisci quantità" name="quantita" required oninput ="controlloQnt()"> 
 
 <label for="taglia">Taglia</label>
