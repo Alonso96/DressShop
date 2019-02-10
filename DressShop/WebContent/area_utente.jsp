@@ -89,7 +89,7 @@
               <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Cancella la tua registrazione</strong></li>
               
             </ul>
-            <a href="" class="btn btn-block btn-primary text-uppercase">Bye Bye</a>
+            <a href="DeleteUser" class="btn btn-block btn-primary text-uppercase">Bye Bye</a>
           </div>
         </div>
       </div>
