@@ -83,6 +83,9 @@ if(request.getSession().getAttribute("tipo") != null){
 <a href="aggiungi_indirizzo.jsp" class="shiny-button2">
  <strong>AGGIUNGI UN INDIRIZZO</strong>
   </a>
+  <a href="carrello.jsp" class="shiny-button2">
+ <strong>CARRELLO</strong>
+  </a>
 
 </body>
 </html>

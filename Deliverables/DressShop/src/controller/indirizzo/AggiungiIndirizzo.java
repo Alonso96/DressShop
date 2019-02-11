@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import model.indirizzo.IndirizzoBean;
 import model.indirizzo.IndirizzoModel;
 import model.indirizzo.IndirizzoModelDM;
+import model.utente.UtenteModelDM;
 
 /**
  * Servlet implementation class AggiungiIndirizzo a
@@ -57,6 +58,7 @@ public class AggiungiIndirizzo extends HttpServlet {
 	    	}
 	    	else
 	    	{
+	    		
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String citta = request.getParameter("citta");
@@ -75,7 +77,20 @@ public class AggiungiIndirizzo extends HttpServlet {
 		indirizzo.setCellulare(nCel);
 	    indirizzo.setUtente(id);	
 		try {
-			model.doSave(indirizzo);
+			if(IndirizzoModelDM.checkIndirizzo(via,citta)) {
+				/*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mostra_indirizzo.jsp");
+				dispatcher.forward(request, response);
+				*/
+			} else {	
+				model.doSave(indirizzo);
+				/* session.setAttribute("email", eMail);
+				 session.setAttribute("tipo", 1);
+				 session.setAttribute("id", model.getIdUtente());
+			  //   session.setAttribute("id", newUser.getId_utente()); //assegno l'id
+				*/
+				System.out.println("Ciao");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

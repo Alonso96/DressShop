@@ -72,7 +72,7 @@ if(request.getSession().getAttribute("tipo") != null){
 		<tr>
         
         <td>
-           <a href="#" class="myButton">MODIFICA PASSWORD</a>
+           <a href="modifica_password.jsp" class="myButton">MODIFICA PASSWORD</a>
         </td>
 		</tr>
     </tbody>
